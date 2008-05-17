@@ -1,0 +1,10 @@
+#summary About this project
+#labels Phase-Requirements,Phase-Design
+
+= Introduction =
+
+This project is a hobby of mine.  I found the real-time XML data that MLB seems to provide free on the internet that they use to drive their Game Day Live application.  I can only assume this is what professional sites like CBS and ESPN use for their real-time game scoreboards as well.
+
+Well, I decided that not only are there stats and information I would like to pull and collect for analysis, but there's also the simple fact that the pro sites have their issues.  They either are coded poorly to be slow, they are intended to be slow to preserve bandwidth, or they are bogged down with ads and heavy media components like flash.  I've even seen CBS leak out my Mozilla browser with their AJAX enabled GameCenter they have for their Fantasy Leagues.
+
+The main goals of this site will be to first provide a minimum level of scoreboard and boxscore information, both from past games and in real-time, all based on the XML provided by MLB Advanced Media.  Second, I intend on storing this data for statistical analysis of the pitch f/x data used to capture physical information about each pitch thrown in MLB.  There are several sites and contributors I've seen on the web who are doing analysis like this, only they are pulling the XML into Excel or Access databases and rendering graphs from the likes of these desktop apps.  Hopefully this project will help us do more to help the rabid fans of baseball: the sabermetricians, the pitch f/x geeks, and even some of the old school 'baseball men' who cringe and the sound of a keyboard.
