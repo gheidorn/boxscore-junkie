@@ -3,7 +3,7 @@
 
 = Introduction =
 
-This project is a hobby of mine.  I found the real-time XML data that MLB seems to provide free on the internet that they use to drive their Game Day Live application.  I can only assume this is what professional sites like CBS and ESPN use for their real-time game scoreboards as well.
+This project is a hobby of mine that I want to share with some friends who are equal parts geek and baseball fan.  I found the real-time XML data that MLB seems to provide free on the internet that they use to drive their Game Day Live application.  I can only assume this is what professional sites like CBS and ESPN use for their real-time game scoreboards as well.
 
 Well, I decided that not only are there stats and information I would like to pull and collect for analysis, but there's also the simple fact that the pro sites have their issues.  They either are coded poorly to be slow, they are intended to be slow to preserve bandwidth, or they are bogged down with ads and heavy media components like flash.  I've even seen CBS leak out my Mozilla browser with their AJAX enabled GameCenter they have for their Fantasy Leagues.
 
