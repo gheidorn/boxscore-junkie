@@ -1,0 +1,22 @@
+<table class="scoreboard-linescore" cellpadding="5" cellspacing="2">
+  <tr>
+    <th rowspan="2" class="preview">{{game.game_status.status}}</th>
+    <td class="team">{{game.away_name_abbrev}}
+      {% if game.away_win %}
+        ({{game.away_win}}-{{game.away_loss}})
+      {% endif %}
+    </td>
+    <td style="text-align:left;">#{{game.away_probable_pitcher.number}} {{game.away_probable_pitcher.first}} {{game.away_probable_pitcher.last}} ({{game.away_probable_pitcher.wins}}-{{game.away_probable_pitcher.losses}}) {{game.away_probable_pitcher.era}} ERA</td>
+  </tr>
+  <tr>
+    <td class="team">{{game.home_name_abbrev}}
+      {% if game.away_win %}
+        ({{game.home_win}}-{{game.home_loss}})
+      {% endif %}
+    </td>
+    <td style="text-align:left;">#{{game.home_probable_pitcher.number}} {{game.home_probable_pitcher.first}} {{game.home_probable_pitcher.last}} ({{game.home_probable_pitcher.wins}}-{{game.home_probable_pitcher.losses}}) {{game.home_probable_pitcher.era}} ERA</td>
+  </tr>
+  <tr>
+    <td colspan="3" class="scoreboard-links" style="text-align:left;">{{game.time}} {{game.time_zone}} start from {{game.venue}}
+  </tr>
+</table>

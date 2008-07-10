@@ -1,0 +1,10 @@
+<table class="scoreboard-linescore" cellpadding="5" cellspacing="2">
+  <tr>
+    <td class="team">{{game.away_name_abbrev}} ({{game.away_win}}-{{game.away_loss}})</td>
+    <th rowspan="2" class="postponed">{{ game.game_status.status }}</th>
+  </tr>
+  <tr>
+    <td class="team">{{game.home_name_abbrev}} ({{game.home_win}}-{{game.home_loss}})</td>
+  </tr>
+  <tr><td colspan="2">{{ game.alerts.text}}</td></tr>
+</table>

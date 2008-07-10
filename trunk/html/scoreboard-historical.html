@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Boxscore Junkie > Historical Game Day</title>
+  <link rel="stylesheet" type="text/css" href="/css/core.css" />
+</head>
+<body class="yui-skin-sam" onload="initPage({{selDay.year}},{{selDay.month}},{{selDay.day}})">
+{% include "header.html" %}
+<div id="demo" class="yui-navset">
+  <ul class="yui-nav">
+      <li><a href="/"><em>2008 Calendar</em></a></li>
+      <li><a href="/scoreboard?year={{prevDay.year}}&amp;month={{prevDay.month}}&amp;day={{prevDay.day}}"><em><< Previous Day</em></a></li>
+      <li class="selected"><a href="/scoreboard?year={{selDay.year}}&amp;month={{selDay.month}}&amp;day={{selDay.day}}"><em>{{selDay.month}}/{{selDay.day}}</em></a></li>
+      <li><a href="/scoreboard?year={{nextDay.year}}&amp;month={{nextDay.month}}&amp;day={{nextDay.day}}"><em>Next Day >></em></a></li>
+      <li><a href="/stats"><em>Stats</em></a></li>
+  </ul>
+    <div class="yui-content">
+        <div id="tab1">
+          <table cellpadding="0" cellspacing="0">
+            <tr>
+              <td style="vertical-align: top;">
+                <ul class="game-menu">
+                  <li class="list-header">{{selDay.month}}/{{selDay.day}}</li>
+              {% for game in games %}
+                  {% ifequal game.gameday gid %}
+                    <li id="gid_{{game.gameday}}" class="game-selected" onclick="gotoBoxscore(this)" title="">{{game.away_name_abbrev}} @ {{game.home_name_abbrev}}</li>  
+                  {% else %}
+                    <li id="gid_{{game.gameday}}" class="game" onclick="gotoBoxscore(this)" title="">{{game.away_name_abbrev}} @ {{game.home_name_abbrev}}</li>
+                  {% endifequal %}
+              {% endfor %}
+                </ul>
+              </td>
+              <td style="vertical-align: top;">
+
+              </td>
+              <td style="border: 1px solid #000; vertical-align: top; width: 500px;">
+                Last Updated @ {{lastUpdate}}
+                {% for game in games %}
+                  {% ifequal game.game_status.ind "F" %}
+                    {% include "deepbox-quickbox-final.html" %}
+                  {% endifequal %}
+                  {% ifequal game.game_status.ind "UR" %}
+                    {% include "deepbox-quickbox-suspended.html" %}
+                  {% endifequal %}
+                  {% ifequal game.game_status.ind "DR" %}
+                    {% include "deepbox-quickbox-postponed.html" %}
+                  {% endifequal %}
+                {% endfor %}
+              </td>
+            </tr>
+          </table>
+        </div><!--end tab-->
+    </div><!--end yui-->
+</div>
+{% include "footer.html" %}
+<script type="text/javascript" src="/js/yui/2.5.1/yahoo-dom-event/yahoo-dom-event.js"></script> 
+<script type="text/javascript" src="/js/yui/2.5.1/element/element-beta-min.js"></script> 
+<script type="text/javascript" src="/js/yui/2.5.1/tabview/tabview-min.js"></script> 
+<script type="text/javascript" src="/js/core.js"></script>
+</body>
+</html>

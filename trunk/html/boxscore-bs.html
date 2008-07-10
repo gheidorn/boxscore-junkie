@@ -1,0 +1,192 @@
+<br />
+<table cellpadding="0" cellspacing="0" class="boxscore-container">
+  <tr>
+    <td class="col-1">
+      <table cellpadding="0" cellspacing="0" class="boxscore">
+        <tr>
+          <th colspan="9" class="team {{boxscore.away_team_code}}">{{boxscore.away_fname}}</th>
+        </tr>
+        <tr>
+          <th>Batters</th>
+          <th>AB</th>
+          <th>R</th>
+          <th>H</th>
+          <th>RBI</th>
+          <th>BB</th>
+          <th>SO</th>
+          <th>LOB</th>
+          <th>AVG</th>
+        </tr>
+      {% for batter in boxscore.away_batters %}
+        <tr>
+          <td class="name"> 
+          {% ifnotequal batter.bo "100" %}
+            {% ifnotequal batter.bo "200" %}
+              {% ifnotequal batter.bo "300" %}
+                {% ifnotequal batter.bo "400" %}
+                  {% ifnotequal batter.bo "500" %}
+                    {% ifnotequal batter.bo "600" %}
+                      {% ifnotequal batter.bo "700" %}
+                        {% ifnotequal batter.bo "800" %}
+                          {% ifnotequal batter.bo "900" %}
+                            &nbsp;&nbsp;
+                          {% endifnotequal %}
+                        {% endifnotequal %}
+                      {% endifnotequal %}
+                    {% endifnotequal %}
+                  {% endifnotequal %}
+                {% endifnotequal %}
+              {% endifnotequal %}
+            {% endifnotequal %}
+          {% endifnotequal %}
+          {% if batter.note %}
+            {{batter.note}}
+          {% endif %}
+          {{batter.name}}, {{batter.pos}}</td>
+          <td>{{batter.ab}}</td>
+          <td>{{batter.r}}</td>
+          <td>{{batter.h}}</td>
+          <td>{{batter.rbi}}</td>
+          <td>{{batter.bb}}</td>
+          <td>{{batter.so}}</td>
+          <td>{{batter.lob}}</td>
+          <td>{{batter.avg}}</td>
+        </tr>
+      {% endfor %}
+      </table>
+
+      <div class="boxscore-text">
+        <br />
+        {% for note in boxscore.away_batter_notes %}
+          {{note}}<br />
+        {% endfor %}
+        <br />{{boxscore.away_batter_text_data}}
+      </div>
+
+      
+      <table cellpadding="0" cellspacing="0" class="boxscore">
+        <tr>
+          <th colspan="9" class="team {{boxscore.away_team_code}}">{{boxscore.away_fname}}</th>
+        </tr>
+        <tr>
+          <th>Pitchers</th>
+          <th>IP</th>
+          <th>H</th>
+          <th>R</th>
+          <th>ER</th>
+          <th>BB</th>
+          <th>SO</th>
+          <th>HR</th>
+          <th>ERA</th>
+        </tr>
+      {% for pitcher in boxscore.away_pitchers %}
+        <tr>
+          <td class="name">{{pitcher.name}}</td>
+          <td>{{pitcher.ip}}</td>
+          <td>{{pitcher.h}}</td>
+          <td>{{pitcher.r}}</td>
+          <td>{{pitcher.er}}</td>
+          <td>{{pitcher.bb}}</td>
+          <td>{{pitcher.so}}</td>
+          <td>{{pitcher.hr}}</td>
+          <td>{{pitcher.era}}</td>
+        </tr>
+      {% endfor %}
+      </table>
+    </td>
+    <td class="col-2">&nbsp;</td>
+    <td class="col-3">
+      <table cellpadding="0" cellspacing="0" class="boxscore">
+        <tr>
+          <th colspan="9" class="team {{boxscore.home_team_code}}">{{boxscore.home_fname}}</th>
+        </tr>
+        <tr>
+          <th>Batters</th>
+          <th>AB</th>
+          <th>R</th>
+          <th>H</th>
+          <th>RBI</th>
+          <th>BB</th>
+          <th>SO</th>
+          <th>LOB</th>
+          <th>AVG</th>
+        </tr>
+      {% for batter in boxscore.home_batters %}
+        <tr><td class="name">
+          {% ifnotequal batter.bo "100" %}
+            {% ifnotequal batter.bo "200" %}
+              {% ifnotequal batter.bo "300" %}
+                {% ifnotequal batter.bo "400" %}
+                  {% ifnotequal batter.bo "500" %}
+                    {% ifnotequal batter.bo "600" %}
+                      {% ifnotequal batter.bo "700" %}
+                        {% ifnotequal batter.bo "800" %}
+                          {% ifnotequal batter.bo "900" %}
+                            &nbsp;&nbsp;
+                          {% endifnotequal %}
+                        {% endifnotequal %}
+                      {% endifnotequal %}
+                    {% endifnotequal %}
+                  {% endifnotequal %}
+                {% endifnotequal %}
+              {% endifnotequal %}
+            {% endifnotequal %}
+          {% endifnotequal %}
+          {% if batter.note %}
+            {{batter.note}}
+          {% endif %}
+          {{batter.name}}, {{batter.pos}}</td>
+          <td>{{batter.ab}}</td>
+          <td>{{batter.r}}</td>
+          <td>{{batter.h}}</td>
+          <td>{{batter.rbi}}</td>
+          <td>{{batter.bb}}</td>
+          <td>{{batter.so}}</td>
+          <td>{{batter.lob}}</td>
+          <td>{{batter.avg}}</td>
+        </tr>
+      {% endfor %}
+      </table>
+      <div class="boxscore-text">
+        <br />
+        {% for note in boxscore.home_batter_notes %}
+          {{note}}<br />
+        {% endfor %}
+        <br />{{boxscore.home_batter_text_data}}
+      </div>
+      
+      <table cellpadding="0" cellspacing="0" class="boxscore">
+        <tr>
+          <th colspan="9" class="team {{boxscore.home_team_code}}">{{boxscore.home_fname}}</th>
+        </tr>
+        <tr>
+          <th>Pitchers</th>
+          <th>IP</th>
+          <th>H</th>
+          <th>R</th>
+          <th>ER</th>
+          <th>BB</th>
+          <th>SO</th>
+          <th>HR</th>
+          <th>ERA</th>
+        </tr>
+      {% for pitcher in boxscore.home_pitchers %}
+        <tr>
+          <td class="name">{{pitcher.name}}</td>
+          <td>{{pitcher.ip}}</td>
+          <td>{{pitcher.h}}</td>
+          <td>{{pitcher.r}}</td>
+          <td>{{pitcher.er}}</td>
+          <td>{{pitcher.bb}}</td>
+          <td>{{pitcher.so}}</td>
+          <td>{{pitcher.hr}}</td>
+          <td>{{pitcher.era}}</td>
+        </tr>
+      {% endfor %}
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3" style="font-size: .8em;text-align:left;"><br />{{boxscore.game_info}}</td>
+  </tr>
+</table>

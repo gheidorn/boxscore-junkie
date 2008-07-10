@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Boxscore Junkie : Live Scoreboard for {{selDay.month}}/{{selDay.day}}</title>
+  {% ifequal r "on" %}
+    <meta http-equiv="refresh" content="{{t}}" />
+  {% endifequal %}
+  <meta name="verify-v1" content="btXOG+YtkDibUb/xMk7UyqbsOsPw1enwKlE14qDAYzg=" />
+  <link rel="stylesheet" type="text/css" href="/css/core.css" />
+</head>
+<body onload="initPage({{selDay.year}},{{selDay.month}},{{selDay.day}})" class="page">
+{% include "header-live.html" %}
+<div id="globalsubnav" class="topbar">
+  <div class="topbar-inner">
+  You are viewing games played on <a href="scoreboard?year={{selDay.year}}&amp;month={{selDay.month}}&amp;day={{selDay.day}}">{{selDay.month}}/{{selDay.day}}</a>.  check out daily <a href="#">pitch f/x leaders</a> and <a href="#">statistics</a>, or go to the <a href="/scoreboard?year={{prevDay.year}}&amp;month={{prevDay.month}}&amp;day={{prevDay.day}}">previous day</a> or <a href="/scoreboard?year={{nextDay.year}}&amp;month={{nextDay.month}}&amp;day={{nextDay.day}}">next day</a>.  You can also <a href="/calendar">pick a new day</a>.
+  </div>
+</div>
+<div id="middle" class="body">
+  <div class="col-1" style="display: none;">
+  </div>
+  <div class="col-2" style="width: 100%">
+    <table class="scoreboard-table" cellpadding="0" cellspacing="1">
+      <tr>
+{% for game in games %}
+  {% ifnotequal forloop.counter0 0 %}
+    {% if forloop.counter0|divisibleby:"3" %}
+      <tr>
+    {% endif %}
+  {% endifnotequal %}
+        <td class="scoreboard-col">
+  {% ifequal game.game_status.ind "F" %}
+    {% include "scoreboard-ls-final.html" %}
+  {% endifequal %}
+  {% ifequal game.game_status.ind "O" %}
+    {% include "scoreboard-ls-final.html" %}
+  {% endifequal %}
+  {% ifequal game.game_status.ind "I" %}
+    {% include "scoreboard-ls-inprogress.html" %}
+  {% endifequal %}
+  {% ifequal game.game_status.ind "P" %}
+    {% include "scoreboard-ls-inprogress.html" %}
+  {% endifequal %}
+  {% ifequal game.game_status.ind "S" %}
+    {% include "scoreboard-ls-preview.html" %}
+  {% endifequal %}
+  {% ifequal game.game_status.ind "UR" %}
+    {% include "scoreboard-ls-suspended.html" %}
+  {% endifequal %}
+  {% ifequal game.game_status.ind "IR" %}
+    {% include "scoreboard-ls-delayed.html" %}
+  {% endifequal %}
+  {% ifequal game.game_status.ind "PR" %}
+    {% include "scoreboard-ls-delayed.html" %}
+  {% endifequal %}
+  {% ifequal game.game_status.ind "DR" %}
+    {% include "scoreboard-ls-postponed.html" %}
+  {% endifequal %}
+  {% ifequal game.game_status.ind "PW" %}
+    {% include "scoreboard-ls-warmup.html" %}
+  {% endifequal %}
+        </td>
+  {% ifnotequal forloop.counter0 0 %}
+    {% if forloop.counter|divisibleby:"3" %}
+      </tr>
+    {% endif %}
+  {% endifnotequal %}
+{% endfor %}
+    </table>
+  </div>
+  <div class="col-3" style="display: none;">
+    <!--
+    <div class="topbar-inner">
+      <div class="right-box">
+        <h2>Top 3 Fastballs</h2>
+        <table style="font-size: 80%">
+           <tr><td>96.4</td><td>Wood, CHC to Dunn, CIN, Called Strike</td></tr>
+           <tr><td>95.9</td><td>Webb, ARI to Lee, CHI, Home Run</td></tr>
+           <tr><td>95.7</td><td>Oswalt, HOU to Martin, LAD, Single</td></tr>
+        </table>
+      </div>
+      <br />
+      <div class="right-box">
+        <h2>Top 3 Breaks</h2>
+        <table style="font-size: 80%">
+           <tr><td>15.4</td><td>Wood, CHC to Dunn, CIN, Called Strike</td></tr>
+           <tr><td>14.5</td><td>Webb, ARI to Lee, CHI, Home Run</td></tr>
+           <tr><td>14.3</td><td>Oswalt, HOU to Martin, LAD, Single</td></tr>
+        </table>
+      </div>
+      <br />
+      <div class="right-box">
+        <h2>Most Whiffs</h2>
+        <table style="font-size: 80%">
+           <tr><td>96.4</td><td>Wood, CHC to Dunn, CIN, Called Strike</td></tr>
+           <tr><td>95.9</td><td>Webb, ARI to Lee, CHI, Home Run</td></tr>
+           <tr><td>95.7</td><td>Oswalt, HOU to Martin, LAD, Single</td></tr>
+        </table>
+      </div>
+    </div>
+    -->
+  </div>
+</div>
+{% include "footer.html" %}
+<script type="text/javascript" src="/js/core.js"></script>
+</body>
+</html>

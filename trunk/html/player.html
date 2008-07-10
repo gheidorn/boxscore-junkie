@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Boxscore Junkie : Game</title>
+  <link rel="stylesheet" type="text/css" href="/css/core.css" />
+</head>
+<body class="page">
+<div id="banner" class="topbar">
+  <div class="hdr-left">
+    &nbsp;
+  </div>
+  <div class="hdr-right">
+    <div class="bannernav">
+      <a href="http://code.google.com/p/deepbox/">deepbox project</a> | <a href="#">f.a.q.</a> | <a href="#">in development</a> | <a href="#">changelog</a>
+    </div>
+  </div>
+</div>
+<div id="globalnav" class="topbar">
+  <div class="topbar-inner">
+    <a href="/">home</a> | <a href="#">ytd pitch f/x leaders</a> | <a href="#">ytd statistics</a>
+  </div>
+</div>
+<div id="globalsubnav" class="topbar">
+  <div class="topbar-inner">
+    Testing Database Stuff
+  </div>
+</div>
+<div id="middle" class="body">
+  <div class="col-1">
+    <div style="text-align:left; padding: 10px;">
+      <ul>
+        <li><a href="/data/player/put?gid=2008_05_12_nyamlb_tbamlb_1">Add Players</a></li>
+        <li><a href="/data/player/get?arg=139">Get Player</a></li>
+        <li><a href="/data/player/wipe">Wipe Players</a></li>
+        <li><a href="/data/player/get?arg=all">Display Players</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-2">
+    <div style="text-align:left; padding: 10px;">
+      <form action="/data/player/put" method="post">
+        gid <input type="text" name="gid" /><input type="submit" />
+      </form>
+    <p>There are currently {{players|length}} in the system.</p>
+    <table>
+      <tr>
+        <th>id</th>
+      </tr>
+    {% for t in teams %}
+      <tr>
+        <td>{{t.team_id}}</td>
+      </tr>
+    {% endfor %}
+    </table>
+    <table>
+      <tr>
+        <th>id</th>
+        <th>first</th>
+        <th>last</th>
+        <th>team_id</th>
+      </tr>
+    {% for player in players %}
+      <tr>
+        <td>{{player.id}}</td>
+        <td>{{player.first}}</td>
+        <td>{{player.last}}</td>
+        <td>{{player.team_id}}</td>
+      </tr>
+    {% endfor %}
+    </table>
+    Action: {{action}}
+    </div>
+  </div>
+  <div class="col-3" style="display: none;">
+  </div>
+</div>
+<div id="footernav" class="topbar">
+  <div class="topbar-inner">
+    <a href="/">home</a> | <a href="#">ytd pitch f/x leaders</a> | <a href="#">ytd statistics</a>
+  </div>
+</div>
+<div id="footer" class="topbar">
+  <div class="topbar-inner">
+    <div class="footertext">
+      <p>
+        boxscore junkie by <a href="http://code.google.com/u/greg.heidorn/">greg heidorn</a><br />
+        xml data scraped from <a href="#">mlb advanced media</a>; mlb teams and players are probably &copy; and owned by some combination of mlb and the mlbpa<br />
+        for more information, please checkout my <a href="http://code.google.com/p/deepbox/">deepbox project</a> @ google code, the <a href="#">f.a.q.</a>, <a href="#">what's in development</a>, or the <a href="#">changelog</a>
+      </p>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3089274-8");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+</body>
+</html>
