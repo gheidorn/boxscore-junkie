@@ -1,0 +1,148 @@
+<table class="scoreboard-linescore" cellpadding="5" cellspacing="2">
+  <tr>
+    <th class="inprogress">
+      {% ifequal game.game_status.top_inning "Y" %}
+        Top
+      {% else %}
+        Bot
+      {% endifequal %}
+      {{ game.game_status.inning}}
+    </th>
+  {% ifequal game.game_status.inning "0" %}
+    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+  {% else %}
+    {% ifequal game.game_status.inning "1" %}
+        <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+    {% else %}
+      {% ifequal game.game_status.inning "2" %}
+          <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+      {% else %}
+        {% ifequal game.game_status.inning "3" %}
+            <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+        {% else %}
+          {% ifequal game.game_status.inning "4" %}
+              <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+          {% else %}
+            {% ifequal game.game_status.inning "5" %}
+                <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+            {% else %}
+              {% ifequal game.game_status.inning "6" %}
+                  <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+              {% else %}
+                {% ifequal game.game_status.inning "7" %}
+                    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+                {% else %}
+                  {% ifequal game.game_status.inning "8" %}
+                      <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+                  {% else %}
+                    {% ifequal game.game_status.inning "9" %}
+                        <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+                    {% else %}
+                      {% for inning in game.linescore.innings %}
+                        <th>{{forloop.counter}}</th><!-- greg -->
+                      {% endfor %}
+                    {% endifequal %}
+                  {% endifequal %}
+                {% endifequal %}
+              {% endifequal %}
+            {% endifequal %}
+          {% endifequal %}
+        {% endifequal %}
+      {% endifequal %}
+    {% endifequal %}
+  {% endifequal %}
+    <th>R</th>
+    <th>H</th>
+    <th>E</th>
+  </tr>
+  <tr>
+    <td class="team">{{game.away_name_abbrev}} ({{game.away_win}}-{{game.away_loss}})</td>
+  {% for inning in game.linescore.innings %}
+    <td>{{inning.away}}</td>
+  {% endfor %}
+{% ifequal game.game_status.inning "0" %}
+    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+{% else %}
+  {% ifequal game.game_status.inning "1" %}
+      <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+  {% else %}
+    {% ifequal game.game_status.inning "2" %}
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+    {% else %}
+      {% ifequal game.game_status.inning "3" %}
+          <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+      {% else %}
+        {% ifequal game.game_status.inning "4" %}
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        {% else %}
+          {% ifequal game.game_status.inning "5" %}
+              <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+          {% else %}
+            {% ifequal game.game_status.inning "6" %}
+                <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            {% else %}
+              {% ifequal game.game_status.inning "7" %}
+                  <td>&nbsp;</td><td>&nbsp;</td>
+              {% else %}
+                {% ifequal game.game_status.inning "8" %}
+                    <td>&nbsp;</td>
+                {% else %}
+                {% endifequal %}
+              {% endifequal %}
+            {% endifequal %}
+          {% endifequal %}
+        {% endifequal %}
+      {% endifequal %}
+    {% endifequal %}
+  {% endifequal %}
+{% endifequal %}
+    <td> {{ game.linescore.r.away }}</td>
+    <td> {{ game.linescore.h.away }}</td>
+    <td> {{ game.linescore.e.away }}</td>
+  </tr>
+  <tr>
+    <td class="team">{{game.home_name_abbrev}} ({{game.home_win}}-{{game.home_loss}})</td>
+  {% for inning in game.linescore.innings %}
+    <td>{{inning.home}}</td>
+  {% endfor %}
+{% ifequal game.game_status.inning "0" %}
+    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+{% else %}
+  {% ifequal game.game_status.inning "1" %}
+      <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+  {% else %}
+    {% ifequal game.game_status.inning "2" %}
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+    {% else %}
+      {% ifequal game.game_status.inning "3" %}
+          <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+      {% else %}
+        {% ifequal game.game_status.inning "4" %}
+            <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        {% else %}
+          {% ifequal game.game_status.inning "5" %}
+              <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+          {% else %}
+            {% ifequal game.game_status.inning "6" %}
+                <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+            {% else %}
+              {% ifequal game.game_status.inning "7" %}
+                  <td>&nbsp;</td><td>&nbsp;</td>
+              {% else %}
+                {% ifequal game.game_status.inning "8" %}
+                    <td>&nbsp;</td>
+                {% else %}
+                {% endifequal %}
+              {% endifequal %}
+            {% endifequal %}
+          {% endifequal %}
+        {% endifequal %}
+      {% endifequal %}
+    {% endifequal %}
+  {% endifequal %}
+{% endifequal %}
+    <td>{{ game.linescore.r.home }}</td>
+    <td>{{ game.linescore.h.home }}</td>
+    <td>{{ game.linescore.e.home }}</td>
+  </tr>
+</table>

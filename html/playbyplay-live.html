@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Boxscore Junkie : Live Pitch-By-Pitch</title>
+  {% ifequal r "on" %}
+    <meta http-equiv="refresh" content="{{t}}" />
+  {% endifequal %}
+  <link rel="stylesheet" type="text/css" href="/css/core.css" />
+</head>
+<body onload="initPage({{selDay.year}},{{selDay.month}},{{selDay.day}})" class="page">
+{% include "header-playbyplay-live.html" %}
+<div id="globalsubnav" class="topbar">
+  <div class="topbar-inner">
+  You are viewing games played on <a href="scoreboard?year={{selDay.year}}&amp;month={{selDay.month}}&amp;day={{selDay.day}}">{{selDay.month}}/{{selDay.day}}</a>.  check out daily <a href="#">pitch f/x leaders</a> and <a href="#">statistics</a>, or go to the <a href="/scoreboard?year={{prevDay.year}}&amp;month={{prevDay.month}}&amp;day={{prevDay.day}}">previous day</a> or <a href="/scoreboard?year={{nextDay.year}}&amp;month={{nextDay.month}}&amp;day={{nextDay.day}}">next day</a>.  You can also <a href="/calendar">pick a new day</a>.
+  </div>
+</div>
+<div id="middle" class="body">
+  <div class="col-1">
+    {% include "game-menu.html" %}
+  </div>
+  <div class="col-2" style="padding-left:20px; width: 600px;">
+    <!-- tabs -->
+    <div id="boxscorenav">
+      <a href="boxscore?year={{selDay.year}}&amp;month={{selDay.month}}&amp;day={{selDay.day}}&amp;gid={{game.gameday}}">boxscore</a> | <a href="/playbyplay?year={{selDay.year}}&amp;month={{selDay.month}}&amp;day={{selDay.day}}&amp;gid={{game.gameday}}">play-by-play</a> | <a href="/pitchbypitch?year={{selDay.year}}&amp;month={{selDay.month}}&amp;day={{selDay.day}}&amp;gid={{game.gameday}}">pitch-by-pitch</a> | <a href="/highlights?year={{selDay.year}}&amp;month={{selDay.month}}&amp;day={{selDay.day}}&amp;gid={{game.gameday}}">highlights</a>
+    </div>
+    <!-- linescore -->
+    {% ifequal game.game_status.ind "F" %}
+      {% include "boxscore-ls-final.html" %}
+    {% endifequal %}
+    {% ifequal game.game_status.ind "I" %}
+      {% include "boxscore-ls-inprogress.html" %}
+    {% endifequal %}
+    <!-- pbp -->
+    <br />
+    <table class="pbp" cellpadding="5" cellspacing="2">
+    {% for inning in innings %}
+      <tr>
+        <td class="{{game.away_code}}" style="font-size: 110%; font-weight:bold;">{{game.away_team_city}} - Top of {{inning.num}}</td>
+      </tr>
+    {% for event in inning.top_atbats %}
+      <tr>
+      {% if forloop.counter0|divisibleby:"2" %}
+        <td class="odd">
+      {% else %}
+        <td class="even">
+      {% endif %}
+        {% if event.score %}
+          <span style="color: green;font-weight:bold;">{{event.des}}</span>
+        {% else %}
+          {{event.des}}
+        {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+      <tr>
+        <td class="{{game.home_code}}" style="font-size: 110%; font-weight:bold;">{{game.home_team_city}} - Bottom of {{inning.num}}</td>
+      </tr>
+      {% for event in inning.bottom_atbats %}
+        <tr>
+        {% if forloop.counter0|divisibleby:"2" %}
+          <td class="odd">
+        {% else %}
+          <td class="even">
+        {% endif %}
+          {% if event.score %}
+            <span style="color: green;font-weight:bold;">{{event.des}}</span>
+          {% else %}
+            {{event.des}}
+          {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    {% endfor %}
+  </table>
+  </div>
+  <div class="col-3" style="display: none;">
+    <!--
+    {% include "daily-leaders.html" %}
+    -->
+  </div>
+</div>
+{% include "footer.html" %}
+<script type="text/javascript" src="/js/core.js"></script>
+</body>
+</html>

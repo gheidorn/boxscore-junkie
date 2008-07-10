@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title>Boxscore Junkie : {{today.year}} MLB Calendar</title>
+  <link rel="stylesheet" type="text/css" href="/css/core.css" />
+</head>
+<body onload="initPage({{today.year}},{{today.month}},{{today.day}})" class="page">
+{% include "header.html" %}
+<div id="globalsubnav" class="topbar">
+  <div class="topbar-inner">
+  You are viewing the 2008 MLB Calendar.
+  </div>
+</div>
+<div id="middle" class="body">
+  <div class="col-1">
+    &nbsp;
+  </div>
+  <div class="col-2">
+    <table class="calendar-holder">
+    <tr>
+    <td><div id="month3"></div></td>
+    <td><div id="month4"></div></td>
+    <td><div id="month5"></div></td>
+    <td><div id="month6"></div></td>
+    </tr>
+    <tr>
+    <td><div id="month7"></div></td>
+    <td><div id="month8"></div></td>
+    <td><div id="month9"></div></td>
+    <td><div id="month10"></div></td>
+    </tr>
+    </table>
+  </div>
+  <div class="col-3" style="display: none;">
+    
+  </div>
+</div>
+{% include "footer.html" %}
+<script type="text/javascript" language="javascript" src="/js/core.js"></script>
+<script type="text/javascript" language="javascript" src="/js/calendar.js"></script>
+</body>
+</html>
