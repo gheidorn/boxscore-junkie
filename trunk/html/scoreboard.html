@@ -1,0 +1,71 @@
+<!-- scoreboard.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <title>Boxscore Junkie : Live Scoreboard for {{selDay.month}}/{{selDay.day}}</title>
+  {% ifequal r "on" %}
+    <meta http-equiv="refresh" content="{{t}}" />
+  {% endifequal %}
+  <meta name="verify-v1" content="btXOG+YtkDibUb/xMk7UyqbsOsPw1enwKlE14qDAYzg=" />
+  <link rel="stylesheet" type="text/css" href="/css/core.css" />
+</head>
+<body>
+<div id="page">
+	{% include "header.html" %}
+	{% include "navbar-scoreboard.html" %}
+	<div id="content">
+		<div id="scoreboard">
+			{% for game in games %}
+			  {% ifnotequal forloop.counter0 0 %}
+			    {% if forloop.counter0|divisibleby:"3" %}
+			      	<div class="fix"></div>
+			    {% endif %}
+			  {% endifnotequal %}
+			  {% ifequal game.game_status.ind "F" %}
+			    {% include "scoreboard-ls-final.html" %}
+			  {% endifequal %}
+			  {% ifequal game.game_status.ind "FR" %}
+			    {% include "scoreboard-ls-final.html" %}<!-- completed early due to rain -->
+			  {% endifequal %}
+			  {% ifequal game.game_status.ind "O" %}
+			    {% include "scoreboard-ls-final.html" %}
+			  {% endifequal %}
+			  {% ifequal game.game_status.ind "I" %}
+			    {% include "scoreboard-ls-inprogress.html" %}
+			  {% endifequal %}
+			  {% ifequal game.game_status.ind "P" %}
+			    {% include "scoreboard-ls-pregame.html" %}<!-- pre-game -->
+			  {% endifequal %}
+			  {% ifequal game.game_status.ind "S" %}
+			    {% include "scoreboard-ls-preview.html" %}<!-- preview -->
+			  {% endifequal %}
+			  {% ifequal game.game_status.ind "UR" %}
+			    {% include "scoreboard-ls-suspended.html" %}
+			  {% endifequal %}
+			  {% ifequal game.game_status.ind "IR" %}
+			    {% include "scoreboard-ls-delayed.html" %}
+			  {% endifequal %}
+			  {% ifequal game.game_status.ind "PR" %}
+			    {% include "scoreboard-ls-delayed.html" %}<!-- delayed start - rain -->
+			  {% endifequal %}
+			  {% ifequal game.game_status.ind "DR" %}<!-- postponed rain -->
+			    {% include "scoreboard-ls-postponed.html" %}
+			  {% endifequal %}
+			  {% ifequal game.game_status.ind "DC" %}<!-- postponed cold/snow -->
+			    {% include "scoreboard-ls-postponed.html" %}
+			  {% endifequal %}
+			  {% ifequal game.game_status.ind "PW" %}
+			    {% include "scoreboard-ls-warmup.html" %}
+			  {% endifequal %}
+			  {% ifequal game.game_status.ind "FT" %}
+			    {% include "scoreboard-ls-final-tied.html" %}
+			  {% endifequal %}
+			{% endfor %}
+	    	<div class="fix"></div>
+	    </div><!-- end scoreboard -->
+	</div><!-- end content -->
+	{% include "navbar-scoreboard.html" %}
+</div><!-- end page -->
+{% include "footer.html" %}
+</body>
+</html>

@@ -1,6 +1,8 @@
-<table class="scoreboard-linescore" cellpadding="5" cellspacing="2">
+<!-- boxscore-linescore-inprogress.html -->
+<div class="linescore">
+	<table cellpadding="0" cellspacing="0" rules="all">
   <tr>
-    <th class="inprogress">
+    <th class="final">
       {% ifequal game.game_status.top_inning "Y" %}
         Top
       {% else %}
@@ -51,12 +53,12 @@
       {% endifequal %}
     {% endifequal %}
   {% endifequal %}
-    <th>R</th>
-    <th>H</th>
-    <th>E</th>
+    <th class="rhe">R</th>
+    <th class="rhe">H</th>
+    <th class="rhe">E</th>
   </tr>
   <tr>
-    <td class="team">{{game.away_name_abbrev}} ({{game.away_win}}-{{game.away_loss}})</td>
+    <td class="team"><img src="/img/mlb_logos/{{game.away_code}}.gif" /></td>
   {% for inning in game.linescore.innings %}
     <td>{{inning.away}}</td>
   {% endfor %}
@@ -96,12 +98,12 @@
     {% endifequal %}
   {% endifequal %}
 {% endifequal %}
-    <td> {{ game.linescore.r.away }}</td>
-    <td> {{ game.linescore.h.away }}</td>
-    <td> {{ game.linescore.e.away }}</td>
+    <td class="rhe"> {{ game.linescore.r.away }}</td>
+    <td class="rhe"> {{ game.linescore.h.away }}</td>
+    <td class="rhe"> {{ game.linescore.e.away }}</td>
   </tr>
   <tr>
-    <td class="team">{{game.home_name_abbrev}} ({{game.home_win}}-{{game.home_loss}})</td>
+    <td class="team"><img src="/img/mlb_logos/{{game.home_code}}.gif" /></td>
   {% for inning in game.linescore.innings %}
     <td>{{inning.home}}</td>
   {% endfor %}
@@ -141,8 +143,9 @@
     {% endifequal %}
   {% endifequal %}
 {% endifequal %}
-    <td>{{ game.linescore.r.home }}</td>
-    <td>{{ game.linescore.h.home }}</td>
-    <td>{{ game.linescore.e.home }}</td>
+    <td class="rhe">{{ game.linescore.r.home }}</td>
+    <td class="rhe">{{ game.linescore.h.home }}</td>
+    <td class="rhe">{{ game.linescore.e.home }}</td>
   </tr>
 </table>
+</div>

@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 #
 # Copyright 2008 Greg Heidorn
 #
@@ -28,7 +27,7 @@ from datetime import datetime
 from datetime import date
 from datetime import time
 from datetime import timedelta
-from google.appengine.api import urlfetch
+
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 
@@ -49,37 +48,47 @@ class MasterScoreboardHandler(webapp.RequestHandler):
     if len(day) == 1:
       day = "0" + day
 
-    # build menu tabs
+    lastUpdate = datetime.today() - timedelta(hours=5)
+
+    # build dates
+    today = datetime.today() - timedelta(hours=5)
     selDay = date(int(year), int(month), int(day))
     prevDay = selDay - timedelta(days=1)
     nextDay = selDay + timedelta(days=1)
 
-    # retrieve xml for the day's scoreboard
-    masterScoreboardDOM = xml_helper.fetchMasterScoreboard(year, month, day)
-    gamesNode = masterScoreboardDOM.getElementsByTagName("games")[0]
-
-    # build the day's GameDay object
-    gameday = xml_helper.buildGameDay(gamesNode)
-    gameday.yesterday_date = date(int(gameday.year), int(gameday.month), int(gameday.day)) - timedelta(days=1)
-
-    # build an array of the day's games
-    games = []
-    for node in gamesNode.childNodes:
-      if node.nodeType == node.ELEMENT_NODE:
-        games.append(xml_helper.buildGame(node))
-
     template_values = {
-      'gameday': gameday,
-      'games': games,
-      'lastUpdate': datetime.today(),
+      'lastUpdate': lastUpdate.strftime("%m/%d %I:%M:%S %p"),
       'prevDay': prevDay,
       'selDay': selDay,
+      'selDayStr': today.strftime("%B %d, %Y"),
+      'today': today,
       'nextDay': nextDay,
       'r': refresh,
       't': refreshTime
     }
 
-    path = os.path.join(os.path.dirname(__file__), 'html/scoreboard-live.html')
+    # retrieve xml for the day's scoreboard
+    masterScoreboardDOM = xml_helper.fetchMasterScoreboard(year, month, day)
+    if masterScoreboardDOM is None:
+      destination = "html/no-games-today.html"
+    else:
+      destination = "html/scoreboard.html"
+      gamesNode = masterScoreboardDOM.getElementsByTagName("games")[0]
+
+      # build the day's GameDay object
+      gameday = xml_helper.buildGameDay(gamesNode)
+      gameday.yesterday_date = date(int(gameday.year), int(gameday.month), int(gameday.day)) - timedelta(days=1)
+
+      # build an array of the day's games
+      games = []
+      for node in gamesNode.childNodes:
+        if node.nodeType == node.ELEMENT_NODE:
+          games.append(xml_helper.buildGame(node))
+
+      template_values['gameday'] = gameday
+      template_values['games'] = games
+
+    path = os.path.join(os.path.dirname(__file__), destination)
     self.response.out.write(template.render(path, template_values))
 
 class BoxscoreHandler(webapp.RequestHandler):
@@ -90,21 +99,22 @@ class BoxscoreHandler(webapp.RequestHandler):
     refreshTime = self.request.get('t')
     if refreshTime == "":
       refreshTime = 60
-    gid = self.request.get('gid')
-    year = self.request.get('year')
-    month = self.request.get('month')
-    day = self.request.get('day')
     
+    ''' game id '''
+    gid = self.request.get('gid')
+    
+    ''' derive year/month/day from the game id '''
+    year = gid[:4]
+    month = gid[5:7]
+    day = gid[8:10]
+    
+    ''' determine dates for links based on date selected '''
     selDay = date(int(year), int(month), int(day))
     prevDay = selDay - timedelta(days=1)
-    nextDay = selDay + timedelta(days=1)
+    nextDay = selDay + timedelta(days=1)    
+    today = datetime.today() - timedelta(hours=5)
+    lastUpdate = datetime.today() - timedelta(hours=5)
     
-    if len(month) == 1:
-      month = "0" + month
-    
-    if len(day) == 1:
-      day = "0" + day
-
     masterScoreboardDOM = xml_helper.fetchMasterScoreboard(year, month, day)
     gamesNode = masterScoreboardDOM.getElementsByTagName("games")[0]
     gameday = xml_helper.buildGameDay(gamesNode)
@@ -118,8 +128,11 @@ class BoxscoreHandler(webapp.RequestHandler):
         if gid == game.gameday:
           selectedGame = xml_helper.buildGame(node)
           boxscoreDOM = xml_helper.fetchBoxscore(gameday.year, gameday.month, gameday.day, game.gameday)
-          boxscoreNode = boxscoreDOM.getElementsByTagName("boxscore")[0]
-          boxscore = xml_helper.buildBoxscore(boxscoreNode)
+          if boxscoreDOM is None:
+            boxscore = {}
+          else:
+            boxscoreNode = boxscoreDOM.getElementsByTagName("boxscore")[0]
+            boxscore = xml_helper.buildBoxscore(boxscoreNode)
         games.append(game)
 
     template_values = {
@@ -128,15 +141,16 @@ class BoxscoreHandler(webapp.RequestHandler):
       'games': games,
       'game': selectedGame,
       'boxscore': boxscore,
-      'lastUpdate': datetime.today(),
+      'lastUpdate': lastUpdate.strftime("%m/%d %I:%M:%S %p"),
       'prevDay': prevDay,
       'selDay': selDay,
+      'today': today,
       'nextDay': nextDay,
       'r': refresh,
       't': refreshTime
     }
 
-    path = os.path.join(os.path.dirname(__file__), 'html/boxscore-live.html')
+    path = os.path.join(os.path.dirname(__file__), 'html/boxscore.html')
     self.response.out.write(template.render(path, template_values))
 
 class PlayByPlayHandler(webapp.RequestHandler):
@@ -147,21 +161,22 @@ class PlayByPlayHandler(webapp.RequestHandler):
     refreshTime = self.request.get('t')
     if refreshTime == "":
       refreshTime = 60
+
+    ''' game id '''
     gid = self.request.get('gid')
-    year = self.request.get('year')
-    month = self.request.get('month')
-    day = self.request.get('day')
     
+    ''' derive year/month/day from the game id '''
+    year = gid[:4]
+    month = gid[5:7]
+    day = gid[8:10]
+    
+    ''' determine dates for links based on date selected '''
     selDay = date(int(year), int(month), int(day))
     prevDay = selDay - timedelta(days=1)
-    nextDay = selDay + timedelta(days=1)
+    nextDay = selDay + timedelta(days=1)    
+    today = datetime.today() - timedelta(hours=5)
+    lastUpdate = datetime.today() - timedelta(hours=5)
     
-    if len(month) == 1:
-      month = "0" + month
-    
-    if len(day) == 1:
-      day = "0" + day
-
     masterScoreboardDOM = xml_helper.fetchMasterScoreboard(year, month, day)
     gamesNode = masterScoreboardDOM.getElementsByTagName("games")[0]
     gameday = xml_helper.buildGameDay(gamesNode)
@@ -191,15 +206,16 @@ class PlayByPlayHandler(webapp.RequestHandler):
       'game': selectedGame,
       'boxscore': boxscore,
       'innings': innings,
-      'lastUpdate': datetime.today(),
+      'lastUpdate': lastUpdate.strftime("%m/%d %I:%M:%S %p"),
       'prevDay': prevDay,
       'selDay': selDay,
+      'today': today,
       'nextDay': nextDay,
       'r': refresh,
       't': refreshTime
     }
 
-    path = os.path.join(os.path.dirname(__file__), 'html/playbyplay-live.html')
+    path = os.path.join(os.path.dirname(__file__), 'html/playbyplay.html')
     self.response.out.write(template.render(path, template_values))
 
 class PitchByPitchHandler(webapp.RequestHandler):
@@ -210,20 +226,21 @@ class PitchByPitchHandler(webapp.RequestHandler):
     refreshTime = self.request.get('t')
     if refreshTime == "":
       refreshTime = 60
+
+    ''' game id '''
     gid = self.request.get('gid')
-    year = self.request.get('year')
-    month = self.request.get('month')
-    day = self.request.get('day')
     
+    ''' derive year/month/day from the game id '''
+    year = gid[:4]
+    month = gid[5:7]
+    day = gid[8:10]
+    
+    ''' determine dates for links based on date selected '''
     selDay = date(int(year), int(month), int(day))
     prevDay = selDay - timedelta(days=1)
-    nextDay = selDay + timedelta(days=1)
-    
-    if len(month) == 1:
-      month = "0" + month
-    
-    if len(day) == 1:
-      day = "0" + day
+    nextDay = selDay + timedelta(days=1)    
+    today = datetime.today() - timedelta(hours=5)
+    lastUpdate = datetime.today() - timedelta(hours=5)
 
     masterScoreboardDOM = xml_helper.fetchMasterScoreboard(year, month, day)
     gamesNode = masterScoreboardDOM.getElementsByTagName("games")[0]
@@ -254,15 +271,16 @@ class PitchByPitchHandler(webapp.RequestHandler):
       'game': selectedGame,
       'boxscore': boxscore,
       'innings': innings,
-      'lastUpdate': datetime.today(),
+      'lastUpdate': lastUpdate.strftime("%m/%d %I:%M:%S %p"),
       'prevDay': prevDay,
       'selDay': selDay,
+      'today': today,
       'nextDay': nextDay,
       'r': refresh,
       't': refreshTime
     }
 
-    path = os.path.join(os.path.dirname(__file__), 'html/pitchbypitch-live.html')
+    path = os.path.join(os.path.dirname(__file__), 'html/pitchbypitch.html')
     self.response.out.write(template.render(path, template_values))
 
 class HighlightsHandler(webapp.RequestHandler):
@@ -272,6 +290,7 @@ class HighlightsHandler(webapp.RequestHandler):
     month = self.request.get('month')
     day = self.request.get('day')
     
+    today = datetime.today() - timedelta(hours=5)
     selDay = date(int(year), int(month), int(day))
     prevDay = selDay - timedelta(days=1)
     nextDay = selDay + timedelta(days=1)
@@ -281,6 +300,8 @@ class HighlightsHandler(webapp.RequestHandler):
     
     if len(day) == 1:
       day = "0" + day
+
+    lastUpdate = datetime.today()
 
     masterScoreboardDOM = xml_helper.fetchMasterScoreboard(year, month, day)
     gamesNode = masterScoreboardDOM.getElementsByTagName("games")[0]
@@ -312,9 +333,10 @@ class HighlightsHandler(webapp.RequestHandler):
       'game': selectedGame,
       'boxscore': boxscore,
       'highlights': highlights,
-      'lastUpdate': datetime.today(),
+      'lastUpdate': lastUpdate.strftime("%m/%d %I:%M:%S %p"),
       'prevDay': prevDay,
       'selDay': selDay,
+      'today': today,
       'nextDay': nextDay
     }
 
@@ -329,6 +351,7 @@ class BatterPBPHandler(webapp.RequestHandler):
     month = self.request.get('month')
     day = self.request.get('day')
     
+    today = datetime.today() - timedelta(hours=5)
     selDay = date(int(year), int(month), int(day))
     prevDay = selDay - timedelta(days=1)
     nextDay = selDay + timedelta(days=1)
@@ -369,6 +392,7 @@ class BatterPBPHandler(webapp.RequestHandler):
       'batterPBP': batterPBP,
       'prevDay': prevDay,
       'selDay': selDay,
+      'today': today,
       'nextDay': nextDay
     }
 
@@ -383,6 +407,7 @@ class PitcherPBPHandler(webapp.RequestHandler):
     month = self.request.get('month')
     day = self.request.get('day')
     
+    today = datetime.today() - timedelta(hours=5)
     selDay = date(int(year), int(month), int(day))
     prevDay = selDay - timedelta(days=1)
     nextDay = selDay + timedelta(days=1)
@@ -421,6 +446,7 @@ class PitcherPBPHandler(webapp.RequestHandler):
       'pitcherPBP': pitcherPBP,
       'prevDay': prevDay,
       'selDay': selDay,
+      'today': today,
       'nextDay': nextDay
     }
 

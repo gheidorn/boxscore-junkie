@@ -1,0 +1,126 @@
+<!--  pitchbypitch.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Boxscore Junkie : Pitch-By-Pitch</title>
+  {% ifequal r "on" %}
+    <meta http-equiv="refresh" content="{{t}}" />
+  {% endifequal %}
+  <link rel="stylesheet" type="text/css" href="/css/core.css" />
+</head>
+<body onload="initPage({{selDay.year}},{{selDay.month}},{{selDay.day}})">
+<div id="page">
+	{% include "header.html" %}
+	{% include "navbar-pitchbypitch.html" %}
+	<div id="content">
+  		<div id="game-menu">
+    		{% include "game-menu.html" %}
+  		</div>
+		<div id="game-detail">
+		    <!-- tabs -->
+			<div class="tabs">
+				<a class="tab selected" href="boxscore?gid={{game.gameday}}"><span>Boxscore</span></a>
+				<a class="tab" href="/playbyplay?gid={{game.gameday}}"><span>Play-by-Play</span></a>
+				<a class="tab" href="/pitchbypitch?gid={{game.gameday}}"><span>Pitch-by-Pitch</span></a> 
+				<a class="tab" href="/highlights?gid={{game.gameday}}"><span>Highlights</span></a>
+			</div>
+			<div id="pitchbypitch" class="tab-content">
+			    {% ifequal game.game_status.ind "F" %}
+			      {% include "boxscore-linescore-final.html" %}
+			    {% endifequal %}
+			    {% ifequal game.game_status.ind "I" %}
+			      {% include "boxscore-linescore-inprogress.html" %}
+			    {% endifequal %}
+			    
+			    <!-- pbp -->
+			    <table class="pbp" cellpadding="0" cellspacing="0" rules="rows">
+			    {% for inning in innings %}
+			      <tr>
+			        <td class="{{game.away_code}}" style="font-size: 110%; font-weight:bold;">{{game.away_team_city}} - Top of {{inning.num}}</td>
+			      </tr>
+			    {% for event in inning.top_atbats %}
+			      <!--
+			      {% if event.pitcher %}
+			        {% ifchanged event.pitcher %}
+			      <tr>
+			        <td style="background-color: #cacaca; font-weight:bold;">{{event.pitcher}} pitching.</td>
+			      </tr>
+			        {% endifchanged %}
+			      {% endif %}
+			      -->
+			      <tr>
+			      {% if forloop.counter0|divisibleby:"2" %}
+			        <td class="odd">
+			      {% else %}
+			        <td class="even">
+			      {% endif %}
+			      {% ifequal event.type "atbat" %}
+			          <table class="pitch-sequence" cellpadding="2" cellspacing="0">
+			            <tr><th>&nbsp;</th><th>Coordinates</th><th>Speed Start/End</th><th>Break Length/Angle</th><th>PFX X/Z</th><th>PITCH</th><th>RESULT</th></tr>
+			        {% for pitch in event.pitches %}
+			          {% if pitch.y0 %}
+			            <tr><td style="width: 3%;">{{forloop.counter}}</td><td>{{pitch.px}}, {{pitch.pz}}</td><td>{{pitch.start_speed}}/{{pitch.end_speed}}</td><td>{{pitch.break_length}}/{{pitch.break_angle}}</td><td>{{pitch.pfx_x}}/{{pitch.pfx_z}} </td><td>{{pitch.pitch_type}}</td><td>{{pitch.des}}</td></tr>
+			          {% else %}
+			            <tr><td style="width: 3%;">{{forloop.counter}}</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td><td>{{pitch.des}}</td></tr>
+			          {% endif %}
+			        {% endfor %}
+			          </table>
+			      {% endifequal %}
+			        {% if event.score %}
+			          <div style="padding-top: 5px;color: green;font-weight:bold;">{{event.des}}</div>
+			        {% else %}
+			          <div style="padding-top: 5px;">{{event.des}}</div>
+			        {% endif %}
+			        </td>
+			      </tr>
+			    {% endfor %}
+			      <tr>
+			        <td class="{{game.home_code}}" style="font-size: 110%; font-weight:bold;">{{game.home_team_city}} - Bottom of {{inning.num}}</td>
+			      </tr>
+			      {% for event in inning.bottom_atbats %}
+			        <!--
+			        {% if event.pitcher %}
+			          {% ifchanged event.pitcher %}
+			        <tr>
+			          <td style="background-color: #cacaca; font-weight:bold;">{{event.pitcher}} pitching.</td>
+			        </tr>
+			          {% endifchanged %}
+			        {% endif %}
+			        -->
+			        <tr>
+			        {% if forloop.counter0|divisibleby:"2" %}
+			          <td class="odd">
+			        {% else %}
+			          <td class="even">
+			        {% endif %}
+			      {% ifequal event.type "atbat" %}
+			          <table class="pitch-sequence" cellpadding="2" cellspacing="0">
+			            <tr><th>&nbsp;</th><th>Coordinates</th><th>Speed Start/End</th><th>Break Length/Angle</th><th>PFX X/Z</th><th>PITCH</th><th>RESULT</th></tr>
+			        {% for pitch in event.pitches %}
+			          {% if pitch.y0 %}
+			            <tr><td style="width: 3%;">{{forloop.counter}}</td><td>{{pitch.px}}, {{pitch.pz}}</td><td>{{pitch.start_speed}}/{{pitch.end_speed}}</td><td>{{pitch.break_length}}/{{pitch.break_angle}}</td><td>{{pitch.pfx_x}}/{{pitch.pfx_z}} </td><td>{{pitch.pitch_type}}</td><td>{{pitch.des}}</td></tr>
+			          {% else %}
+			            <tr><td style="width: 3%;">{{forloop.counter}}</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td><td>n/a</td><td>{{pitch.des}}</td></tr>
+			          {% endif %}
+			        {% endfor %}
+			          </table>
+			      {% endifequal %}
+			          {% if event.score %}
+			            <div style="padding-top: 5px;color: green;font-weight:bold;">{{event.des}}</div>
+			          {% else %}
+			            <div style="padding-top: 5px;">{{event.des}}</div>
+			          {% endif %}
+			          </td>
+			        </tr>
+			      {% endfor %}
+			  {% endfor %}
+			    </table>
+			</div><!-- end tab content -->
+    	</div><!-- end game detail -->
+    </div><!-- end content -->
+{% include "navbar-pitchbypitch.html" %}
+{% include "footer.html" %}
+</div><!-- end page -->
+<script type="text/javascript" src="/js/core.js"></script>
+</body>
+</html>

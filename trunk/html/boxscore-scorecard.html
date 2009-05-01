@@ -1,13 +1,11 @@
-<br />
-<table cellpadding="0" cellspacing="0" class="boxscore-container">
-  <tr>
-    <td class="col-1">
-      <table cellpadding="0" cellspacing="0" class="boxscore">
+<!-- boxscore-scorecard.html -->
+<div class="scorecard">
+	<table cellpadding="0" cellspacing="0" rules="all">
+		<tr>
+			<th colspan="9" class="team {{boxscore.away_team_code}}">{{boxscore.away_fname}}</th>
+		</tr>
         <tr>
-          <th colspan="9" class="team {{boxscore.away_team_code}}">{{boxscore.away_fname}}</th>
-        </tr>
-        <tr>
-          <th>Batters</th>
+          <th class="name">Batters</th>
           <th>AB</th>
           <th>R</th>
           <th>H</th>
@@ -53,23 +51,22 @@
           <td>{{batter.avg}}</td>
         </tr>
       {% endfor %}
-      </table>
+    </table>
 
-      <div class="boxscore-text">
-        <br />
-        {% for note in boxscore.away_batter_notes %}
-          {{note}}<br />
-        {% endfor %}
-        <br />{{boxscore.away_batter_text_data}}
-      </div>
+	<div class="scorecard-notes">
+	  <br />
+	  {% for note in boxscore.away_batter_notes %}
+	    {{note}}<br />
+	  {% endfor %}
+	  <br />{{boxscore.away_batter_text_data}}
+	</div>
 
-      
-      <table cellpadding="0" cellspacing="0" class="boxscore">
+	<table cellpadding="0" cellspacing="0" rules="all">
+		<tr>
+		  <th colspan="9" class="team {{boxscore.away_team_code}}">{{boxscore.away_fname}}</th>
+		</tr>
         <tr>
-          <th colspan="9" class="team {{boxscore.away_team_code}}">{{boxscore.away_fname}}</th>
-        </tr>
-        <tr>
-          <th>Pitchers</th>
+          <th class="name">Pitchers</th>
           <th>IP</th>
           <th>H</th>
           <th>R</th>
@@ -92,16 +89,15 @@
           <td>{{pitcher.era}}</td>
         </tr>
       {% endfor %}
-      </table>
-    </td>
-    <td class="col-2">&nbsp;</td>
-    <td class="col-3">
-      <table cellpadding="0" cellspacing="0" class="boxscore">
+	</table>
+</div>
+<div class="scorecard" style="float: right;">
+    <table cellpadding="0" cellspacing="0" rules="all">
         <tr>
           <th colspan="9" class="team {{boxscore.home_team_code}}">{{boxscore.home_fname}}</th>
         </tr>
         <tr>
-          <th>Batters</th>
+          <th class="name">Batters</th>
           <th>AB</th>
           <th>R</th>
           <th>H</th>
@@ -146,21 +142,22 @@
           <td>{{batter.avg}}</td>
         </tr>
       {% endfor %}
-      </table>
-      <div class="boxscore-text">
-        <br />
+    </table>
+      
+    <div class="scorecard-notes">
+    	<br />
         {% for note in boxscore.home_batter_notes %}
           {{note}}<br />
         {% endfor %}
         <br />{{boxscore.home_batter_text_data}}
-      </div>
+    </div>
       
-      <table cellpadding="0" cellspacing="0" class="boxscore">
+	<table cellpadding="0" cellspacing="0" rules="all">
         <tr>
           <th colspan="9" class="team {{boxscore.home_team_code}}">{{boxscore.home_fname}}</th>
         </tr>
         <tr>
-          <th>Pitchers</th>
+          <th class="name">Pitchers</th>
           <th>IP</th>
           <th>H</th>
           <th>R</th>
@@ -183,10 +180,8 @@
           <td>{{pitcher.era}}</td>
         </tr>
       {% endfor %}
-      </table>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="3" style="font-size: .8em;text-align:left;"><br />{{boxscore.game_info}}</td>
-  </tr>
-</table>
+    </table>
+
+</div>
+<div class="fix"></div>
+<div class="boxscore-notes">{{boxscore.game_info}}</div>

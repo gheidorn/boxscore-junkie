@@ -1,63 +1,35 @@
-<ul class="game-menu">
+<!-- game-menu.html -->
+<ul>
 {% for game in games %}
-    {% ifequal game.gameday gid %}
-      <li id="gid_{{game.gameday}}" class="game-selected" onclick="gotoBoxscore(this)">
-        <table class="scoreboard-linescore" cellpadding="1" cellspacing="1">
-          <colgroup>
-            <col style="width: 60%;"/>
-            <col/>
-            <col/>
-            <col/>
-          </colgroup>
-          <tr>
-            <th class="final">{{ game.game_status.status}}</th>
-            <th>R</th>
-            <th>H</th>
-            <th>E</th>
-          </tr>
-          <tr>
-            <td class="team">{{game.away_name_abbrev}} ({{game.away_win}}-{{game.away_loss}})</td>
-            <td> {{ game.linescore.r.away }}</td>
-            <td> {{ game.linescore.h.away }}</td>
-            <td> {{ game.linescore.e.away }}</td>
-          </tr>
-          <tr>
-            <td class="team">{{game.home_name_abbrev}} ({{game.home_win}}-{{game.home_loss}})</td>
-            <td>{{ game.linescore.r.home }}</td>
-            <td>{{ game.linescore.h.home }}</td>
-            <td>{{ game.linescore.e.home }}</td>
-          </tr>
-        </table>
-      </li>  
+  {% ifequal game.gameday gid %}
+  <li id="gid_{{game.gameday}}" class="game-selected">
+  {% else %}
+    {% ifequal game.game_status.ind "S" %}
+  <li id="gid_{{game.gameday}}" class="game">
     {% else %}
-      <li id="gid_{{game.gameday}}" class="game" onclick="gotoBoxscore(this)">
-        <table class="scoreboard-linescore" cellpadding="1" cellspacing="1">
-          <colgroup>
-            <col style="width: 60%;"/>
-            <col/>
-            <col/>
-            <col/>
-          </colgroup>
-          <tr>
-            <th class="final">{{ game.game_status.status}}</th>
-            <th>R</th>
-            <th>H</th>
-            <th>E</th>
-          </tr>
-          <tr>
-            <td class="team">{{game.away_name_abbrev}} ({{game.away_win}}-{{game.away_loss}})</td>
-            <td> {{ game.linescore.r.away }}</td>
-            <td> {{ game.linescore.h.away }}</td>
-            <td> {{ game.linescore.e.away }}</td>
-          </tr>
-          <tr>
-            <td class="team">{{game.home_name_abbrev}} ({{game.home_win}}-{{game.home_loss}})</td>
-            <td>{{ game.linescore.r.home }}</td>
-            <td>{{ game.linescore.h.home }}</td>
-            <td>{{ game.linescore.e.home }}</td>
-          </tr>
-        </table>
-      </li>
+  <li id="gid_{{game.gameday}}" class="game" onclick="gotoBoxscore(this)">
     {% endifequal %}
+  {% endifequal %}
+      <table cellpadding="0" cellspacing="0" rules="all">
+        <tr>
+          <th class="final">{{ game.game_status.status}}</th>
+          <th class="rhe">R</th>
+          <th class="rhe">H</th>
+          <th class="rhe">E</th>
+        </tr>
+        <tr>
+          <td class="team">{{game.away_team_name}}</td>
+          <td> {{ game.linescore.r.away }}</td>
+          <td> {{ game.linescore.h.away }}</td>
+          <td> {{ game.linescore.e.away }}</td>
+        </tr>
+        <tr>
+          <td class="team">{{game.home_team_name}}</td>
+          <td>{{ game.linescore.r.home }}</td>
+          <td>{{ game.linescore.h.home }}</td>
+          <td>{{ game.linescore.e.home }}</td>
+        </tr>
+      </table>
+    </li>
 {% endfor %}
 </ul>

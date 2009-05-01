@@ -1,21 +1,30 @@
+<!-- calendar.html -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <title>Boxscore Junkie : {{today.year}} MLB Calendar</title>
   <link rel="stylesheet" type="text/css" href="/css/core.css" />
+  <script type="text/javascript">
+  var CALENDAR_YEAR = {{year}};
+  </script>
 </head>
-<body onload="initPage({{today.year}},{{today.month}},{{today.day}})" class="page">
-{% include "header.html" %}
-<div id="globalsubnav" class="topbar">
-  <div class="topbar-inner">
-  You are viewing the 2008 MLB Calendar.
-  </div>
-</div>
+<body onload="initPage({{selDay.year}},{{selDay.month}},{{selDay.day}})" class="page">
+{% include "header-calendar.html" %}
 <div id="middle" class="body">
-  <div class="col-1">
-    &nbsp;
-  </div>
-  <div class="col-2">
+  	<div style="margin: 10px auto; width: 50%;">
+    <form action="calendar" method="get">
+    <label>MLB Calendar:</label>
+    <select id="mlbCalendarYear" name="y" onchange="javascript: form.submit();">
+    {%  for x in yearList %}
+        {% ifequal x year %}
+        <option value="{{x}}" selected>{{x}}</option>
+        {% else %}
+        <option value="{{x}}">{{x}}</option>
+        {% endifequal %}
+    {%  endfor %}
+    </select>
+    </form>
+    </div>
     <table class="calendar-holder">
     <tr>
     <td><div id="month3"></div></td>
@@ -30,9 +39,6 @@
     <td><div id="month10"></div></td>
     </tr>
     </table>
-  </div>
-  <div class="col-3" style="display: none;">
-    
   </div>
 </div>
 {% include "footer.html" %}

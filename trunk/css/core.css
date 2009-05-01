@@ -1,34 +1,164 @@
-.page{margin: 0 0 0 0; background-color: #fff;font-family:verdana;font-size:80%;}
+* { margin: 0px; padding: 0px; }
+body { background-color: #fff; font-family:verdana; font-size: x-small; }
+
+/* general use */
+div.left { float: left; }
+div.right { float: right; }
+div.fix { clear: both; }
+
+div#page { background:transparent url(../img/page-bg.png) repeat-y scroll 0 0; border-bottom: 1px solid #eee; margin: 0px auto; padding: 0px 0; width:1024px;}
+
+/* header */
+div#header { background-color: #fff; margin: 0px auto; width: 900px; }
+div#header a:active { text-decoration: none; color: #3F4C6B; }
+div#header a:link { text-decoration: none; color: #3F4C6B; }
+div#header a:visited { text-decoration: none; color: #3F4C6B; }
+div#header div.left { float: left; width: 45%; font-weight: bold; padding: 10px; }
+div#header div.left h1 { color: #36393D; font-size: 120%; text-transform: uppercase; }
+div#header div.right { text-align:right; float: right;width: 45%; padding: 10px; }
+div#header div.right h2 { font-size: 100%; text-transform: lowercase; color: #3F4C6B; }
+
+div.navbar { background-color: #004D99; color: #eaeaea; margin: 0px auto; width: 900px; }
+div.navbar div.inner { padding: 0px 10px 0px 10px; width: 880px; }
+div.navbar div.left { text-align:left; float: left; width: 60%; padding: 5px 0px; }
+div.navbar div.right { text-align: right; float: right; width: 40%; padding: 5px 0px; }
+div.navbar a:active { text-decoration: none; color: #BBD4FF; }
+div.navbar a:link { text-decoration: none; color: #BBD4FF; }
+div.navbar a:visited { text-decoration: none; color: #BBD4FF; }
+div.navbar a:hover { text-decoration: underline; color: gold; }
+div.navbar a.on { color: lightgreen;}
+div.navbar a.off { color: red;}
+
+div#content { margin: 0px auto; width: 900px; }
+div#content div.text-content { margin: 10px auto 20px; width: 980px; }
+div#content div.text-content h5 { font-size: 1.2em; padding: 10px 0px 5px 0px; }
+div#content div.text-content p { font-size: 1.0em; padding: 3px 0px; }
+div#content div.text-content ul { list-style: none; }
+
+div#content div.game-content { float: left; width: 600px;}
+
+
+div#footer { margin: 0px auto; width: 900px; }
+div#footer div.inner { padding: 10px; }
+div#footer a:active { text-decoration: none; color: #004D99; }
+div#footer a:link { text-decoration: none; color: #004D99; }
+div#footer a:visited { text-decoration: none; color: #4096EE; }
+div#footer a:hover { text-decoration: underline; color: red; }
 
 
 
+/* game menu */
+div#game-menu { float: left; padding: 0px 10px; width: 160px; }
+div#game-menu ul { background-color: #fff; list-style-type: none; margin-top: 0px; width: 100%; }
+div#game-menu ul li.game { border:1px solid #fff; cursor: pointer; padding: 2px; margin: 2px; background-color: #fff; color: #27408B; }
+div#game-menu ul li.game:hover { background-color: #FFFF88; border:1px solid #1874CD; color: #000; }
+div#game-menu ul li.game-selected { background-color: #FFFF88; border:1px solid #1874CD; cursor: pointer; padding: 2px; margin: 2px;  color: #000; }
+div#game-menu table { border-color: #ccc; width: 100%;}
+div#game-menu table th.final { text-align:left;width: 60%;}
+div#game-menu table th.rhe { width: 13%;}
+div#game-menu table td { color: #000; text-align:center; }
+div#game-menu table td.team { color: #000;text-align:left; }
 
-#middle { background-color: #F8FFE6;}
+/* game detail */
+div#game-detail { float: left; padding: 0px 0px 20px 0px; width: 700px; }
+
+/* tab navigation */
+div.tabs 					{ font-size: .8em; margin-left:15px; margin-top: 2px; overflow: hidden; padding-top: 2px; }
+div.tabs a.tab 				{ background-color: #eee; color:#356AA0; border-top: 1px solid #ccc; border-left: 1px solid #ccc; border-right: 1px solid #ccc; display:block; float: left; font-size:1.2em; font-weight:bold; height:21px; margin-right:6px; padding-right:13px; text-decoration:none; -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px; }
+div.tabs a.selected 		{ background-color: #fff; border-bottom: 1px solid #fff; color: #356AA0; }
+div.tabs a.tab span 		{ display:block; line-height:13px; padding:4px 0 4px 15px; }
+div.tab-content 			{ border: 1px solid #ccc; margin: -1px 0px 20px 0px; padding: 10px; -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px;}
+
+/* scoreboard */
+div#scoreboard { background-color: #fff; margin: 0px 5px; }
+div#scoreboard div.game { background-color: #fff; border: 0px solid #ccc; float: left; min-height: 70px; padding: 5px 3px; text-align:left; width: 290px; }
+
+div#scoreboard table.linescore { border: 1px solid #ccc; width: 100%;}
+div#scoreboard table.linescore th { background-color: #eee; color: #595959; font-weight: normal; text-align:center; }
+div#scoreboard table.linescore th.rhe { background-color: #eee; color: #595959; width: 24px; }
+div#scoreboard table.linescore th.preview { background-color: #C3D9FF; color: #000; font-weight: bold; text-align:center; padding: 3px; width: 60px;}
+div#scoreboard table.linescore th.final { background-color: #C3D9FF; color: #000; font-weight: bold; text-align:center; width: 80px; padding: 3px; }
+div#scoreboard table.linescore th.postponed { background-color: #EEE685; color: #000; font-weight: bold; text-align:center;}
+div#scoreboard table.linescore th.inprogress { background-color: green; color: #fff; font-weight: bold; text-align:center;}
+div#scoreboard table.linescore td { background-color: #fff; color: #000; font-weight: normal; text-align:center; }
+div#scoreboard table.linescore td.team { background-color: #fff; color: #000; font-weight: bold; text-align: left; }
+div#scoreboard table.linescore td.rhe { background-color: #F9FFD4; font-weight: bold; }
+
+div#scoreboard table.linescore-notes { border: 1px solid #ccc; width: 100%; }
+div#scoreboard table.linescore-notes td { background-color: #F2F2F2; padding: 3px; }
+div#scoreboard table.linescore-notes td.links { text-align: center; }
+div#scoreboard table.linescore-notes a:active { text-decoration: none; color: #004D99; font-weight:bold; }
+div#scoreboard table.linescore-notes a:link { text-decoration: none; color: #004D99; font-weight:bold;}
+div#scoreboard table.linescore-notes a:visited { text-decoration: none; color: #006BD4; font-weight:bold;}
+div#scoreboard table.linescore-notes a:hover { text-decoration: underline; color: red; font-weight:bold;}
 
 
 
-
-.topbar {float:left;width: 100%;}
-.topbar-inner { padding: 5px; font-size: .9em; margin-left:50px; margin-right:50px;}
-.hdr-left { text-align:left;float: left;height: 50px; width: 45%;font-weight: bold;background: transparent url(../img/title.gif) no-repeat;margin-left:40px;}
-.hdr-right {text-align:right;float: right;width: 45%;}
+/* boxscore */
+div#boxscore { margin: 0 auto; }
 
 
-.body {  }
-.col-1 {float: left;width: 100%;padding: 0px; border: 0px solid #000; width: 15%; }
-.col-2 {float: left;width: 100%;padding: 0px; border: 0px solid #000; width: 60%; text-align:center;}
-.col-3 {float: left;width: 100%;padding: 0px; border: 0px solid #000;  width: 20%; }
+div#boxscore div.scorecard { float: left; padding: 5px 0px; width: 48%; }
+div#boxscore div.scorecard div.right { float: right; }
+div#boxscore div.scorecard table { border-color: #ccc; float: left; width: 100%; }
+div#boxscore div.scorecard table th { width: 8%; }
+div#boxscore div.scorecard table th.name { width: 25%; }
+div#boxscore div.scorecard table td { text-align: center; }
+div#boxscore div.scorecard table td.name { text-align: left; width: 100px; }
+div#boxscore div.scorecard div.scorecard-notes { float: left; margin: 0px auto; width: 80%; }
+
+.boxscore-container { width: 100%;}
+.boxscore th { border-bottom:1px solid #eaeaea;}
+.boxscore td { text-align: center; width: 20px; border-bottom:1px solid #eaeaea;}
+.boxscore td.name { text-align: left; width: 100px; }
+
+.boxscore-text { text-align: left; font-size: .8em;}
+
+
+div#game-detail div.linescore { width: 100%; }
+div#game-detail div.linescore table { border:1px solid #ccc; width: 100%;}
+div#game-detail div.linescore table th { background-color: #eee; color: #595959; font-size: 1.2em; font-weight: normal; padding:3px; text-align:center; }
+div#game-detail div.linescore table th.rhe { font-weight: bold; width: 10%; }
+div#game-detail div.linescore table th.team { background-color: #fff;  color: #000; font-size: 1.6em; width: 10%; }
+div#game-detail div.linescore table th.preview { background-color: #595959; color: #fff; font-weight: bold; text-align:center; width: 60px;}
+div#game-detail div.linescore table th.final { background-color: #595959; color: #fff; font-weight: bold; text-align:center; width: 200px; }
+div#game-detail div.linescore table th.postponed { background-color: #EEE685; color: #000; font-weight: bold; text-align:center;}
+div#game-detail div.linescore table th.inprogress { background-color: green; color: #fff; font-weight: bold; text-align:center;}
+div#game-detail div.linescore table td { background-color: #fff; color: #000;font-size: 1.5em; font-weight: normal; text-align:center; }
+div#game-detail div.linescore table td.rhe { background-color: #F9FFD4;font-size: 1.5em; font-weight: bold; }
+div#game-detail div.decisions { background-color: #fff; font-size: 1.5em; padding: 5px 0px 15px; text-align: center; width: 100%; }
+
+/* play by play */
+div#playbyplay {  margin: 0 auto; }
+div#playbyplay table { }
+div#playbyplay table td { border:1px solid #cacaca; padding: 3px; }
+div#playbyplay table td.even { background-color: #F5F5F5;}
+
+/* pitch by pitch */
+div#pitchbypitch {  margin: 0 auto; }
+div#pitchbypitch table.pitch-sequence { width: 100%; }
+div#pitchbypitch table.pitch-sequence th { border: 0px; border-bottom:1px solid #eaeaea; }
+div#pitchbypitch table.pitch-sequence td { border: 0px; width: 10%; border-bottom:1px solid #eaeaea; }
+
+/* highlights */
+div#highlights {  margin: 0 auto; }
+div#multimedia { margin: 0px auto; width: 580px; }
+select#highlightSelect { margin: 20px auto; }
 
 
 
+/* calendar */
+div.month { float:left; }
+div.month { float:left; }
 .calendar-holder { width: 100%; padding: 0px; margin: 0px; }
 .calendar-holder td { vertical-align: top; }
-.calendar-table { padding: 1px; }
-.calendar-table th { background-color: #004D99; color: #fff; border: 1px solid #cacaca; padding: 5px; }
+div.month table { padding: 1px; }
+div.month table th { background-color: #004D99; color: #fff; border: 1px solid #cacaca; padding: 5px; }
 .calendar-header {}
 .calendar-header-day { font-size: 80%; background-color: #eaeaea; border: 1px solid #cacaca; text-align: center;}
 .calendar-day { cursor: pointer; font-size: 80%; background-color: #F6F9ED; border: 1px solid #cacaca; text-align: center; padding: 5px; }
 .calendar-day:hover { background-color: yellow; border: 1px solid red; }
+
 .empty-date { font-size: 80%; background-color: #eaeaea; border: 1px solid #cacaca; text-align: center; padding: 5px; }
 .invalid-date { font-size: 80%; color: #cacaca; background-color: #EEE8CD; border: 1px solid #cacaca; text-align: center; padding: 5px; }
 .current-date { cursor: pointer; font-size: 80%; background-color: yellow; border: 1px solid #004D99; text-align: center; padding: 5px; }
@@ -36,118 +166,7 @@
 .valid-date { cursor: pointer; font-size: 80%; background-color: #A2CD5A; border: 1px solid #004D99; text-align: center; padding: 5px; }
 .valid-date:hover { border: 1px solid red; }
 
-
-
-
-
-.scoreboard-linescore { font-size: .8em; text-align: left; width: 100%;}
-.scoreboard-linescore th { background-color: #cacaca; color: #fff; font-weight: bold; text-align:center; }
-.scoreboard-linescore th.preview { background-color: #cacaca; color: #000; font-weight: bold; text-align:center;}
-.scoreboard-linescore th.final { background-color: #595959; color: #fff; font-weight: bold; text-align:center;}
-.scoreboard-linescore th.postponed { background-color: #EEE685; color: #000; font-weight: bold; text-align:center;}
-.scoreboard-linescore th.inprogress { background-color: green; color: #fff; font-weight: bold; text-align:center;}
-.scoreboard-linescore td { background-color: #eaeaea; color: #000; font-weight: normal; text-align:center; }
-
-.scoreboard-table { margin: auto; }
-.scoreboard-table td { vertical-align: top;  }
-.scoreboard-table .preview { background-color: #cacaca; color: #fff; width:80px; vertical-align:middle; text-align: center; }
-.scoreboard-table .team { width:80px; vertical-align:middle; text-align: center;font-weight:bold;color: #000;}
-
-.scoreboard-col { padding: 5px 5px 5px 5px; width: 400px;}
-
-.scoreboard-notes { text-align:left; font-size: .8em; width: 100%; }
-.scoreboard-notes td { padding:5px;  background-color: #eaeaea;}
-.scoreboard-notes a:active { text-decoration: none; color: #004D99; font-weight:bold; }
-.scoreboard-notes a:link { text-decoration: none; color: #004D99; font-weight:bold;}
-.scoreboard-notes a:visited { text-decoration: none; color: #9FB6CD; font-weight:bold;}
-.scoreboard-notes a:hover { text-decoration: underline; color: red; font-weight:bold;}
-
-.scoreboard-notes td.scoreboard-links {text-align: center; background-color:#D6D6D6;}
-
-.right-box { padding: 5px; width: 100%; background-color: #9FB6CD; }
-.right-box h2 { color: #fff; }
-
-/*
-.topbar a:active { color: #fff; }
-.topbar a:hover { color: red; }
-.topbar a:link { color: #fff; }
-.topbar a:visited { color: #fff; }
-*/
-
-#banner { background-color: #ECF1EF; color: #cacaca;}
-#banner a:active { text-decoration: none; color: #004D99; font-weight:bold;}
-#banner a:link { text-decoration: none; color: #004D99; font-weight:bold; }
-#banner a:visited { text-decoration: none; color: #004D99; font-weight:bold; }
-#banner a:hover { text-decoration: underline; color: red; font-weight:bold; }
-#banner a.sel { background-color: red; }
-
-.bannernav { padding: 15px; font-size: .9em; }
-
-#globalnav { background-color: #004D99; color: #cacaca;}
-#globalnav a:active { text-decoration: none; color: #ff; }
-#globalnav a:link { text-decoration: none; color: #fff; }
-#globalnav a:visited { text-decoration: none; color: #eaeaea; }
-#globalnav a:hover { text-decoration: underline; color: gold; }
-/* refresh */
-#globalnav a.on { color: lightgreen;}
-#globalnav a.off { color: red;}
-
-#globalsubnav { background-color: #708090; color: #cacaca;}
-#globalsubnav a:active { text-decoration: none; color: #ff; }
-#globalsubnav a:link { text-decoration: none; color: #fff; }
-#globalsubnav a:visited { text-decoration: none; color: #eaeaea; }
-#globalsubnav a:hover { text-decoration: underline; color: red; }
-
-#footernav { background-color: #004D99;}
-#footernav a:active { text-decoration: none; color: #fff; }
-#footernav a:link { text-decoration: none; color: #fff; }
-#footernav a:visited { text-decoration: none; color: #eaeaea; }
-#footernav a:hover { text-decoration: underline; color: red; }
-
-#footer { background-color: #ECF1EF;}
-#footer a:active { text-decoration: none; color: #004D99; }
-#footer a:link { text-decoration: none; color: #004D99; }
-#footer a:visited { text-decoration: none; color: #9FB6CD; }
-#footer a:hover { text-decoration: underline; color: red; }
-
-
-.footertext { }
-
-
-
-/*
-boxscore stuff
-*/
-
-.boxscore-linescore { font-size: .8em; text-align: left; width: 100%;}
-.linescore-hdr {background-color: #cacaca; color: #fff; font-weight: bold; text-align:center; }
-.boxscore-linescore td { background-color: #eaeaea; color: #000; font-weight: normal; text-align:center; }
-
-.game-menu { list-style-type: none; margin-top: 0px; margin-left: -35px; }
-.game-menu .game { cursor: pointer; padding: 2px; margin: 2px; background-color: #fff; color: #27408B; }
-.game-menu .game:hover { background-color: #1874CD; color: #000; }
-.game-menu .game-selected { cursor: pointer; padding: 2px; margin: 2px; background-color: #27408B; color: #FFD700; }
-
-#boxscorenav { padding: 5px; font-size: .9em; background-color: #004D99; color: #fff; margin:2px;}
-#boxscorenav a:active { text-decoration: none; color: #ff; }
-#boxscorenav a:link { text-decoration: none; color: #fff; }
-#boxscorenav a:visited { text-decoration: none; color: #eaeaea; }
-#boxscorenav a:hover { text-decoration: underline; color: gold; }
-
-.boxscore-container { width: 100%;}
-.boxscore-container .col-1 {vertical-align:top;width: 48%;}
-.boxscore-container .col-2 {vertical-align:top;width: 1%;}
-.boxscore-container .col-3 {vertical-align:top;width: 48%;float:right;}
-
-.boxscore { font-size: .8em;border:1px solid #eaeaea; padding: 2px;}
-.boxscore th { border-bottom:1px solid #eaeaea;}
-.boxscore td { text-align: center; width: 20px; border-bottom:1px solid #eaeaea;}
-.boxscore td.name { text-align: left; width: 100px; }
-
- .boxscore-text { text-align: left; font-size: .8em;}
-
-
-.team {text-align:left;padding:3px;}
+.team {text-align:left; padding:3px;}
 
 .ari {background-color:purple;color: teal;}
 .ana {background-color:red;color: #fff;}
@@ -179,14 +198,3 @@ boxscore stuff
 .sfn {background-color:#000;color: orange;}
 .sln {background-color:red;color: #fff;}
 .was {background-color:red;color: #cacaca;}
-
-
-/* play by play */
-.pbp { text-align: left;font-size: .8em;}
-.pbp td { border:1px solid #cacaca;}
-.pbp td.even { background-color: #F5F5F5;}
-
-/* pitch by pitch */
-.pitch-sequence { width: 100%; }
-.pitch-sequence th { border: 0px; border-bottom:1px solid #eaeaea; }
-.pitch-sequence td { border: 0px; width: 10%; border-bottom:1px solid #eaeaea; }

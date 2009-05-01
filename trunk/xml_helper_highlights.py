@@ -30,10 +30,12 @@ def fetchHighlights(year, month, day, gid):
   #logging.info(url)
   headers = { 'Host': 'gd2.mlb.com', 'Content-Type': 'text/xml', 'Accept': 'text/xml' }
   result = urlfetch.fetch(url, headers=headers)
-  return xml.dom.minidom.parseString(result.content)
+  if "GameDay - 404 Not Found" in result.content:
+    return None
+  else:
+    return xml.dom.minidom.parseString(result.content)
 
 def buildHighlights(node, gid):
-  logging.info("inside buildHighlights")
   highlights = Highlights(gid)
   highlights.medias = []
   for mediaNode in node.childNodes:
@@ -44,7 +46,6 @@ def buildHighlights(node, gid):
 
 def buildMedia(node):
   media = Media(node.getAttribute("id"))
-  logging.info("media id:" + media.id)
   media.type = node.getAttribute("type")
   media.date = node.getAttribute("date")
   media.v = node.getAttribute("v")
@@ -54,7 +55,6 @@ def buildMedia(node):
     if childNode.nodeType == node.ELEMENT_NODE:
       if childNode.tagName == "headline":
         media.headline = childNode.firstChild.wholeText
-        logging.info("headline:" + media.headline)
       if childNode.tagName == "duration":
         media.duration = childNode.firstChild.wholeText
       if childNode.tagName == "keywords":
