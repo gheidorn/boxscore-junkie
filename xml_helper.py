@@ -24,13 +24,16 @@ Fetch XML DOM for the 'master scoreboard' for the given day.
 Sample URL:  http://gd2.mlb.com/components/game/mlb/year_2008/month_04/day_07/master_scoreboard.xml
 '''
 def fetchMasterScoreboard(year, month, day):
+  logging.debug("fetchMasterScoreboard on " + month + " " + day + " " + year)
   url = "http://gd2.mlb.com/components/game/mlb/year_"+year+"/month_"+month+"/day_"+day+"/master_scoreboard.xml"
   url = url.encode("utf-8")
-  #logging.info(url)
+  logging.debug(url)
   headers = { 'Host': 'gd2.mlb.com', 'Content-Type': 'text/xml', 'Accept': 'text/xml' }
   result = urlfetch.fetch(url, headers=headers)
-  return xml.dom.minidom.parseString(result.content)
-
+  if "GameDay - 404 Not Found" in result.content:
+    return None
+  else:
+    return xml.dom.minidom.parseString(result.content)
 '''
 Fetch XML DOM for the 'boxscore' for the given day and game id.
 Sample URL:  http://gd2.mlb.com/components/game/mlb/year_2008/month_04/day_07/gid_2008_04_07_atlmlb_colmlb_1/boxscore.xml
@@ -38,10 +41,12 @@ Sample URL:  http://gd2.mlb.com/components/game/mlb/year_2008/month_04/day_07/gi
 def fetchBoxscore(year, month, day, gid):
   url = "http://gd2.mlb.com/components/game/mlb/year_"+year+"/month_"+month+"/day_"+day+"/gid_"+gid+"/boxscore.xml"
   url = url.encode("utf-8")
-  #logging.info(url)
   headers = { 'Host': 'gd2.mlb.com', 'Content-Type': 'text/xml', 'Accept': 'text/xml' }
   result = urlfetch.fetch(url, headers=headers)
-  return xml.dom.minidom.parseString(result.content)
+  if "GameDay - 404 Not Found" in result.content:
+    return None
+  else:
+    return xml.dom.minidom.parseString(result.content)
 
 '''
 Fetch XML for an inning.

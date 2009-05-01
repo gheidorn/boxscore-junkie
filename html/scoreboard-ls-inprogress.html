@@ -1,4 +1,5 @@
-<table class="scoreboard-linescore" cellpadding="5" cellspacing="2">
+<div class="game">
+<table class="linescore" cellpadding="0" cellspacing="0" rules="all">
   <tr>
     <th class="inprogress">
       {% ifequal game.game_status.top_inning "Y" %}
@@ -146,7 +147,7 @@
     <td>{{ game.linescore.e.home }}</td>
   </tr>
 </table>
-<table class="scoreboard-notes" cellpadding="5" cellspacing="2">
+<table class="linescore-notes" cellpadding="0" cellspacing="0" rules="all">
   <tr>
     <td style="width: 30%; text-align: center;">
 {% if game.runners_on_base.runner_on_1b and game.runners_on_base.runner_on_2b and game.runners_on_base.runner_on_3b %}
@@ -193,7 +194,6 @@
     </td>
     <td style="width: 70%">
       <strong>{{game.pitcher.last}}</strong> pitching to <strong>{{game.batter.last}}</strong> ({{game.batter.h}}-{{game.batter.ab}})<br />
-       <!--({{game.pitcher.ip}}ip {{game.pitcher.er}}er)<br />-->
       <strong>Balls:</strong> {{game.game_status.b}} <strong>Strikes:</strong> {{game.game_status.s}} <strong>Outs:</strong> {{game.game_status.o}}<br />
     {% if game.pbp.last_play %}
       <strong>Last Play:</strong> {{game.pbp.last_play}}
@@ -211,9 +211,10 @@
     </td>
   </tr>
   <tr>
-    <td class="scoreboard-links" colspan="2">
-      <a href="/boxscore?year={{selDay.year}}&amp;month={{selDay.month}}&amp;day={{selDay.day}}&amp;gid={{game.gameday}}">boxscore</a> | <a href="/highlights?year={{selDay.year}}&amp;month={{selDay.month}}&amp;day={{selDay.day}}&amp;gid={{game.gameday}}">highlights</a><br />
-      <br />{{game.time}} {{game.time_zone}} start from {{game.venue}}
+    <td class="links" colspan="2">
+      <a href="/boxscore?gid={{game.gameday}}">boxscore</a> | <a href="/highlights?year={{selDay.year}}&amp;month={{selDay.month}}&amp;day={{selDay.day}}&amp;gid={{game.gameday}}">highlights</a><br />
     </td>
   </tr>
 </table>
+
+</div>

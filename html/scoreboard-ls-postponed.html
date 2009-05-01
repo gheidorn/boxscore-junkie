@@ -1,10 +1,19 @@
-<table class="scoreboard-linescore" cellpadding="5" cellspacing="2">
-  <tr>
-    <td class="team">{{game.away_name_abbrev}} ({{game.away_win}}-{{game.away_loss}})</td>
-    <th rowspan="2" class="postponed">{{ game.game_status.status }}</th>
-  </tr>
-  <tr>
-    <td class="team">{{game.home_name_abbrev}} ({{game.home_win}}-{{game.home_loss}})</td>
-  </tr>
-  <tr><td colspan="2">{{ game.alerts.text}}</td></tr>
-</table>
+<div class="game">
+	<table class="linescore" cellpadding="0" cellspacing="0" rules="all">
+		<tr>
+			<td class="team">{{game.away_team_name}}</td>
+			<th rowspan="2" class="postponed">{{ game.game_status.status }}</th>
+		</tr>
+		<tr>
+			<td class="team">{{game.home_team_name}}</td>
+		</tr>
+	</table>
+	<table class="linescore-notes" cellpadding="0" cellspacing="0" rules="all">
+		<tr>
+			<td class="links">
+				{{game.time}} {{game.time_zone}} start from {{game.venue|escape}}<br />
+				{{game.alerts.text}}
+			</td>
+		</tr>
+	</table>
+</div>

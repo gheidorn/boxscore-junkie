@@ -3,17 +3,20 @@ var CAL_DAYS_LABELS = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
 var CAL_MONTHS_LABELS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var CAL_DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 var CAL_CURRENT_DATE = new Date();
+CAL_CURRENT_DATE.setFullYear(CALENDAR_YEAR, 2, 30);
 
 function initPage() {
 	/*
 	var pageHeader = document.getElementById("page-header");
 	pageHeader.innerHTML = CAL_CURRENT_DATE.getFullYear() + " Baseball Season";
 	*/
+	
+	// iterate from March to October ... the MLB season
 	for(var i = 2; i<10; i++) {
-	  var cal = new Calendar(i,null);
-	  cal.generateHTML();
-	  var calendar = document.getElementById("month" + (i+1));
-	  calendar.innerHTML = cal.getHTML();
+	  var calObj = new Calendar(i, null);
+	  calObj.generateHTML();
+	  var calDiv = document.getElementById("month" + (i+1));
+	  calDiv.innerHTML = calObj.getHTML();
 	}
 }
 
@@ -58,8 +61,9 @@ Calendar.prototype.generateHTML = function(){
   for (var j = 0; j < 9; j++) {
     // this loop is for weekdays (cells)
     for (var k = 0; k <= 6; k++) { 
-      var cssClass = "invalid-date";
+      var cssClass = "valid-date";
       //alert("currentDate: " +CAL_CURRENT_DATE.getMonth()+ "\nthis.month: "+this.month);
+/*
       if(this.month == 2 && 
         (day == 25 || day == 26 || day == 30 || day == 31)) {
         cssClass = "valid-date";
@@ -70,6 +74,7 @@ Calendar.prototype.generateHTML = function(){
       } else if(this.month == CAL_CURRENT_DATE.getMonth() && day == CAL_CURRENT_DATE.getDate()) {
         cssClass = "current-date";
       }
+*/
       
       if (day <= monthLength && (j > 0 || k >= startingDay)) {
         html += "<td class=\""+cssClass+"\" ";

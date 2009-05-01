@@ -13,22 +13,16 @@ handlers:
 
 - url: /js
   static_dir: js
-  
+
 - url: /img
   static_dir: img
-
-- url: /
-  script: home.py
-
-- url: /calendar
-  script: main.py
 
 - url: /faq.html
   static_files: html/faq.html
   upload: html/faq.html
 
-- url: (/scoreboard|/boxscore|/playbyplay|/pitchbypitch|/pitcherpbp|/batterpbp|/highlights)
-  script: core.py
+- url: (/|/calendar|/cal|/scoreboard|/boxscore|/playbyplay|/pitchbypitch|/pitcherpbp|/batterpbp|/highlights)
+  script: main.py
 
 - url: /fetch/.*
   script: fetch.py
@@ -39,5 +33,8 @@ handlers:
 - url: /data/player/.*
   script: db_player.py
 
+- url: /load
+  script: day_loader.py
+  
 - url: /*
   script: not_found.py

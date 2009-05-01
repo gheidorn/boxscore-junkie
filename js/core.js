@@ -62,3 +62,16 @@ function toggleDisplay(obj) {
     alert("Error in toggleDisplay.");
   }
 }
+
+function showHighlight() {
+	  var highlightContainerDiv = document.getElementById("highlightContainer");
+	  for(var i=0; i<highlightContainerDiv.childNodes.length; i++) {
+	    if(highlightContainerDiv.childNodes[i].nodeType === Node.ELEMENT_NODE) {
+	      highlightContainerDiv.childNodes[i].style.display = "none";
+	    }
+	  }
+	  var highlightSelect = document.getElementById("highlightSelect");
+	  var highlightId = highlightSelect.options[highlightSelect.selectedIndex].value;
+	  var highlightDiv = document.getElementById(highlightId);
+	  highlightDiv.style.display = "block";
+	}
