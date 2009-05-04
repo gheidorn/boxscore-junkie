@@ -1,21 +1,26 @@
 <div class="game">
 	<table class="linescore" cellpadding="0" cellspacing="0" rules="all">
-  		<tr>
-    		<th colspan="3" class="preview">{{game.game_status.status}}</th>
-		</tr>
+<!--	<tr><th colspan="3" class="preview">{{game.game_status.status}}</th></tr> -->
 		<tr>
-    		<td class="team">{{game.away_team_name}}
-		      {% if game.away_win %}
-		        ({{game.away_win}}-{{game.away_loss}})
-		      {% endif %}
+    		<td class="team">
+	    		<img src="/img/mlb_logos/sm/{{game.away_code}}.gif" />
     		</td>
-    		<td>{{game.away_probable_pitcher.last}} ({{game.away_probable_pitcher.wins}}-{{game.away_probable_pitcher.losses}}) {{game.away_probable_pitcher.era}} ERA</td>
+    		<td>
+				{{game.away_team_name}}
+			{% if game.away_win %}
+		        ({{game.away_win}}-{{game.away_loss}})
+		    {% endif %}
+		    	<br />
+    			{{game.away_probable_pitcher.last}} ({{game.away_probable_pitcher.wins}}-{{game.away_probable_pitcher.losses}}) {{game.away_probable_pitcher.era}} ERA
+    		</td>
   		</tr>
   		<tr>
-    		<td class="team">{{game.home_team_name}}
+    		<td class="team" style="background: url("/img/mlb_logos/sm/{{game.home_code}}.gif") />
+    		<!-- {{game.home_code}}{{game.home_team_name}}
 		      {% if game.away_win %}
 		        ({{game.home_win}}-{{game.home_loss}})
 		      {% endif %}
+		       -->
     		</td>
     		<td>{{game.home_probable_pitcher.last}} ({{game.home_probable_pitcher.wins}}-{{game.home_probable_pitcher.losses}}) {{game.home_probable_pitcher.era}} ERA</td>
   		</tr>
