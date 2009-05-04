@@ -40,6 +40,8 @@ div#content div.game-content { float: left; width: 600px;}
 
 div#footer { margin: 0px auto; width: 900px; }
 div#footer div.inner { padding: 10px; }
+div#footer div.inner div.left { width: 70%; }
+div#footer div.inner div.right { text-align:right; width: 25%; }
 div#footer a:active { text-decoration: none; color: #004D99; }
 div#footer a:link { text-decoration: none; color: #004D99; }
 div#footer a:visited { text-decoration: none; color: #4096EE; }
@@ -81,7 +83,7 @@ div#scoreboard table.linescore th.final { background-color: #C3D9FF; color: #000
 div#scoreboard table.linescore th.postponed { background-color: #EEE685; color: #000; font-weight: bold; text-align:center;}
 div#scoreboard table.linescore th.inprogress { background-color: green; color: #fff; font-weight: bold; text-align:center;}
 div#scoreboard table.linescore td { background-color: #fff; color: #000; font-weight: normal; text-align:center; }
-div#scoreboard table.linescore td.team { background-color: #fff; color: #000; font-weight: bold; text-align: left; }
+div#scoreboard table.linescore td.team { background-color: #fff; color: #000; }
 div#scoreboard table.linescore td.rhe { background-color: #F9FFD4; font-weight: bold; }
 
 div#scoreboard table.linescore-notes { border: 1px solid #ccc; width: 100%; }
