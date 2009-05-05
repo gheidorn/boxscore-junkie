@@ -25,6 +25,9 @@
 				<a class="tab selected" href="/highlights?gid={{game.gameday}}"><span>Highlights</span></a>
 			</div>
 			<div id="highlights" class="tab-content">
+			    {% ifequal game.game_status.ind "O" %}
+			      {% include "boxscore-linescore-final.html" %}
+			    {% endifequal %}
 			    {% ifequal game.game_status.ind "F" %}
 			      {% include "boxscore-linescore-final.html" %}
 			    {% endifequal %}
@@ -44,14 +47,15 @@
 				      <div id="highlight{{forloop.counter}}" class="highlight" {% if forloop.first %}style="display: visible;"{% else %}style="display: none;"{% endif %}>
 				          {% for mediaUrl in media.urls %}
 				            {% ifequal mediaUrl.playback_scenario "MLB_FLASH_400K_PROGDNLD" %}
-				            <embed 
-				            src="http://www.jeroenwijering.com/embed/player.swf" 
-				            width="580" 
-				            height="400"
-				            allowscriptaccess="always" 
-				            allowfullscreen="true" 
-				            flashvars="width=580&amp;height=400&amp;file={{mediaUrl.url}}"
-				            />
+				            	<embed 
+				            		src="/flash/player.swf" 
+				            		width="580" 
+				            		height="400"
+				            		allowscriptaccess="always" 
+				            		allowfullscreen="true" 
+				            		flashvars="width=580&amp;height=400&amp;file={{mediaUrl.url}}"
+				            	/>
+
 				              {% endifequal %}
 				            {% endfor %}
 				      </div>
