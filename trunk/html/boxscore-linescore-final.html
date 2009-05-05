@@ -11,7 +11,7 @@
 		    <th class="rhe">E</th>
 		</tr>
 		<tr>
-			<th class="team {{game.away_code}}"><img src="/img/mlb_logos/{{game.away_code}}.gif" /><!-- {{game.away_team_name}} ({{game.away_win}}-{{game.away_loss}}) --></th>
+			<th style="background: url(/img/mlb_logos/{{game.away_code}}.gif) -10px no-repeat; padding: 5px 5px 5px 40px;">{{game.away_team_name}} ({{game.away_win}}-{{game.away_loss}})</th>
   		{% for inning in game.linescore.innings %}
     		<td>{{inning.away}}</td>
   		{% endfor %}
@@ -20,7 +20,7 @@
 			<td class="rhe"> {{ game.linescore.e.away }}</td>
   		</tr>
   		<tr>
-    		<th class="team {{game.home_code}}"><img src="/img/mlb_logos/{{game.home_code}}.gif" /><!-- {{game.home_team_name}} ({{game.home_win}}-{{game.home_loss}}) --></th>
+    		<th style="background: url(/img/mlb_logos/{{game.home_code}}.gif) -10px no-repeat; padding: 5px 5px 5px 40px;">{{game.home_team_name}} ({{game.home_win}}-{{game.home_loss}})</th>
   		{% for inning in game.linescore.innings %}
 			{% if inning.home %}
       			<td>{{inning.home}}</td>

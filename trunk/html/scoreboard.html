@@ -28,7 +28,7 @@
 			    {% include "scoreboard-ls-final.html" %}<!-- completed early due to rain -->
 			  {% endifequal %}
 			  {% ifequal game.game_status.ind "O" %}
-			    {% include "scoreboard-ls-final.html" %}
+			    {% include "scoreboard-ls-final.html" %}<!-- game over -->
 			  {% endifequal %}
 			  {% ifequal game.game_status.ind "I" %}
 			    {% include "scoreboard-ls-inprogress.html" %}

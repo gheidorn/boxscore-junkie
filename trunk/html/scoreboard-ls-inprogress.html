@@ -57,7 +57,7 @@
     <th>E</th>
   </tr>
   <tr>
-    <td class="team">{{game.away_name_abbrev}} ({{game.away_win}}-{{game.away_loss}})</td>
+    <td class="team" style="background: url(/img/mlb_logos/sm/{{game.away_code}}.gif) -10px no-repeat; padding-left: 40px;">{{game.away_name_abbrev}}</td>
   {% for inning in game.linescore.innings %}
     <td>{{inning.away}}</td>
   {% endfor %}
@@ -102,7 +102,7 @@
     <td> {{ game.linescore.e.away }}</td>
   </tr>
   <tr>
-    <td class="team">{{game.home_name_abbrev}} ({{game.home_win}}-{{game.home_loss}})</td>
+    <td class="team" style="background: url(/img/mlb_logos/sm/{{game.home_code}}.gif) -10px no-repeat; padding-left:40px;">{{game.home_name_abbrev}}</td>
   {% for inning in game.linescore.innings %}
     <td>{{inning.home}}</td>
   {% endfor %}
@@ -212,7 +212,7 @@
   </tr>
   <tr>
     <td class="links" colspan="2">
-      <a href="/boxscore?gid={{game.gameday}}">boxscore</a> | <a href="/highlights?year={{selDay.year}}&amp;month={{selDay.month}}&amp;day={{selDay.day}}&amp;gid={{game.gameday}}">highlights</a><br />
+      <a href="/boxscore?gid={{game.gameday}}">boxscore</a> | <a href="/highlights?gid={{game.gameday}}">highlights</a><br />
     </td>
   </tr>
 </table>
