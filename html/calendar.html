@@ -8,41 +8,42 @@
   var CALENDAR_YEAR = {{year}};
   </script>
 </head>
-<body onload="initPage({{selDay.year}},{{selDay.month}},{{selDay.day}})" class="page">
-{% include "header-calendar.html" %}
-<div id="middle" class="body">
-  	<div style="margin: 10px auto; width: 50%;">
-    <form action="calendar" method="get">
-    <label>MLB Calendar:</label>
-    <select id="mlbCalendarYear" name="y" onchange="javascript: form.submit();">
-    {%  for x in yearList %}
-        {% ifequal x year %}
-        <option value="{{x}}" selected>{{x}}</option>
-        {% else %}
-        <option value="{{x}}">{{x}}</option>
-        {% endifequal %}
-    {%  endfor %}
-    </select>
-    </form>
-    </div>
-    <table class="calendar-holder">
-    <tr>
-    <td><div id="month3"></div></td>
-    <td><div id="month4"></div></td>
-    <td><div id="month5"></div></td>
-    <td><div id="month6"></div></td>
-    </tr>
-    <tr>
-    <td><div id="month7"></div></td>
-    <td><div id="month8"></div></td>
-    <td><div id="month9"></div></td>
-    <td><div id="month10"></div></td>
-    </tr>
-    </table>
-  </div>
+<body onload="initPage({{selDay.year}},{{selDay.month}},{{selDay.day}})">
+<div id="page">
+	{% include "header.html" %}
+	{% include "navbar-scoreboard.html" %}
+	<div id="content">
+		<form action="calendar" method="get">
+			<label>MLB Calendar:</label>
+			<select id="mlbCalendarYear" name="y" onchange="javascript: form.submit();">
+		    {%  for x in yearList %}
+		        {% ifequal x year %}
+		        <option value="{{x}}" selected>{{x}}</option>
+		        {% else %}
+		        <option value="{{x}}">{{x}}</option>
+		        {% endifequal %}
+		    {%  endfor %}
+			</select>
+		</form>
+    	<table class="calendar-holder">
+    		<tr>
+    			<td><div id="month3"></div></td>
+    			<td><div id="month4"></div></td>
+    			<td><div id="month5"></div></td>
+    			<td><div id="month6"></div></td>
+    		</tr>
+    		<tr>
+			    <td><div id="month7"></div></td>
+			    <td><div id="month8"></div></td>
+			    <td><div id="month9"></div></td>
+			    <td><div id="month10"></div></td>
+    		</tr>
+    	</table>
+	</div>
 </div>
+{% include "navbar-scoreboard.html" %}
 {% include "footer.html" %}
-<script type="text/javascript" language="javascript" src="/js/core.js"></script>
-<script type="text/javascript" language="javascript" src="/js/calendar.js"></script>
+<script type="text/javascript" src="/js/core.js"></script>
+<script type="text/javascript" src="/js/calendar.js"></script>
 </body>
 </html>

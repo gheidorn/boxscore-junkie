@@ -56,7 +56,7 @@ div#game-menu ul li.game { border:1px solid #fff; cursor: pointer; padding: 2px;
 div#game-menu ul li.game:hover { background-color: #FFFF88; border:1px solid #1874CD; color: #000; }
 div#game-menu ul li.game-selected { background-color: #FFFF88; border:1px solid #1874CD; cursor: pointer; padding: 2px; margin: 2px;  color: #000; }
 div#game-menu table { border-color: #ccc; width: 100%;}
-div#game-menu table th.final { text-align:left;width: 60%;}
+div#game-menu table th.final { text-align:left; width: 60%;}
 div#game-menu table th.rhe { width: 13%;}
 div#game-menu table td { color: #000; text-align:center; }
 div#game-menu table td.team { color: #000;text-align:left; }
@@ -72,16 +72,16 @@ div.tabs a.tab span 		{ display:block; line-height:13px; padding:4px 0 4px 15px;
 div.tab-content 			{ border: 1px solid #ccc; margin: -1px 0px 20px 0px; padding: 10px; -moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px;}
 
 /* scoreboard */
-div#scoreboard { background-color: #fff; margin: 0px 5px; }
-div#scoreboard div.game { background-color: #fff; border: 0px solid #ccc; float: left; min-height: 70px; padding: 5px 3px; text-align:left; width: 290px; }
+div#scoreboard 				{ background-color: #fff; margin: 0px 5px; }
+div#scoreboard div.game 	{ background-color: #fff; border: 0px solid #ccc; float: left; min-height: 70px; padding: 5px 3px; text-align:left; width: 290px; }
 
 div#scoreboard table.linescore { border: 1px solid #ccc; width: 100%;}
 div#scoreboard table.linescore th { background-color: #eee; color: #595959; font-weight: normal; text-align:center; }
 div#scoreboard table.linescore th.rhe { background-color: #eee; color: #595959; width: 24px; }
 div#scoreboard table.linescore th.preview { background-color: #C3D9FF; color: #000; font-weight: bold; text-align:center; padding: 3px; width: 60px;}
-div#scoreboard table.linescore th.final { background-color: #C3D9FF; color: #000; font-weight: bold; text-align:center; width: 80px; padding: 3px; }
-div#scoreboard table.linescore th.postponed { background-color: #EEE685; color: #000; font-weight: bold; text-align:center;}
-div#scoreboard table.linescore th.inprogress { background-color: green; color: #fff; font-weight: bold; text-align:center;}
+div#scoreboard table.linescore th.final { background-color: #C79810; color: #eee; font-style:italic; font-weight: bold; text-align:center; width: 70px; padding: 3px; }
+div#scoreboard table.linescore th.postponed { background-color: #C79810; color: #eee; font-style:italic; font-weight: bold; text-align:center; width: *%;}
+div#scoreboard table.linescore th.inprogress { background-color: green; color: #fff; font-weight: bold; padding: 3px; text-align:center; width: 70px; }
 div#scoreboard table.linescore td { background-color: #fff; color: #000; font-weight: normal; text-align:center; }
 div#scoreboard table.linescore td.team { background-color: #fff; color: #000; }
 div#scoreboard table.linescore td.rhe { background-color: #F9FFD4; font-weight: bold; }
@@ -97,9 +97,7 @@ div#scoreboard table.linescore-notes a:hover { text-decoration: underline; color
 
 
 /* boxscore */
-div#boxscore { margin: 0 auto; }
-
-
+div#boxscore {}
 div#boxscore div.scorecard { float: left; padding: 5px 0px; width: 48%; }
 div#boxscore div.scorecard div.right { float: right; }
 div#boxscore div.scorecard table { border-color: #ccc; float: left; width: 100%; }
@@ -107,47 +105,38 @@ div#boxscore div.scorecard table th { width: 8%; }
 div#boxscore div.scorecard table th.name { width: 25%; }
 div#boxscore div.scorecard table td { text-align: center; }
 div#boxscore div.scorecard table td.name { text-align: left; width: 100px; }
-div#boxscore div.scorecard div.scorecard-notes { float: left; margin: 0px auto; width: 80%; }
 
-.boxscore-container { width: 100%;}
-.boxscore th { border-bottom:1px solid #eaeaea;}
-.boxscore td { text-align: center; width: 20px; border-bottom:1px solid #eaeaea;}
-.boxscore td.name { text-align: left; width: 100px; }
-
-.boxscore-text { text-align: left; font-size: .8em;}
-
-
+/* game detail */
+div#game-detail {}
 div#game-detail div.linescore { width: 100%; }
 div#game-detail div.linescore table { border:1px solid #ccc; width: 100%;}
 div#game-detail div.linescore table th { background-color: #eee; color: #595959; font-size: 1.2em; font-weight: normal; padding:3px; text-align:center; }
 div#game-detail div.linescore table th.rhe { font-weight: bold; width: 10%; }
 div#game-detail div.linescore table th.team { background-color: #fff;  color: #000; font-size: 1.6em; width: 10%; }
 div#game-detail div.linescore table th.preview { background-color: #595959; color: #fff; font-weight: bold; text-align:center; width: 60px;}
-div#game-detail div.linescore table th.final { background-color: #595959; color: #fff; font-weight: bold; text-align:center; width: 200px; }
+div#game-detail div.linescore table th.final { background-color: #C79810; color: #fff; font-weight: bold; text-align:center; width: 200px; }
 div#game-detail div.linescore table th.postponed { background-color: #EEE685; color: #000; font-weight: bold; text-align:center;}
 div#game-detail div.linescore table th.inprogress { background-color: green; color: #fff; font-weight: bold; text-align:center;}
-div#game-detail div.linescore table td { background-color: #fff; color: #000;font-size: 1.5em; font-weight: normal; text-align:center; }
-div#game-detail div.linescore table td.rhe { background-color: #F9FFD4;font-size: 1.5em; font-weight: bold; }
+div#game-detail div.linescore table td { background-color: #fff; color: #000;font-size: 1.2em; font-weight: normal; text-align:center; }
+div#game-detail div.linescore table td.rhe { background-color: #F9FFD4;font-size: 1.2em; font-weight: bold; }
 div#game-detail div.decisions { background-color: #fff; font-size: 1.5em; padding: 5px 0px 15px; text-align: center; width: 100%; }
 
 /* play by play */
-div#playbyplay {  margin: 0 auto; }
-div#playbyplay table { }
+div#playbyplay {}
+div#playbyplay table {}
 div#playbyplay table td { border:1px solid #cacaca; padding: 3px; }
 div#playbyplay table td.even { background-color: #F5F5F5;}
 
 /* pitch by pitch */
-div#pitchbypitch {  margin: 0 auto; }
+div#pitchbypitch {}
 div#pitchbypitch table.pitch-sequence { width: 100%; }
 div#pitchbypitch table.pitch-sequence th { border: 0px; border-bottom:1px solid #eaeaea; }
 div#pitchbypitch table.pitch-sequence td { border: 0px; width: 10%; border-bottom:1px solid #eaeaea; }
 
 /* highlights */
-div#highlights {  margin: 0 auto; }
+div#highlights {}
 div#multimedia { margin: 0px auto; width: 580px; }
 select#highlightSelect { margin: 20px auto; }
-
-
 
 /* calendar */
 div.month { float:left; }
