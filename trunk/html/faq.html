@@ -6,7 +6,8 @@
   <link rel="stylesheet" type="text/css" href="/css/core.css" />
 </head>
 <body>
-	<div id="banner">
+<div id="page">
+	<div id="header">
 	  <div class="left">
 	    <h1><a href="/">Boxscore Junkie</a></h1>
 	  </div>
@@ -15,14 +16,14 @@
 	  </div>
 	  <div class="fix"></div>
 	</div>
-	<div id="globalnav">
+	<div class="navbar">
 		<div class="inner">
-	  		<div class="left">
-	    		<a href="/">< Back to the scoreboard...</a>
-	    	</div>
-	  	</div>
+	    	<div class="left"><a href="/">< Back to the scoreboard...</a></div>
+			<div class="right">&nbsp;</div>
+			<div class="fix"></div>
+	 	</div>
 	</div>
-	<div id="middle">
+	<div id="content">
   		<div class="text-content">
 		    <h1>Frequently Asked Questions</h1>
 		    <!-- 
@@ -48,28 +49,38 @@
   			<p>Boxscore Junkie is hosted through the <a href="http://code.google.com/appengine/docs/whatisgoogleappengine.html" target="_top">Google App Engine (GAE)</a> and uses Python libraries, some Google APIs, and Django Templates.</p>
   		</div>
   	</div>
-	<div id="globalnav">
-  		<div class="inner">
-  			<div class="left"><a href="/">< Back to the scoreboard...</a></div>
-  		</div>
+	<div class="navbar">
+		<div class="inner">
+	    	<div class="left"><a href="/">< Back to the scoreboard...</a></div>
+			<div class="right">&nbsp;</div>
+			<div class="fix"></div>
+	 	</div>
 	</div>
-	<div id="footer">
-	  <div class="inner">
-	      <p>
-	        boxscore junkie by <a href="http://code.google.com/u/greg.heidorn/">greg heidorn</a><br />
-	        xml data scraped from <a href="http://en.wikipedia.org/wiki/MLBAM">mlb advanced media</a>; mlb teams and players are &copy; and owned by mlb and the mlbpa<br />
-	        for more information, please checkout my <a href="http://code.google.com/p/boxscore-junkie/">boxscore-junkie project</a> @ google code and the <a href="/faq.html">f.a.q.</a>
-	      </p>
-	  </div>
+</div><!-- end page -->
+<div id="footer">
+  <div class="inner">
+  		<div class="left">
+      		<p>
+        		MLB data scraped from <a href="http://en.wikipedia.org/wiki/MLBAM">MLB Advanced Media</a>.<br />
+        		MLB teams and players are &copy; and owned by MLB and the MLBPA.<br />
+        		All other work on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.<br />
+        		Source code hosted Google Code in the <a href="http://code.google.com/p/boxscore-junkie/">Boxscore-Junkie project</a>.  <a href="/faq.html">Questions?  Here's an FAQ.</a>
+      		</p>
+     	</div>
+     	<div class="right">
+			<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="/img/somerights20.png" /></a>
+		</div>
+		<div class="fix"></div>
 	</div>
-	<script type="text/javascript">
-		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-		</script>
-		<script type="text/javascript">
-		var pageTracker = _gat._getTracker("UA-3089274-8");
-		pageTracker._initData();
-		pageTracker._trackPageview();
+</div>
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 	</script>
+	<script type="text/javascript">
+	var pageTracker = _gat._getTracker("UA-3089274-8");
+	pageTracker._initData();
+	pageTracker._trackPageview();
+</script>
 </body>
 </html>
