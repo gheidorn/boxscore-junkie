@@ -153,7 +153,7 @@ class MasterScoreboardHandler(webapp.RequestHandler):
       'lastUpdate': lastUpdate.strftime("%m/%d %I:%M:%S %p"),
       'prevDay': prevDay,
       'selDay': selDay,
-      'selDayStr': today.strftime("%B %d, %Y"),
+      'selDayStr': selDay.strftime("%B %d, %Y"),
       'today': today,
       'nextDay': nextDay,
       'r': refresh,
