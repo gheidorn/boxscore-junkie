@@ -25,6 +25,9 @@
 			<a class="tab" href="/highlights?gid={{game.gameday}}"><span>Highlights</span></a>
 		</div>
 		<div id="playbyplay" class="tab-content">
+		    {% ifequal game.game_status.ind "O" %}
+		      {% include "boxscore-linescore-final.html" %}
+		    {% endifequal %}
 		    {% ifequal game.game_status.ind "F" %}
 		      {% include "boxscore-linescore-final.html" %}
 		    {% endifequal %}
