@@ -19,9 +19,9 @@
 		<div id="game-detail">
 		    <!-- tabs -->
 			<div class="tabs">
-				<a class="tab selected" href="boxscore?gid={{game.gameday}}"><span>Boxscore</span></a>
+				<a class="tab" href="boxscore?gid={{game.gameday}}"><span>Boxscore</span></a>
 				<a class="tab" href="/playbyplay?gid={{game.gameday}}"><span>Play-by-Play</span></a>
-				<a class="tab" href="/pitchbypitch?gid={{game.gameday}}"><span>Pitch-by-Pitch</span></a> 
+				<a class="tab selected" href="/pitchbypitch?gid={{game.gameday}}"><span>Pitch-by-Pitch</span></a> 
 				<a class="tab" href="/highlights?gid={{game.gameday}}"><span>Highlights</span></a>
 			</div>
 			<div id="pitchbypitch" class="tab-content">
@@ -117,6 +117,7 @@
 			    </table>
 			</div><!-- end tab content -->
     	</div><!-- end game detail -->
+    	<div class="fix"></div>
     </div><!-- end content -->
 {% include "navbar-pitchbypitch.html" %}
 {% include "footer.html" %}
