@@ -31,6 +31,9 @@
 		    {% ifequal game.game_status.ind "F" %}
 		      {% include "boxscore-linescore-final.html" %}
 		    {% endifequal %}
+		    {% ifequal game.game_status.ind "FT" %}
+		      {% include "boxscore-linescore-final.html" %}<!-- final-tied -->
+		    {% endifequal %}
 		    {% ifequal game.game_status.ind "I" %}
 		      {% include "boxscore-linescore-inprogress.html" %}
 		    {% endifequal %}
