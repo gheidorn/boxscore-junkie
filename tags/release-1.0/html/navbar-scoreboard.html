@@ -1,0 +1,33 @@
+<!-- navbar-scoreboard.html -->
+<div class="navbar">
+	<div class="inner">
+    	<div class="left">Scoreboard for {{selDayStr}}.  Jump to:  <a href="/scoreboard?year={{today.year}}&amp;month={{today.month}}&amp;day={{today.day}}">today</a> | <a href="/scoreboard?year={{prevDay.year}}&amp;month={{prevDay.month}}&amp;day={{prevDay.day}}">previous day</a> | <a href="/scoreboard?year={{nextDay.year}}&amp;month={{nextDay.month}}&amp;day={{nextDay.day}}">next day</a> | <a href="/calendar">pick a new day</a></div>
+		<div class="right"><!-- last refresh @ {{lastUpdate}} CDT&nbsp;&nbsp;&nbsp;&nbsp; -->
+		refresh:
+		  {% ifequal t "10" %}
+		    <a href="/?r=on&amp;t=10" class="on">10</a>
+		  {% else %}
+		    <a href="/?r=on&amp;t=10">10</a>
+		  {% endifequal %}
+		    |
+		  {% ifequal t "30" %}
+		    <a href="/?r=on&amp;t=30" class="on">30</a>
+		  {% else %}
+		    <a href="/?r=on&amp;t=30">30</a>
+		  {% endifequal %}
+		    |
+		  {% ifequal t "60" %}
+		    <a href="/?r=on&amp;t=60" class="on">60</a>
+		  {% else %}
+		    <a href="/?r=on&amp;t=60">60</a>
+		  {% endifequal %}
+		    |
+		  {% ifequal r "off" %}
+		    <a href="/?r=off" class="off">off</a>
+		  {% else %}
+		    <a href="/?r=off">off</a>
+		  {% endifequal %}
+		</div>
+		<div class="fix"></div>
+	</div>
+</div>

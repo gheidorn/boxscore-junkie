@@ -1,0 +1,40 @@
+<!-- scoreboard-ls-suspended.html -->
+<div class="game">
+	<table class="linescore" cellpadding="0" cellspacing="0" rules="all">
+  		<tr>
+    		<th class="final">{{game.game_status.status}}<br />{{game.game_status.reason}}</th>
+		{% for inning in game.linescore.innings %}
+    		<th>{{forloop.counter}}</th>
+  		{% endfor %}
+			<th>R</th>
+			<th>H</th>
+			<th>E</th>
+  		</tr>
+  		<tr>
+			<td class="team" style="background: url(/img/mlb_logos/sm/{{game.away_code}}.gif) -10px no-repeat; padding-left: 40px;">{{game.away_name_abbrev}}</td>
+  		{% for inning in game.linescore.innings %}
+    		<td>{{inning.away}}</td>
+  		{% endfor %}
+    		<td class="rhe">{{ game.linescore.r.away }}</td>
+    		<td>{{ game.linescore.h.away }}</td>
+    		<td>{{ game.linescore.e.away }}</td>
+  		</tr>
+  		<tr>
+    		<td class="team" style="background: url(/img/mlb_logos/sm/{{game.home_code}}.gif) -10px no-repeat; padding-left: 40px;">{{game.home_name_abbrev}}</td>
+  		{% for inning in game.linescore.innings %}
+    		<td>{{inning.home}}</td>
+  		{% endfor %}
+    		<td class="rhe">{{ game.linescore.r.home }}</td>
+    		<td>{{ game.linescore.h.home }}</td>
+    		<td>{{ game.linescore.e.home }}</td>
+  		</tr>
+	</table>
+	<table class="linescore-notes" cellpadding="0" cellspacing="0" rules="all">
+  <tr>
+    <td class="links">
+      <a href="/boxscore?gid={{game.gameday}}">boxscore</a> - <a href="/highlights?gid={{game.gameday}}">video</a>
+    </td>
+  </tr>
+</table>
+	
+</div>

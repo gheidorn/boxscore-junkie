@@ -1,0 +1,299 @@
+<!-- calendar2009.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title>Boxscore Junkie : {{today.year}} MLB Calendar</title>
+  <link rel="stylesheet" type="text/css" href="/css/core.css" />
+  <script type="text/javascript">
+  var CALENDAR_YEAR = {{year}};
+  </script>
+</head>
+<body onload="initPage({{selDay.year}},{{selDay.month}},{{selDay.day}})">
+{% include "header-live.html" %}
+{% include "global-nav-calendar.html" %}
+<div id="middle">
+
+	<div class="month">
+		<table>
+			<thead>
+				<tr>
+					<th colspan="7">March</th>
+				</tr>
+				<tr>
+					<th>Su</th>
+					<th>M</th>
+					<th>Tu</th>
+					<th>W</th>
+					<th>Th</th>
+					<th>F</th>
+					<th>Sa</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','1')">1</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','2')">2</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','3')">3</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','4')">4</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','5')">5</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','6')">6</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','7')">7</td>
+				</tr>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','8')">8</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','9')">9</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','10')">10</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','11')">11</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','12')">12</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','13')">13</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','14')">14</td>
+				</tr>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','15')">15</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','16')">16</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','17')">17</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','18')">18</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','19')">19</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','20')">20</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','21')">21</td>
+				</tr>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','22')">22</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','23')">23</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','24')">24</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','25')">25</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','26')">26</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','27')">27</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','28')">28</td>
+				</tr>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','29')">29</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','30')">30</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','3','31')">31</td>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="month">
+		<table class="calendar-table">
+			<tbody>
+				<tr>
+					<th colspan="7">April</th>
+				</tr>
+				<tr class="calendar-header">
+					<td class="calendar-header-day">Su</td>
+					<td class="calendar-header-day">M</td>
+					<td class="calendar-header-day">Tu</td>
+					<td class="calendar-header-day">W</td>
+					<td class="calendar-header-day">Th</td>
+					<td class="calendar-header-day">F</td>
+					<td class="calendar-header-day">Sa</td>
+				</tr>
+				<tr>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','1')">1</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','2')">2</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','3')">3</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','4')">4</td>
+				</tr>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','5')">5</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','6')">6</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','7')">7</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','8')">8</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','9')">9</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','10')">10</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','11')">11</td>
+				</tr>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','12')">12</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','13')">13</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','14')">14</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','15')">15</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','16')">16</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','17')">17</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','18')">18</td>
+				</tr>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','19')">19</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','20')">20</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','21')">21</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','22')">22</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','23')">23</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','24')">24</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','25')">25</td>
+				</tr>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','26')">26</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','27')">27</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','28')">28</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','29')">29</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','4','30')">30</td>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="month">
+		<table class="calendar-table">
+			<tbody>
+				<tr>
+					<th colspan="7">May</th>
+				</tr>
+				<tr class="calendar-header">
+					<td class="calendar-header-day">Su</td>
+					<td class="calendar-header-day">M</td>
+					<td class="calendar-header-day">Tu</td>
+					<td class="calendar-header-day">W</td>
+					<td class="calendar-header-day">Th</td>
+					<td class="calendar-header-day">F</td>
+					<td class="calendar-header-day">Sa</td>
+				</tr>
+				<tr>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','1')">1</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','2')">2</td>
+				</tr>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','3')">3</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','4')">4</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','5')">5</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','6')">6</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','7')">7</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','8')">8</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','9')">9</td>
+				</tr>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','10')">10</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','11')">11</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','12')">12</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','13')">13</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','14')">14</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','15')">15</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','16')">16</td>
+				</tr>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','17')">17</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','18')">18</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','19')">19</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','20')">20</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','21')">21</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','22')">22</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','23')">23</td>
+				</tr>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','24')">24</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','25')">25</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','26')">26</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','27')">27</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','28')">28</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','29')">29</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','30')">30</td>
+				</tr>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','5','31')">31</td>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="month">
+		<table class="calendar-table">
+			<tbody>
+				<tr>
+					<th colspan="7">June</th>
+				</tr>
+				<tr class="calendar-header">
+					<td class="calendar-header-day">Su</td>
+					<td class="calendar-header-day">M</td>
+					<td class="calendar-header-day">Tu</td>
+					<td class="calendar-header-day">W</td>
+					<td class="calendar-header-day">Th</td>
+					<td class="calendar-header-day">F</td>
+					<td class="calendar-header-day">Sa</td>
+				</tr>
+				<tr>
+					<td class="empty-date"></td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','1')">1</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','2')">2</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','3')">3</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','4')">4</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','5')">5</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','6')">6</td>
+				</tr>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','7')">7</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','8')">8</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','9')">9</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','10')">10</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','11')">11</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','12')">12</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','13')">13</td>
+				</tr>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','14')">14</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','15')">15</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','16')">16</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','17')">17</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','18')">18</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','19')">19</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','20')">20</td>
+				</tr>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','21')">21</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','22')">22</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','23')">23</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','24')">24</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','25')">25</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','26')">26</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','27')">27</td>
+				</tr>
+				<tr>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','28')">28</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','29')">29</td>
+					<td class="valid-date" onclick="gotoScoreboard('2009','6','30')">30</td>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+					<td class="empty-date"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="fix"></div>
+
+</div>
+{% include "global-nav-calendar.html" %}
+{% include "footer.html" %}
+<script type="text/javascript" language="javascript" src="/js/core.js"></script>
+<!-- 
+<script type="text/javascript" language="javascript" src="/js/calendar.js"></script>
+ -->
+<script type="text/javascript">
+function gotoScoreboard(year, month, day) {
+	var newUrl = '/scoreboard?year=' + year + '&month=' + month + '&day=' + day;
+	window.location = newUrl;
+}
+</script>
+</body>
+</html>

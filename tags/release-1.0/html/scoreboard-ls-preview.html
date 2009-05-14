@@ -1,0 +1,18 @@
+<!-- scoreboard-ls-preview.html -->
+<div class="game">
+	<table class="linescore" cellspacing="0">
+		<tr>
+    		<td class="team">{{game.away_team_name}}</td>
+    		<td>{{game.away_probable_pitcher.last}} ({{game.away_probable_pitcher.wins}}-{{game.away_probable_pitcher.losses}}) {{game.away_probable_pitcher.era}} ERA</td>
+  		</tr>
+  		<tr>
+    		<td class="team">{{game.home_team_name}}</td>
+    		<td>{{game.home_probable_pitcher.last}} ({{game.home_probable_pitcher.wins}}-{{game.home_probable_pitcher.losses}}) {{game.home_probable_pitcher.era}} ERA</td>
+  		</tr>
+	</table>
+	<table class="linescore-notes" cellspacing="0">
+	  <tr>
+	    <td class="links">{{game.time}} {{game.time_zone}} start from {{game.venue|escape}}
+	  </tr>
+	</table>
+</div>
