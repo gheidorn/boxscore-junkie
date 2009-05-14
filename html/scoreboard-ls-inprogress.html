@@ -1,5 +1,5 @@
 <div class="game">
-<table class="linescore" cellpadding="0" cellspacing="0" rules="all">
+<table class="linescore" cellspacing="0">
   <tr>
     <th class="inprogress">
       {% ifequal game.game_status.top_inning "Y" %}
@@ -59,7 +59,13 @@
   <tr>
     <td class="team" style="background: url(/img/mlb_logos/sm/{{game.away_code}}.gif) -10px no-repeat; padding-left: 40px;">{{game.away_name_abbrev}}</td>
   {% for inning in game.linescore.innings %}
-    <td>{{inning.away}}</td>
+    <td>
+    {% ifequal inning.away "" %}
+    	&nbsp;
+	{% else %}
+    	{{inning.away}}
+	{% endifequal %}
+   	</td>
   {% endfor %}
 {% ifequal game.game_status.inning "0" %}
     <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
@@ -104,7 +110,13 @@
   <tr>
     <td class="team" style="background: url(/img/mlb_logos/sm/{{game.home_code}}.gif) -10px no-repeat; padding-left:40px;">{{game.home_name_abbrev}}</td>
   {% for inning in game.linescore.innings %}
-    <td>{{inning.home}}</td>
+    <td>
+    {% ifequal inning.home "" %}
+    	&nbsp;
+	{% else %}
+    	{{inning.home}}
+	{% endifequal %}
+	</td>
   {% endfor %}
 {% ifequal game.game_status.inning "0" %}
     <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
@@ -147,7 +159,7 @@
     <td>{{ game.linescore.e.home }}</td>
   </tr>
 </table>
-<table class="linescore-notes" cellpadding="0" cellspacing="0" rules="all">
+<table class="linescore-notes" cellspacing="0">
   <tr>
     <td style="width: 30%; text-align: center;">
 {% if game.runners_on_base.runner_on_1b and game.runners_on_base.runner_on_2b and game.runners_on_base.runner_on_3b %}
@@ -212,7 +224,7 @@
   </tr>
   <tr>
     <td class="links" colspan="2">
-      <a href="/boxscore?gid={{game.gameday}}">boxscore</a> | <a href="/highlights?gid={{game.gameday}}">highlights</a><br />
+      <a href="/boxscore?gid={{game.gameday}}">boxscore</a> - <a href="/playbyplay?gid={{game.gameday}}">plays</a> - <a href="/pitchbypitch?gid={{game.gameday}}">pitches</a> - <a href="/highlights?gid={{game.gameday}}">video</a>
     </td>
   </tr>
 </table>

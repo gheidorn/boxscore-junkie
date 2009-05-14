@@ -1,5 +1,5 @@
 <div class="game">
-  <table class="linescore" cellpadding="0" cellspacing="0" rules="all"
+  <table class="linescore" cellspacing="0">
     <tr>
       <th class="inprogress">
         {% ifequal game.game_status.top_inning "Y" %}
@@ -147,7 +147,7 @@
       <td>{{ game.linescore.e.home }}</td>
     </tr>
   </table>
-  <table class="linescore-notes" cellpadding="0" cellspacing="0" rules="all">
+  <table class="linescore-notes" cellspacing="0">
     <tr><td colspan="2" style="text-align:center; color: red;">{{game.game_status.status}} - {{game.game_status.reason}}</td></tr>
     <tr>
       <td style="width: 30%; text-align: center;">
@@ -213,11 +213,9 @@
       </td>
     </tr>
     <tr>
-    <td class="links" colspan="2">
-      <a href="/boxscore?gid={{game.gameday}}">boxscore</a>
-      <!--<a href="/highlights?year={{selDay.year}}&amp;month={{selDay.month}}&amp;day={{selDay.day}}&amp;gid={{game.gameday}}">highlights</a> - <a href="{{game.id}}">alerts</a><br />-->
-      <br />{{game.time}} {{game.time_zone}} start from {{game.venue}}
-    </td>
+	    <td class="links" colspan="2">
+			<a href="/boxscore?gid={{game.gameday}}">boxscore</a> - <a href="/playbyplay?gid={{game.gameday}}">plays</a> - <a href="/pitchbypitch?gid={{game.gameday}}">pitches</a> - <a href="/highlights?gid={{game.gameday}}">video</a>
+	    </td>
     </tr>
   </table>
 </div>

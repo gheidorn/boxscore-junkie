@@ -1,5 +1,5 @@
 <div class="game">
-<table class="linescore" cellpadding="0" cellspacing="0" rules="all">
+<table class="linescore" cellspacing="0">
   <tr>
     <th class="final">{{ game.game_status.status}}</th>
   {% for inning in game.linescore.innings %}
@@ -10,7 +10,7 @@
     <th>E</th>
   </tr>
   <tr>
-    <td class="team" style="background: url(/img/mlb_logos/sm/{{game.away_code}}.gif) -10px no-repeat; padding-left: 40px;">{{game.away_name_abbrev}}</td>
+    <td class="team">{{game.away_team_name}}</td>
   {% for inning in game.linescore.innings %}
     <td>{{inning.away}}</td>
   {% endfor %}
@@ -19,7 +19,7 @@
     <td> {{ game.linescore.e.away }}</td>
   </tr>
   <tr>
-    <td class="team" style="background: url(/img/mlb_logos/sm/{{game.home_code}}.gif) -10px no-repeat; padding-left: 40px;">{{game.home_name_abbrev}}</td>
+    <td class="team">{{game.home_team_name}}</td>
   {% for inning in game.linescore.innings %}
     {% if inning.home %}
       <td>{{inning.home}}</td>
@@ -32,7 +32,7 @@
     <td>{{ game.linescore.e.home }}</td>
   </tr>
 </table>
-<table class="linescore-notes" cellpadding="0" cellspacing="0" rules="all">
+<table class="linescore-notes" cellspacing="0">
   <tr>
     <td>
       <strong>W:</strong> {{game.winning_pitcher.last}} ({{game.winning_pitcher.wins}}-{{game.winning_pitcher.losses}}) <strong>L:</strong> {{game.losing_pitcher.last}} ({{game.losing_pitcher.wins}}-{{game.losing_pitcher.losses}})
@@ -53,7 +53,7 @@
   </tr>
   <tr>
     <td class="links">
-      <a href="/boxscore?gid={{game.gameday}}">boxscore</a> - <a href="/highlights?gid={{game.gameday}}">video</a>
+      <a href="/boxscore?gid={{game.gameday}}">boxscore</a> - <a href="/playbyplay?gid={{game.gameday}}">plays</a> - <a href="/pitchbypitch?gid={{game.gameday}}">pitches</a> - <a href="/highlights?gid={{game.gameday}}">video</a>
     </td>
   </tr>
 </table>
