@@ -1,0 +1,73 @@
+<table class="linescore-notes" cellpadding="0" cellspacing="0" rules="all">
+	<tr><td colspan="2" style="text-align:center; color: red;">{{game.game_status.status}} - {{game.game_status.reason}}</td></tr>
+    <tr>
+      <td style="width: 30%; text-align: center;">
+  {% if game.runners_on_base.runner_on_1b and game.runners_on_base.runner_on_2b and game.runners_on_base.runner_on_3b %}
+      <img src="img/basemap_111.gif" />
+  {% else %}
+      {% if game.runners_on_base.runner_on_2b and game.runners_on_base.runner_on_3b %}
+        <img src="img/basemap_011.gif" />
+      {% else %}
+        {% if game.runners_on_base.runner_on_1b and game.runners_on_base.runner_on_3b %}
+            <img src="img/basemap_101.gif" />
+        {% else %}
+          {% if game.runners_on_base.runner_on_1b and game.runners_on_base.runner_on_2b %}
+              <img src="img/basemap_110.gif" />
+          {% else %}
+            {% if game.runners_on_base.runner_on_3b %}
+                <img src="img/basemap_001.gif" />
+            {% else %}
+              {% if game.runners_on_base.runner_on_2b %}
+                  <img src="img/basemap_010.gif" />
+              {% else %}
+                {% if game.runners_on_base.runner_on_1b %}
+                    <img src="img/basemap_100.gif" />
+                {% else %}
+                    <img src="img/basemap_000.gif" />
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+  {% endif %}
+        {% if game.runners_on_base.runner_on_1b or game.runners_on_base.runner_on_2b or game.runners_on_base.runner_on_3b %}
+          <br /><strong>Runners:</strong><br />
+            {% if game.runners_on_base.runner_on_1b %}
+              {{ game.runners_on_base.runner_on_1b.last }} on 1st<br />
+            {% endif %}
+            {% if game.runners_on_base.runner_on_2b %}
+              {{ game.runners_on_base.runner_on_2b.last }} on 2nd<br />
+            {% endif %}
+            {% if game.runners_on_base.runner_on_3b %}
+              {{ game.runners_on_base.runner_on_3b.last }} on 3rd<br />
+            {% endif %}
+        {% endif %}
+      </td>
+      <td style="width: 70%">
+        <strong>{{game.pitcher.last}}</strong> pitching to <strong>{{game.batter.last}}</strong> ({{game.batter.h}}-{{game.batter.ab}})<br />
+         <!--({{game.pitcher.ip}}ip {{game.pitcher.er}}er)<br />-->
+        <strong>Balls:</strong> {{game.game_status.b}} <strong>Strikes:</strong> {{game.game_status.s}} <strong>Outs:</strong> {{game.game_status.o}}<br />
+      {% if game.pbp.last_play %}
+        <strong>Last Play:</strong> {{game.pbp.last_play}}
+      {% endif %}
+      {% if game.home_runs.homeruns %}
+            <br /><strong>HR:</strong>
+          {% for hr in game.home_runs.homeruns %}
+            {{hr.last}} 
+            {% ifnotequal hr.hr "1" %}
+              {{hr.hr}}
+            {% endifnotequal %}
+            ({{hr.std_hr}})
+          {% endfor %}
+        {% endif %}
+      </td>
+    </tr>
+    <tr>
+    <td class="links" colspan="2">
+      <a href="/boxscore?gid={{game.gameday}}">boxscore</a>
+      <!--<a href="/highlights?year={{selDay.year}}&amp;month={{selDay.month}}&amp;day={{selDay.day}}&amp;gid={{game.gameday}}">highlights</a> - <a href="{{game.id}}">alerts</a><br />-->
+      <br />{{game.time}} {{game.time_zone}} start from {{game.venue}}
+    </td>
+    </tr>
+  </table>

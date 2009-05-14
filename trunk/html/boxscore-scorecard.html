@@ -1,6 +1,6 @@
 <!-- boxscore-scorecard.html -->
 <div class="scorecard">
-	<table cellpadding="0" cellspacing="0" rules="all">
+	<table cellspacing="0">
 		<tr>
 			<th colspan="9" class="team {{boxscore.away_team_code}}">{{boxscore.away_fname}}</th>
 		</tr>
@@ -61,7 +61,7 @@
 	  <br />{{boxscore.away_batter_text_data}}
 	</div>
 
-	<table cellpadding="0" cellspacing="0" rules="all">
+	<table cellspacing="0">
 		<tr>
 		  <th colspan="9" class="team {{boxscore.away_team_code}}">{{boxscore.away_fname}}</th>
 		</tr>
@@ -92,7 +92,7 @@
 	</table>
 </div>
 <div class="scorecard" style="float: right;">
-    <table cellpadding="0" cellspacing="0" rules="all">
+    <table cellspacing="0">
         <tr>
           <th colspan="9" class="team {{boxscore.home_team_code}}">{{boxscore.home_fname}}</th>
         </tr>
@@ -152,7 +152,7 @@
         <br />{{boxscore.home_batter_text_data}}
     </div>
       
-	<table cellpadding="0" cellspacing="0" rules="all">
+	<table cellspacing="0">
         <tr>
           <th colspan="9" class="team {{boxscore.home_team_code}}">{{boxscore.home_fname}}</th>
         </tr>
@@ -181,7 +181,6 @@
         </tr>
       {% endfor %}
     </table>
-
 </div>
 <div class="fix"></div>
-<div class="boxscore-notes">{{boxscore.game_info}}</div>
+<div class="scorecard-notes">{{boxscore.game_info}}</div>

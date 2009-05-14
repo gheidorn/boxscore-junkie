@@ -10,12 +10,12 @@
   <li id="gid_{{game.gameday}}" class="game" onclick="gotoBoxscore(this)">
     {% endifequal %}
   {% endifequal %}
-      <table cellpadding="0" cellspacing="0" rules="all">
+      <table cellspacing="0">
         <tr>
           <th class="final">{{ game.game_status.status}}</th>
           <th class="rhe">R</th>
-          <th class="rhe">H</th>
-          <th class="rhe">E</th>
+          <th>H</th>
+          <th>E</th>
         </tr>
         <tr>
           <td class="team">{{game.away_team_name}}</td>
