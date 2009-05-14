@@ -16,7 +16,6 @@
   		<div id="game-menu">
     		{% include "game-menu.html" %}
   		</div>
-		<div id="game-detail">
 		    <!-- tabs -->
 			<div class="tabs">
 				<a class="tab selected" href="boxscore?gid={{game.gameday}}"><span>Boxscore</span></a>
@@ -24,15 +23,14 @@
 				<a class="tab" href="/pitchbypitch?gid={{game.gameday}}"><span>Pitch-by-Pitch</span></a> 
 				<a class="tab" href="/highlights?gid={{game.gameday}}"><span>Highlights</span></a>
 			</div>
+		<div id="game-detail">
+
 			<div id="boxscore" class="tab-content">
 			    {% ifequal game.game_status.ind "O" %}
 			      {% include "boxscore-linescore-final.html" %}
 			    {% endifequal %}
 			    {% ifequal game.game_status.ind "F" %}
 			      {% include "boxscore-linescore-final.html" %}
-			    {% endifequal %}
-			    {% ifequal game.game_status.ind "FT" %}
-			      {% include "boxscore-linescore-final.html" %}<!-- final-tied -->
 			    {% endifequal %}
 			    {% ifequal game.game_status.ind "I" %}
 			      {% include "boxscore-linescore-inprogress.html" %}
@@ -42,6 +40,7 @@
 			    {% endifequal %}
 			    {% include "boxscore-scorecard.html" %}
 		    </div>
+		    <div class="fix"></div>
   		</div><!-- end game detail -->
   		<div class="fix"></div>
 	</div><!-- end content -->
