@@ -32,7 +32,7 @@ div.navbar a.on { color: lightgreen;}
 div.navbar a.off { color: red;}
 
 div#content { background-color: #fff; margin: 0px auto; width: 900px; }
-div#content div.text-content { margin: 0px auto 20px; width: 880px; }
+div#content div.text-content { margin: 0px auto 20px; text-align: left; width: 880px; }
 div#content div.text-content h1 { font-size: 150%; padding: 10px 0px 5px 0px; }
 div#content div.text-content h5 { font-size: 120%; padding: 10px 0px 5px 0px; }
 div#content div.text-content p { font-size: 100%; padding: 3px 0px; }
