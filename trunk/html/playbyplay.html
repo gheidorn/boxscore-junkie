@@ -35,46 +35,42 @@
 			      {% include "boxscore-linescore-inprogress.html" %}
 			    {% endifequal %}
 			    <br />
-			    <table cellspacing="0" class="pbp">
-			    {% for inning in innings %}
-			      <tr>
-			        <th class="{{game.away_code}}">{{game.away_team_city}} - Top of {{inning.num}}</th>
-			      </tr>
-			    {% for event in inning.top_atbats %}
-			      <tr>
-			      {% if forloop.counter0|divisibleby:"2" %}
-			        <td class="odd">
-			      {% else %}
-			        <td class="even">
-			      {% endif %}
-			        {% if event.score %}
-			          <span style="color: green;font-weight:bold;">{{event.des}}</span>
-			        {% else %}
-			          {{event.des}}
-			        {% endif %}
-			        </td>
-			      </tr>
-			    {% endfor %}
-			      <tr>
-			        <th class="{{game.home_code}}">{{game.home_team_city}} - Bottom of {{inning.num}}</th>
-			      </tr>
-			      {% for event in inning.bottom_atbats %}
-			        <tr>
-			        {% if forloop.counter0|divisibleby:"2" %}
-			          <td class="odd">
-			        {% else %}
-			          <td class="even">
-			        {% endif %}
-			          {% if event.score %}
-			            <span style="color: green;font-weight:bold;">{{event.des}}</span>
-			          {% else %}
-			            {{event.des}}
-			          {% endif %}
-			          </td>
-			        </tr>
-			      {% endfor %}
-			    {% endfor %}
-			 	</table>
+				<div class="inning-wrapper">
+				{% for inning in innings %}
+					<div class="half-inning">
+						<div class="{{game.away_code}} half-inning-hdr">{{game.away_team_city}} - Top of {{inning.num}}</div>
+					{% for event in inning.top_atbats %}
+				      	{% if forloop.counter0|divisibleby:"2" %}
+				        	<div class="event-odd">
+				      	{% else %}
+				        	<div class="event-even">
+				      	{% endif %}
+					      	{% if event.score %}
+					        	<span style="color: green;font-weight:bold;">{{event.des}}</span>
+					      	{% else %}
+					        	{{event.des}}
+					      	{% endif %}
+							</div>
+					{% endfor %}
+					</div><!-- end half inning -->
+					<div class="half-inning">
+						<div class="{{game.home_code}} half-inning-hdr">{{game.home_team_city}} - Bottom of {{inning.num}}</div>
+					{% for event in inning.bottom_atbats %}
+				      	{% if forloop.counter0|divisibleby:"2" %}
+				        	<div class="event-odd">
+				      	{% else %}
+				        	<div class="event-even">
+				      	{% endif %}
+							{% if event.score %}
+				          		<span style="color: green;font-weight:bold;">{{event.des}}</span>
+				        	{% else %}
+				          		{{event.des}}
+				        	{% endif %}
+							</div>
+					{% endfor %}
+					</div><!-- end half inning -->
+				{% endfor %}
+				</div>
 			</div><!-- end tab-content -->
 		</div><!-- end game-detail -->
 		<div class="fix"></div>

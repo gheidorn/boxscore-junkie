@@ -4,21 +4,21 @@ body { background-color: #fff; font-family:verdana; font-size: 10px; text-align:
 table { border: 0px; }
 
 /* general use */
-div.left { float: left; }
-div.right { float: right; }
-div.fix { clear: both; }
+.left { float: left; }
+.right { float: right; }
+.fix { clear: both; }
 
-div#page { background:transparent url(../img/page-bg.png) repeat-y scroll 0 0; border-bottom: 1px solid #eee; margin: 0px auto; padding: 0px 0; width:1024px;}
+#page { background:transparent url(../img/page-bg.png) repeat-y scroll 0 0; border-bottom: 1px solid #eee; margin: 0px auto; padding: 0px 0; width:1024px;}
 
 /* header */
-div#header { background-color: #fff; margin: 0px auto; width: 900px; }
-div#header a:active { text-decoration: none; color: #3F4C6B; }
-div#header a:link { text-decoration: none; color: #3F4C6B; }
-div#header a:visited { text-decoration: none; color: #3F4C6B; }
-div#header div.left { float: left; width: 45%; font-weight: bold; padding: 10px; text-align: left; }
-div#header div.left h1 { color: #36393D; font-size: 12px; text-transform: uppercase; }
-div#header div.right { text-align:right; float: right;width: 45%; padding: 10px; }
-div#header div.right h2 { font-size: 100%; text-transform: lowercase; color: #3F4C6B; }
+#header { background-color: #fff; margin: 0px auto; width: 900px; }
+#header a:active { text-decoration: none; color: #3F4C6B; }
+#header a:link { text-decoration: none; color: #3F4C6B; }
+#header a:visited { text-decoration: none; color: #3F4C6B; }
+#header div.left { float: left; width: 45%; font-weight: bold; padding: 10px; text-align: left; }
+#header div.left h1 { color: #36393D; font-size: 12px; text-transform: uppercase; }
+#header div.right { text-align:right; float: right;width: 45%; padding: 10px; }
+#header div.right h2 { font-size: 100%; text-transform: lowercase; color: #3F4C6B; }
 
 div.navbar { background-color: #004D99; color: #eaeaea; margin: 0px auto; width: 900px; }
 div.navbar div.inner { padding: 0px 10px 0px 10px; width: 880px; }
@@ -31,39 +31,39 @@ div.navbar a:hover { text-decoration: underline; color: gold; }
 div.navbar a.on { color: lightgreen;}
 div.navbar a.off { color: red;}
 
-div#content { background-color: #fff; margin: 0px auto; width: 900px; }
-div#content div.text-content { margin: 0px auto 20px; text-align: left; width: 880px; }
-div#content div.text-content h1 { font-size: 150%; padding: 10px 0px 5px 0px; }
-div#content div.text-content h5 { font-size: 120%; padding: 10px 0px 5px 0px; }
-div#content div.text-content p { font-size: 100%; padding: 3px 0px; }
-div#content div.text-content ul { list-style: none; }
-div#content div.game-content { float: left; width: 600px;}
+#content { background-color: #fff; margin: 0px auto; width: 900px; }
+#content div.text-content { margin: 0px auto 20px; text-align: left; width: 880px; }
+#content div.text-content h1 { font-size: 150%; padding: 10px 0px 5px 0px; }
+#content div.text-content h5 { font-size: 120%; padding: 10px 0px 5px 0px; }
+#content div.text-content p { font-size: 100%; padding: 3px 0px; }
+#content div.text-content ul { list-style: none; }
+#content div.game-content { float: left; width: 600px;}
 
 /* footer */
-div#footer { margin: 0px auto; width: 900px; text-align: left; }
-div#footer div.inner { padding: 10px; }
-div#footer div.inner div.left { width: 70%; }
-div#footer div.inner div.right { text-align:right; width: 25%; }
-div#footer a:active { text-decoration: none; color: #004D99; }
-div#footer a:link { text-decoration: none; color: #004D99; }
-div#footer a:visited { text-decoration: none; color: #4096EE; }
-div#footer a:hover { text-decoration: underline; color: red; }
+#footer { margin: 0px auto; width: 900px; text-align: left; }
+#footer div.inner { padding: 10px; }
+#footer div.inner div.left { width: 70%; }
+#footer div.inner div.right { text-align:right; width: 25%; }
+#footer a:active { text-decoration: none; color: #004D99; }
+#footer a:link { text-decoration: none; color: #004D99; }
+#footer a:visited { text-decoration: none; color: #4096EE; }
+#footer a:hover { text-decoration: underline; color: red; }
 
 /* game menu */
-div#game-menu { float: left; padding: 0px 10px; width: 160px; }
-div#game-menu ul { background-color: #fff; list-style-type: none; margin-top: 0px; width: 100%; }
-div#game-menu ul li.game { border:1px solid #fff; cursor: pointer; padding: 2px; margin: 2px; background-color: #fff; color: #27408B; }
-div#game-menu ul li.game:hover { background-color: #FFFF88; border:1px solid #1874CD; color: #000; }
-div#game-menu ul li.game-selected { background-color: #FFFF88; border:1px solid #1874CD; cursor: pointer; padding: 2px; margin: 2px;  color: #000; }
-div#game-menu table {  font-size: 10px; width: 100%;}
-div#game-menu table th { border-bottom: 1px solid #ccc; }
-div#game-menu table th.final { text-align:left; width: 60%;}
-div#game-menu table th.rhe { width: 13%;}
-div#game-menu table td { border-bottom: 1px solid #eee; color: #000; text-align:center; }
-div#game-menu table td.team { color: #000;text-align:left; }
+#game-menu { float: left; padding: 0px 10px; width: 160px; }
+#game-menu ul { background-color: #fff; list-style-type: none; margin-top: 0px; width: 100%; }
+#game-menu ul li.game { border:1px solid #fff; cursor: pointer; padding: 2px; margin: 2px; background-color: #fff; color: #27408B; }
+#game-menu ul li.game:hover { background-color: #FFFF88; border:1px solid #1874CD; color: #000; }
+#game-menu ul li.game-selected { background-color: #FFFF88; border:1px solid #1874CD; cursor: pointer; padding: 2px; margin: 2px;  color: #000; }
+#game-menu table {  font-size: 10px; width: 100%;}
+#game-menu table th { border-bottom: 1px solid #ccc; }
+#game-menu table th.final { text-align:left; width: 60%;}
+#game-menu table th.rhe { width: 13%;}
+#game-menu table td { border-bottom: 1px solid #eee; color: #000; text-align:center; }
+#game-menu table td.team { color: #000;text-align:left; }
 
 /* game detail */
-div#game-detail { float: left; padding: 0px 0px 20px 0px; width: 700px; }
+#game-detail { float: left; padding: 0px 0px 20px 0px; width: 700px; }
 
 /* tab navigation */
 div.tabs 					{ font-size: 80%; margin-left:15px; margin-top: 2px; overflow: hidden; padding-top: 2px; }
@@ -73,79 +73,84 @@ div.tabs a.tab span 		{ display:block; line-height:13px; padding:4px 0 4px 15px;
 div.tab-content 			{ border: 1px solid #ccc; margin: 0px 0px 20px 0px; padding: 10px; -moz-border-radius-topright: 5px;}
 
 /* scoreboard */
-div#scoreboard 				{ margin: 0px 5px; }
-div#scoreboard div.game 	{ float: left; min-height: 70px; padding: 5px 3px; text-align:left; width: 290px; }
-div#scoreboard table.linescore { border-right: 1px solid #ccc; border-top: 1px solid #ccc; border-left: 1px solid #ccc; font-size: 10px;width: 100%;}
-div#scoreboard table.linescore th { background-color: #eee; border-bottom: 1px solid #eee; color: #595959; font-weight: normal; text-align:center; }
-div#scoreboard table.linescore th.preview { background-color: #C3D9FF; color: #000; font-weight: bold; text-align:center; padding: 3px; width: 60px;}
-div#scoreboard table.linescore th.final { background-color: #C79810; color: #fff; font-style:italic; font-weight: bold; text-align:center; width: 70px; padding: 3px; }
-div#scoreboard table.linescore th.postponed { background-color: #C79810; color: #eee; font-style:italic; font-weight: bold; text-align:center; width: *%;}
-div#scoreboard table.linescore th.inprogress { background-color: green; color: #fff; font-weight: bold; padding: 3px; text-align:center; width: 70px; }
-div#scoreboard table.linescore td { border-bottom: 1px solid #eee; border-left: 1px solid #eee; font-weight: normal; text-align:center; }
-div#scoreboard table.linescore td.team { text-align:left; }
-div#scoreboard table.linescore td.rhe { background-color: #F9FFD4; font-weight: bold; }
+#scoreboard 				{ margin: 0px 5px; }
+#scoreboard div.game 	{ float: left; min-height: 70px; padding: 5px 3px; text-align:left; width: 290px; }
+#scoreboard table.linescore { border-right: 1px solid #ccc; border-top: 1px solid #ccc; border-left: 1px solid #ccc; font-size: 10px;width: 100%;}
+#scoreboard table.linescore th { background-color: #eee; border-bottom: 1px solid #eee; color: #595959; font-weight: normal; text-align:center; }
+#scoreboard table.linescore th.preview { background-color: #C3D9FF; color: #000; font-weight: bold; text-align:center; padding: 3px; width: 60px;}
+#scoreboard table.linescore th.final { background-color: #C79810; color: #fff; font-style:italic; font-weight: bold; text-align:center; width: 70px; padding: 3px; }
+#scoreboard table.linescore th.postponed { background-color: #C79810; color: #eee; font-style:italic; font-weight: bold; text-align:center; width: *%;}
+#scoreboard table.linescore th.inprogress { background-color: green; color: #fff; font-weight: bold; padding: 3px; text-align:center; width: 70px; }
+#scoreboard table.linescore td { border-bottom: 1px solid #eee; border-left: 1px solid #eee; font-weight: normal; text-align:center; }
+#scoreboard table.linescore td.team { text-align:left; }
+#scoreboard table.linescore td.rhe { background-color: #F9FFD4; font-weight: bold; }
 
-div#scoreboard table.linescore-notes { border-left: 1px solid #ccc; border-right: 1px solid #ccc; font-size: 10px; width: 100%; }
-div#scoreboard table.linescore-notes td { background-color: #fff; border-bottom: 1px solid #ccc; padding: 3px; vertical-align: top; }
-div#scoreboard table.linescore-notes td.links { background-color: #eee; text-align: center; }
-div#scoreboard table.linescore-notes a:active { text-decoration: none; color: #004D99; font-weight:bold; }
-div#scoreboard table.linescore-notes a:link { text-decoration: none; color: #004D99; font-weight:bold;}
-div#scoreboard table.linescore-notes a:visited { text-decoration: none; color: #006BD4; font-weight:bold;}
-div#scoreboard table.linescore-notes a:hover { text-decoration: underline; color: red; font-weight:bold;}
+#scoreboard table.linescore-notes { border-left: 1px solid #ccc; border-right: 1px solid #ccc; font-size: 10px; width: 100%; }
+#scoreboard table.linescore-notes td { background-color: #fff; border-bottom: 1px solid #ccc; padding: 3px; vertical-align: top; }
+#scoreboard table.linescore-notes td.links { background-color: #eee; text-align: center; }
+#scoreboard table.linescore-notes a:active { text-decoration: none; color: #004D99; font-weight:bold; }
+#scoreboard table.linescore-notes a:link { text-decoration: none; color: #004D99; font-weight:bold;}
+#scoreboard table.linescore-notes a:visited { text-decoration: none; color: #006BD4; font-weight:bold;}
+#scoreboard table.linescore-notes a:hover { text-decoration: underline; color: red; font-weight:bold;}
 
 /* game detail */
-div#game-detail {}
-div#game-detail div.linescore { }
-div#game-detail div.linescore table { font-size: 12px; width: 100%;}
-div#game-detail div.linescore table th { background-color: #eee; border-bottom:1px solid #ccc; color: #595959; font-size: 120%; font-weight: normal; padding:3px; text-align:center; }
-div#game-detail div.linescore table th.team { background-color: #fff; border-bottom:1px solid #eee; color: #000; }
-div#game-detail div.linescore table th.preview { background-color: #595959; color: #fff; font-weight: bold; text-align:center; width: 60px;}
-div#game-detail div.linescore table th.final { background-color: #C79810; color: #fff; font-weight: bold; text-align:center; width: 25%; }
-div#game-detail div.linescore table th.postponed { background-color: #EEE685; color: #000; font-weight: bold; text-align:center;}
-div#game-detail div.linescore table th.inprogress { background-color: green; color: #fff; font-weight: bold; text-align:center;}
-div#game-detail div.linescore table td { background-color: #fff; border-bottom:1px solid #eee; color: #000;font-size: 120%; font-weight: normal; text-align:center; }
-div#game-detail div.linescore table td.rhe { background-color: #F9FFD4;font-size: 120%; font-weight: bold; }
-div#game-detail div.decisions { background-color: #fff; font-size: 150%; padding: 5px 0px 15px; text-align: center; width: 100%; }
+#game-detail {}
+#game-detail div.linescore { }
+#game-detail div.linescore table { font-size: 12px; width: 100%;}
+#game-detail div.linescore table th { background-color: #eee; border-bottom:1px solid #ccc; color: #595959; font-size: 120%; font-weight: normal; padding:3px; text-align:center; }
+#game-detail div.linescore table th.team { background-color: #fff; border-bottom:1px solid #eee; color: #000; }
+#game-detail div.linescore table th.preview { background-color: #595959; color: #fff; font-weight: bold; text-align:center; width: 60px;}
+#game-detail div.linescore table th.final { background-color: #C79810; color: #fff; font-weight: bold; text-align:center; width: 25%; }
+#game-detail div.linescore table th.postponed { background-color: #EEE685; color: #000; font-weight: bold; text-align:center;}
+#game-detail div.linescore table th.inprogress { background-color: green; color: #fff; font-weight: bold; text-align:center;}
+#game-detail div.linescore table td { background-color: #fff; border-bottom:1px solid #eee; color: #000;font-size: 120%; font-weight: normal; text-align:center; }
+#game-detail div.linescore table td.rhe { background-color: #F9FFD4;font-size: 120%; font-weight: bold; }
+#game-detail div.decisions { background-color: #fff; font-size: 150%; padding: 5px 0px 15px; text-align: center; width: 100%; }
 
 /* boxscore */
-div#boxscore {}
-div#boxscore div.scorecard { float: left; padding: 5px 0px; width: 48%; }
-div#boxscore div.scorecard div.right { float: right; text-align: left;  }
-div#boxscore div.scorecard table { float: left; font-size: 10px; width: 100%; }
-div#boxscore div.scorecard table th { border-bottom: 1px solid #eee; width: 8%; }
-div#boxscore div.scorecard table th.name { text-align: left; width: 25%; }
-div#boxscore div.scorecard table td { border-bottom: 1px solid #eee; text-align: center; }
-div#boxscore div.scorecard table td.name { text-align: left; width: 100px; }
-div#boxscore div.scorecard-notes { text-align: left; }
+#boxscore {}
+#boxscore div.scorecard { float: left; padding: 5px 0px; width: 48%; }
+#boxscore div.scorecard div.right { float: right; text-align: left;  }
+#boxscore div.scorecard table { float: left; font-size: 10px; width: 100%; }
+#boxscore div.scorecard table th { border-bottom: 1px solid #eee; width: 8%; }
+#boxscore div.scorecard table th.name { text-align: left; width: 25%; }
+#boxscore div.scorecard table td { border-bottom: 1px solid #eee; text-align: center; }
+#boxscore div.scorecard table td.name { text-align: left; width: 100px; }
+#boxscore div.scorecard-notes { text-align: left; }
 
 /* play by play */
-div#playbyplay table.pbp { border-left: 1px solid #ccc; border-right: 1px solid #ccc; font-size: 10px; text-align: left; width: 100%; }
-div#playbyplay table.pbp th { font-weight: bold; text-align:left; padding: 3px; }
-div#playbyplay table.pbp td { border-bottom: 1px solid #ccc; padding: 3px; }
-div#playbyplay table.pbp td.even { background-color: #eee;}
+#playbyplay .inning-wrapper { text-align: left; }
+#playbyplay table.pbp { border-left: 1px solid #ccc; border-right: 1px solid #ccc; font-size: 10px; text-align: left; width: 100%; }
+#playbyplay table.pbp th { font-weight: bold; text-align:left; padding: 3px; }
+#playbyplay table.pbp td { border-bottom: 1px solid #ccc; padding: 3px; }
+#playbyplay table.pbp td.even { background-color: #eee;}
+#playbyplay .half-inning {border: #eee; }
+#playbyplay .half-inning-hdr { border: 1px solid #eee; font-weight: bold; padding: 5px; }
+#playbyplay .event-even { background-color: #eee; padding: 5px;}
+#playbyplay .event-odd { background-color: #e8e8e8; padding: 5px;}
 
 /* pitch by pitch */
-div#pitchbypitch {}
-div#pitchbypitch table.pbp { border-left: 1px solid #ccc; border-right: 1px solid #ccc; font-size: 10px; text-align: left; width: 100%; }
-div#pitchbypitch table.pbp th { font-weight: bold; text-align:left; padding: 3px; }
-div#pitchbypitch table.pbp td { border-bottom: 1px solid #ccc; padding: 3px; }
-div#pitchbypitch table.pbp td.even { background-color: #F9F7ED;}
-div#pitchbypitch table.pitch-sequence { font-size: 10px;  text-align: left; width: 100%; }
-div#pitchbypitch table.pitch-sequence th { border: 0px; border-bottom:1px solid #eaeaea; }
-div#pitchbypitch table.pitch-sequence td { border: 0px; width: 10%; border-bottom:1px solid #eaeaea; padding: 3px; text-align: left; }
+#pitchbypitch {}
+#pitchbypitch table.pbp { border-left: 1px solid #ccc; border-right: 1px solid #ccc; font-size: 10px; text-align: left; width: 100%; }
+#pitchbypitch table.pbp th { font-weight: bold; text-align:left; padding: 3px; }
+#pitchbypitch table.pbp td { border-bottom: 1px solid #ccc; padding: 3px; }
+#pitchbypitch table.pbp td.even { background-color: #F9F7ED;}
+#pitchbypitch table.pitch-sequence { font-size: 10px;  text-align: left; width: 100%; }
+#pitchbypitch table.pitch-sequence th { border: 0px; border-bottom:1px solid #eaeaea; }
+#pitchbypitch table.pitch-sequence td { border: 0px; width: 10%; border-bottom:1px solid #eaeaea; padding: 3px; text-align: left; }
 
 /* highlights */
-div#highlights {}
-div#multimedia { margin: 0px auto; width: 580px; }
+#highlights {}
+#multimedia { margin: 0px auto; width: 580px; }
 select#highlightSelect { margin: 20px auto; }
 
 /* calendar */
-div.month { float:left; }
-div.month { float:left; }
+.month { float:left; }
+.month { float:left; }
 .calendar-holder { width: 100%; padding: 0px; margin: 0px; }
 .calendar-holder td { vertical-align: top; }
-div.month table { padding: 1px; }
-div.month table th { background-color: #004D99; color: #fff; border: 1px solid #cacaca; padding: 5px; }
+.month table { padding: 1px; }
+.month table th { background-color: #004D99; color: #fff; border: 1px solid #cacaca; padding: 5px; }
 .calendar-header {}
 .calendar-header-day { font-size: 80%; background-color: #eaeaea; border: 1px solid #cacaca; text-align: center;}
 .calendar-day { cursor: pointer; font-size: 80%; background-color: #F6F9ED; border: 1px solid #cacaca; text-align: center; padding: 5px; }
