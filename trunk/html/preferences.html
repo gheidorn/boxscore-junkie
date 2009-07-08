@@ -1,0 +1,262 @@
+<!-- preferences.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <title>Boxscore Junkie : Preferences</title>
+  <link rel="stylesheet" type="text/css" href="/css/core.css" />
+</head>
+<body>
+<div id="page">
+	{% include "header.html" %}
+	{% include "navbar-basic.html" %}
+	<div id="content">
+		<div id="preferences">
+			<h1>User Preferences</h1>
+			<p>Select the teams you want to highlight on the Scoreboard.</p>
+			<form name="teamsToTrack" action="savePreferences" method="post">
+			<div id="teamsToTrack">
+				<div class="left">
+					<h3>AL East</h3>
+					<label><input type="checkbox" class="tick" name="teamsToTrack" value="bal" 
+					{% for t in teamsToTrack %}
+						{% ifequal t "bal" %}
+							checked
+						{% endifequal %}
+					{% endfor %}
+					/>Baltimore Orioles</label>
+					<label><input type="checkbox" class="tick" name="teamsToTrack" value="bos"
+					{% for t in teamsToTrack %}
+						{% ifequal t "bos" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+					/>Boston Red Sox</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="nyy"
+					{% for t in teamsToTrack %}
+						{% ifequal t "nyy" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />New York Yankees</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="tba"
+					{% for t in teamsToTrack %}
+						{% ifequal t "tba" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />Tampa Bay Rays</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="tor"
+					{% for t in teamsToTrack %}
+						{% ifequal t "tor" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />Toronto Blue Jays</label>
+					<h3>AL Central</h3>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="cha" 
+					{% for t in teamsToTrack %}
+						{% ifequal t "cha" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />Chicago White Sox</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="cle" 
+					{% for t in teamsToTrack %}
+						{% ifequal t "cle" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />Cleveland Indians</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="det" 
+				    {% for t in teamsToTrack %}
+						{% ifequal t "det" %}
+							checked
+						{% endifequal %}
+					{% endfor %}
+				    />Detroit Tigers</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="kca" 
+				    {% for t in teamsToTrack %}
+						{% ifequal t "kca" %}
+							checked
+						{% endifequal %}
+					{% endfor %}
+				    />Kansas City Royals</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="min" 
+				    {% for t in teamsToTrack %}
+						{% ifequal t "min" %}
+							checked
+						{% endifequal %}
+					{% endfor %}
+				    />Minnesota Twins</label>
+					<h3>AL West</h3>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="laa" 
+				    {% for t in teamsToTrack %}
+						{% ifequal t "laa" %}
+							checked
+						{% endifequal %}
+					{% endfor %}
+				    />Los Angeles Angels</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="oak" 
+				    {% for t in teamsToTrack %}
+						{% ifequal t "oak" %}
+							checked
+						{% endifequal %}
+					{% endfor %}
+				    />Oakland Athletics</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="sea" 
+				    {% for t in teamsToTrack %}
+						{% ifequal t "sea" %}
+							checked
+						{% endifequal %}
+					{% endfor %}
+				    />Seattle Mariners</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="tex" 
+				    {% for t in teamsToTrack %}
+						{% ifequal t "tex" %}
+							checked
+						{% endifequal %}
+					{% endfor %}
+				    />Texas Rangers</label>			
+				</div>
+				<div class="left">
+					<h3>NL East</h3>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="atl" 
+				    {% for t in teamsToTrack %}
+						{% ifequal t "atl" %}
+							checked
+						{% endifequal %}
+					{% endfor %}
+				    />Atlanta Braves</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="fla" 
+				    {% for t in teamsToTrack %}
+						{% ifequal t "fla" %}
+							checked
+						{% endifequal %}
+					{% endfor %}
+				    />Florida Marlins</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="nyn" 
+					{% for t in teamsToTrack %}
+						{% ifequal t "nyn" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />New York Mets</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="phi" 
+					{% for t in teamsToTrack %}
+						{% ifequal t "phi" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />Philadelphia Phillies</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="was" 
+					{% for t in teamsToTrack %}
+						{% ifequal t "was" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />Washington Nationals</label>
+					<h3>NL Central</h3>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="chn" 
+					{% for t in teamsToTrack %}
+						{% ifequal t "chn" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />Chicago Cubs</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="cin" 
+					{% for t in teamsToTrack %}
+						{% ifequal t "cin" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />Cincinnati Reds</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="hou" 
+					{% for t in teamsToTrack %}
+						{% ifequal t "hou" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />Houston Astros</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="mil" 
+					{% for t in teamsToTrack %}
+						{% ifequal t "mil" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />Milwaukee Brewers</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="pit" 
+					{% for t in teamsToTrack %}
+						{% ifequal t "pit" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />Pittsburgh Pirates</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="stn" 
+					{% for t in teamsToTrack %}
+						{% ifequal t "stn" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />St. Louis Cardinals</label>
+					<h3>NL West</h3>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="ari" 
+					{% for t in teamsToTrack %}
+						{% ifequal t "ari" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />Arizona Diamondbacks</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="col" 
+					{% for t in teamsToTrack %}
+						{% ifequal t "col" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 				    
+				    />Colorado Rockies</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="lan" 
+					{% for t in teamsToTrack %}
+						{% ifequal t "lan" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />Los Angeles Dodgers</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="sdn" 
+					{% for t in teamsToTrack %}
+						{% ifequal t "sdn" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />San Diego Padres</label>
+				    <label><input type="checkbox" class="tick" name="teamsToTrack" value="sfn" 
+					{% for t in teamsToTrack %}
+						{% ifequal t "sfn" %}
+							checked
+						{% endifequal %}
+					{% endfor %} 
+				    />San Francisco Giants</label>
+				</div>
+				<div class="fix"></div>
+				<div class="buttons"><input type="submit" value="Save" />
+				{% ifequal msg "saved" %}
+					<div class="msg">Your preferences have been saved.</div>
+				{% endifequal %}
+				</div>
+			</div>		
+			</form>			
+	    </div><!-- end preferences -->
+	</div><!-- end content -->
+	{% include "navbar-basic.html" %}
+</div><!-- end page -->
+{% include "footer.html" %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	setTimeout(function(){
+  		$("div.msg").fadeOut("slow", function () {
+  			$("div.msg").remove();
+		});
+	}, 2000);
+});
+</script>
+</body>
+</html>

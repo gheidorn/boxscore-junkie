@@ -2,11 +2,27 @@
 <div class="game">
 	<table class="linescore" cellspacing="0">
 		<tr>
-    		<td class="team">{{game.away_team_name}}</td>
+			<td class="team
+		
+{% for t in teamsToTrack %}
+	{% ifequal t game.away_code %}
+		tracked
+	{% endifequal %}
+{% endfor %}
+		
+		">{{game.away_team_name}}</td>
     		<td>{{game.away_probable_pitcher.last}} ({{game.away_probable_pitcher.wins}}-{{game.away_probable_pitcher.losses}}) {{game.away_probable_pitcher.era}} ERA</td>
   		</tr>
   		<tr>
-    		<td class="team">{{game.home_team_name}}</td>
+    		<td class="team
+    		
+{% for t in teamsToTrack %}
+	{% ifequal t game.home_code %}
+		tracked
+	{% endifequal %}
+{% endfor %}
+    		
+    		">{{game.home_team_name}}</td>
     		<td>{{game.home_probable_pitcher.last}} ({{game.home_probable_pitcher.wins}}-{{game.home_probable_pitcher.losses}}) {{game.home_probable_pitcher.era}} ERA</td>
   		</tr>
 	</table>

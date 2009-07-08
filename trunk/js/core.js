@@ -75,3 +75,9 @@ function showHighlight() {
 	  var highlightDiv = document.getElementById(highlightId);
 	  highlightDiv.style.display = "block";
 	}
+
+$(document).ready(function(){
+	$(".half-inning-hdr").click(function () {
+		$(this).next().toggle();
+	});
+});

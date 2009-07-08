@@ -1,9 +1,15 @@
 <div id="header">
-  <div class="left">
-    <h1><a href="/">Boxscore Junkie</a></h1>
-  </div>
-  <div class="right">
-    <h2>an MLB fan site with real-time scores &amp; stats</h2>
-  </div>
-  <div class="fix"></div>
+	<div class="left">
+	    <h1><a href="/">Boxscore Junkie</a></h1>
+	    <h2>an MLB fan site with real-time scores &amp; stats</h2>
+  	</div>
+	<div class="right">
+  	{% ifequal user None %}
+  		<a href="{{loginURL}}">Login</a>
+  	{% endifequal %}
+  	{% ifnotequal user None %}
+  		logged in as <b>{{user.nickname}}</b> | <a href="preferences">Preferences</a> | <a href="{{logoutURL}}">Logout</a>
+  	{% endifnotequal %}
+	</div>
+  	<div class="fix"></div>
 </div>

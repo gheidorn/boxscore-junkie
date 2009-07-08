@@ -33,7 +33,7 @@ class FetchGamesHandler(webapp.RequestHandler):
     logging.info(url)
     
     ''' not needed, but might investigate pros/cons of setting '''
-    headers = { 'Host': 'gd2.mlb.com',
+    headers = { 
       'Content-Type': 'text/xml',
       'Accept': 'text/xml'
     }
@@ -62,7 +62,7 @@ class FetchPlayersHandler(webapp.RequestHandler):
     url = url.encode("utf-8")
     logging.info(url)
 
-    headers = { 'Host': 'gd2.mlb.com',
+    headers = { 
       'Content-Type': 'text/xml',
       'Accept': 'text/xml'
     }
@@ -94,7 +94,7 @@ class FetchBoxscoreHandler(webapp.RequestHandler):
     logging.info(url)
 
     ''' not needed, but might investigate pros/cons of setting '''
-    headers = { 'Host': 'gd2.mlb.com',
+    headers = { 
       'Content-Type': 'text/xml',
       'Accept': 'text/xml'
     }
@@ -126,7 +126,7 @@ class FetchPBPBatterHandler(webapp.RequestHandler):
     logging.info(url)
 
     ''' not needed, but might investigate pros/cons of setting '''
-    headers = { 'Host': 'gd2.mlb.com',
+    headers = { 
       'Content-Type': 'text/xml',
       'Accept': 'text/xml'
     }
@@ -158,7 +158,7 @@ class FetchPBPPitcherHandler(webapp.RequestHandler):
     logging.info(url)
 
     ''' not needed, but might investigate pros/cons of setting '''
-    headers = { 'Host': 'gd2.mlb.com',
+    headers = { 
       'Content-Type': 'text/xml',
       'Accept': 'text/xml'
     }

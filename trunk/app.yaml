@@ -24,7 +24,7 @@ handlers:
   static_files: html/faq.html
   upload: html/faq.html
 
-- url: (/|/calendar|/cal|/scoreboard|/boxscore|/playbyplay|/pitchbypitch|/pitcherpbp|/batterpbp|/highlights)
+- url: (/|/calendar|/cal|/scoreboard|/boxscore|/playbyplay|/pitchbypitch|/pitcherpbp|/batterpbp|/highlights|/login|/preferences|/savePreferences)
   script: main.py
 
 - url: /fetch/.*
