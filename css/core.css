@@ -15,10 +15,10 @@ table { border: 0px; }
 #header a:active { text-decoration: none; color: #3F4C6B; }
 #header a:link { text-decoration: none; color: #3F4C6B; }
 #header a:visited { text-decoration: none; color: #3F4C6B; }
-#header div.left { float: left; width: 45%; font-weight: bold; padding: 10px; text-align: left; }
+#header div.left { float: left; width: 35%; font-weight: bold; padding: 10px; text-align: left; }
 #header div.left h1 { color: #36393D; font-size: 12px; text-transform: uppercase; }
-#header div.right { text-align:right; float: right;width: 45%; padding: 10px; }
-#header div.right h2 { font-size: 100%; text-transform: lowercase; color: #3F4C6B; }
+#header div.left h2 { font-size: 100%; text-transform: lowercase; color: #3F4C6B; }
+#header div.right { text-align:right; float: right;width: 60%; padding: 10px; }
 
 div.navbar { background-color: #004D99; color: #eaeaea; margin: 0px auto; width: 900px; }
 div.navbar div.inner { padding: 0px 10px 0px 10px; width: 880px; }
@@ -78,8 +78,8 @@ div.tab-content 			{ border: 1px solid #ccc; margin: 0px 0px 20px 0px; padding: 
 #scoreboard table.linescore { border-right: 1px solid #ccc; border-top: 1px solid #ccc; border-left: 1px solid #ccc; font-size: 10px;width: 100%;}
 #scoreboard table.linescore th { background-color: #eee; border-bottom: 1px solid #eee; color: #595959; font-weight: normal; text-align:center; }
 #scoreboard table.linescore th.preview { background-color: #C3D9FF; color: #000; font-weight: bold; text-align:center; padding: 3px; width: 60px;}
-#scoreboard table.linescore th.final { background-color: #C79810; color: #fff; font-style:italic; font-weight: bold; text-align:center; width: 70px; padding: 3px; }
-#scoreboard table.linescore th.postponed { background-color: #C79810; color: #eee; font-style:italic; font-weight: bold; text-align:center; width: *%;}
+#scoreboard table.linescore th.final { background-color: #3F4C6B; color: #fff; font-style:italic; font-weight: bold; text-align:center; width: 70px; padding: 3px; }
+#scoreboard table.linescore th.postponed { background-color: #fff; color: red; font-style:italic; font-weight: bold; text-align:center; width: *%;}
 #scoreboard table.linescore th.inprogress { background-color: green; color: #fff; font-weight: bold; padding: 3px; text-align:center; width: 70px; }
 #scoreboard table.linescore td { border-bottom: 1px solid #eee; border-left: 1px solid #eee; font-weight: normal; text-align:center; }
 #scoreboard table.linescore td.team { text-align:left; }
@@ -100,7 +100,7 @@ div.tab-content 			{ border: 1px solid #ccc; margin: 0px 0px 20px 0px; padding: 
 #game-detail div.linescore table th { background-color: #eee; border-bottom:1px solid #ccc; color: #595959; font-size: 120%; font-weight: normal; padding:3px; text-align:center; }
 #game-detail div.linescore table th.team { background-color: #fff; border-bottom:1px solid #eee; color: #000; }
 #game-detail div.linescore table th.preview { background-color: #595959; color: #fff; font-weight: bold; text-align:center; width: 60px;}
-#game-detail div.linescore table th.final { background-color: #C79810; color: #fff; font-weight: bold; text-align:center; width: 25%; }
+#game-detail div.linescore table th.final { font-weight: bold; text-align:center; width: 25%; }
 #game-detail div.linescore table th.postponed { background-color: #EEE685; color: #000; font-weight: bold; text-align:center;}
 #game-detail div.linescore table th.inprogress { background-color: green; color: #fff; font-weight: bold; text-align:center;}
 #game-detail div.linescore table td { background-color: #fff; border-bottom:1px solid #eee; color: #000;font-size: 120%; font-weight: normal; text-align:center; }
@@ -125,9 +125,9 @@ div.tab-content 			{ border: 1px solid #ccc; margin: 0px 0px 20px 0px; padding: 
 #playbyplay table.pbp td { border-bottom: 1px solid #ccc; padding: 3px; }
 #playbyplay table.pbp td.even { background-color: #eee;}
 #playbyplay .half-inning {border: #eee; }
-#playbyplay .half-inning-hdr { border: 1px solid #eee; font-weight: bold; padding: 5px; }
+#playbyplay .half-inning-hdr { border: 1px solid #eee; cursor: pointer; font-weight: bold; padding: 5px; }
 #playbyplay .event-even { background-color: #eee; padding: 5px;}
-#playbyplay .event-odd { background-color: #e8e8e8; padding: 5px;}
+#playbyplay .event-odd { border-bottom: 1px solid #e8e8e8; padding: 5px;}
 
 /* pitch by pitch */
 #pitchbypitch {}
@@ -145,7 +145,6 @@ div.tab-content 			{ border: 1px solid #ccc; margin: 0px 0px 20px 0px; padding: 
 select#highlightSelect { margin: 20px auto; }
 
 /* calendar */
-.month { float:left; }
 .month { float:left; }
 .calendar-holder { width: 100%; padding: 0px; margin: 0px; }
 .calendar-holder td { vertical-align: top; }
@@ -170,7 +169,7 @@ select#highlightSelect { margin: 20px auto; }
 .atl {background-color:darkblue;color: #fff;}
 .bal {background-color:orange;color: #fff;}
 .bos {background-color:red;color: #fff;}
-.chn {background-color:blue;color: #fff;}
+.chn {background-color:#005682;color: #fff;}
 .cha {background-color:#000;color: #fff;}
 .cle {background-color:darkblue;color: #cacaca;}
 .cin {background-color:red;color: #fff;}
@@ -195,3 +194,16 @@ select#highlightSelect { margin: 20px auto; }
 .sfn {background-color:#000;color: orange;}
 .sln {background-color:red;color: #fff;}
 .was {background-color:red;color: #cacaca;}
+
+#preferences { padding: 0px; text-align:left; }
+#preferences h1 { padding: 5px 15px; }
+#preferences p { padding: 5px 15px; }
+
+#teamsToTrack div { margin: 0px 20px; }
+#teamsToTrack h3 { padding: 3px 0px; }
+#teamsToTrack label { cursor: pointer; display: block; padding: 3px; padding-left: 15px; text-indent: -15px;}
+#teamsToTrack input.tick { width: 13px; height: 13px; padding: 3px; margin: 0 10px; vertical-align: bottom; position: relative; top: -1px; *overflow: hidden; }
+#teamsToTrack .buttons { margin: 10px 0px; padding: 5px 15px; }
+
+.msg { background-color: #008C00; color: #fff; display: inline; padding: 5px;}
+.tracked { background: url(/img/Favorites_16x16.png) #FFFF88 center right no-repeat; height: 16px; }

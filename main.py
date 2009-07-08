@@ -18,11 +18,17 @@ from datetime import date
 from datetime import datetime
 from datetime import timedelta
 
+from google.appengine.api import users
+from google.appengine.ext import db
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 
 # Set to true if we want to have our webapp print stack traces, etc
 _DEBUG = True
+
+class Preferences(db.Model):
+  user = db.UserProperty(db.Key)
+  teamsToTrack = db.StringListProperty()
 
 class BaseRequestHandler(webapp.RequestHandler):
   """Supplies a common template generation function.
@@ -47,13 +53,28 @@ class BaseRequestHandler(webapp.RequestHandler):
     nextDay = today + timedelta(days=1)
     lastUpdate = datetime.today() - timedelta(hours=5)
     
+    # get user data
+    user = users.get_current_user()
+    teamsToTrack = ""
+    if user is not None:
+      userKeyName = "key:" + user.email()
+      p = Preferences.get_by_key_name(userKeyName)
+      if p is not None:
+        teamsToTrack = p.teamsToTrack
+    loginURL = users.create_login_url("/")
+    logoutURL = users.create_logout_url("/")
+    
     values = {
         'lastUpdate': lastUpdate.strftime("%m/%d %I:%M:%S %p"),
         'prevDay': prevDay,
         'today': today,
         'nextDay': nextDay,
         'r': refresh,
-        't': refreshTime
+        't': refreshTime,
+        'user': user,
+        'teamsToTrack': teamsToTrack,
+        'loginURL': loginURL,
+        'logoutURL': logoutURL
     }
     
     values.update(template_values)
@@ -61,7 +82,25 @@ class BaseRequestHandler(webapp.RequestHandler):
     path = os.path.join(directory, os.path.join('html', template_name))
     self.response.out.write(template.render(path, values, debug=_DEBUG))
 
-class ScoreboardPage(BaseRequestHandler):
+class PreferencesPage(BaseRequestHandler):
+  def get(self):
+    template = "preferences.html"
+    template_values = {  }
+    self.generate(template, template_values)
+
+class SavePreferences(BaseRequestHandler):
+  def post(self):
+    user = users.get_current_user()
+    userKeyName = "key:" + user.email()
+    prefs = Preferences(parent=None, key_name=userKeyName)
+    prefs.user = user
+    prefs.teamsToTrack = self.request.get_all("teamsToTrack");
+    prefs.put()
+    template = "preferences.html"
+    template_values = { 'teamsToTrack': prefs.teamsToTrack, 'msg': 'saved' }
+    self.generate(template, template_values)
+
+class LiveScoreboardPage(BaseRequestHandler):
   """ displays current day's MLB scoreboard """
   def get(self):
     # manipulate current date to supply to XML fetch 
@@ -73,10 +112,20 @@ class ScoreboardPage(BaseRequestHandler):
     if today.day < 10:
       day = "0" + str(today.day)
 
+    # if user is logged in, retrieve preferences
+    q = Preferences.gql("WHERE user = :1", users.get_current_user())
+    results = q.fetch(1)
+    
+    teamsToTrack = []
+    for p in results:
+      teamsToTrack = p.teamsToTrack
+    
     # retrieve xml for the day's scoreboard
     masterScoreboardDOM = xml_helper.fetchMasterScoreboard(str(today.year), month, day)
 
-    template_values = { 'selDay': today, 'selDayStr': today.strftime("%B %d, %Y") }
+    template_values = { 'selDay': today, 
+                        'selDayStr': today.strftime("%B %d, %Y"),
+                        'teamsToTrack': teamsToTrack }
     
     if masterScoreboardDOM is None:
       template = "no-games-today.html"
@@ -99,40 +148,9 @@ class ScoreboardPage(BaseRequestHandler):
 
     self.generate(template, template_values)
 
-class CalendarHandler(webapp.RequestHandler):
-  def get(self):
-    year = self.request.get('y')
-    
-    if year == "":
-      year = datetime.today().year 
-    
-    today = datetime.today() - timedelta(hours=6)
-    prevDay = today - timedelta(days=1)
-    nextDay = today + timedelta(days=1)
-
-    yearList = ["2009", "2008", "2007"]
-
-    template_values = {
-      'prevDay': prevDay,
-      'selDay': today,
-      'today': today,
-      'nextDay': nextDay,
-      'year' : year,
-      'yearList' : yearList
-    }
-
-    path = os.path.join(os.path.dirname(__file__), 'html/calendar.html')
-    self.response.out.write(template.render(path, template_values))
-
-class MasterScoreboardHandler(webapp.RequestHandler):
+class PastScoreboardHandler(BaseRequestHandler):
   def get(self):
     # Process request data.
-    refresh = self.request.get('r')
-    if refresh != "on":
-      refresh = "off";
-    refreshTime = self.request.get('t')
-    if refreshTime == "":
-      refreshTime = 60
     year = self.request.get('year')
     month = self.request.get('month')
     day = self.request.get('day')
@@ -141,31 +159,24 @@ class MasterScoreboardHandler(webapp.RequestHandler):
     if len(day) == 1:
       day = "0" + day
 
-    lastUpdate = datetime.today() - timedelta(hours=5)
-
-    # build dates
-    today = datetime.today() - timedelta(hours=5)
+    # build selected date
     selDay = date(int(year), int(month), int(day))
     prevDay = selDay - timedelta(days=1)
-    nextDay = selDay + timedelta(days=1)
+    nextDay = selDay + timedelta(days=1)    
 
     template_values = {
-      'lastUpdate': lastUpdate.strftime("%m/%d %I:%M:%S %p"),
       'prevDay': prevDay,
       'selDay': selDay,
-      'selDayStr': selDay.strftime("%B %d, %Y"),
-      'today': today,
       'nextDay': nextDay,
-      'r': refresh,
-      't': refreshTime
+      'selDayStr': selDay.strftime("%B %d, %Y")
     }
 
     # retrieve xml for the day's scoreboard
     masterScoreboardDOM = xml_helper.fetchMasterScoreboard(year, month, day)
     if masterScoreboardDOM is None:
-      destination = "html/no-games-today.html"
+      template = "no-games-today.html"
     else:
-      destination = "html/scoreboard.html"
+      template = "scoreboard.html"
       gamesNode = masterScoreboardDOM.getElementsByTagName("games")[0]
 
       # build the day's GameDay object
@@ -181,18 +192,10 @@ class MasterScoreboardHandler(webapp.RequestHandler):
       template_values['gameday'] = gameday
       template_values['games'] = games
 
-    path = os.path.join(os.path.dirname(__file__), destination)
-    self.response.out.write(template.render(path, template_values))
+    self.generate(template, template_values)
 
-class BoxscoreHandler(webapp.RequestHandler):
+class BoxscoreHandler(BaseRequestHandler):
   def get(self):
-    refresh = self.request.get('r')
-    if refresh != "on":
-      refresh = "off";
-    refreshTime = self.request.get('t')
-    if refreshTime == "":
-      refreshTime = 60
-    
     ''' game id '''
     gid = self.request.get('gid')
     
@@ -204,9 +207,7 @@ class BoxscoreHandler(webapp.RequestHandler):
     ''' determine dates for links based on date selected '''
     selDay = date(int(year), int(month), int(day))
     prevDay = selDay - timedelta(days=1)
-    nextDay = selDay + timedelta(days=1)    
-    today = datetime.today() - timedelta(hours=5)
-    lastUpdate = datetime.today() - timedelta(hours=5)
+    nextDay = selDay + timedelta(days=1)
     
     masterScoreboardDOM = xml_helper.fetchMasterScoreboard(year, month, day)
     gamesNode = masterScoreboardDOM.getElementsByTagName("games")[0]
@@ -228,24 +229,20 @@ class BoxscoreHandler(webapp.RequestHandler):
             boxscore = xml_helper.buildBoxscore(boxscoreNode)
         games.append(game)
 
+    template = "boxscore.html"
     template_values = {
       'gid': gid,
       'gameday': gameday,
       'games': games,
       'game': selectedGame,
       'boxscore': boxscore,
-      'lastUpdate': lastUpdate.strftime("%m/%d %I:%M:%S %p"),
       'prevDay': prevDay,
       'selDay': selDay,
-      'today': today,
-      'nextDay': nextDay,
-      'r': refresh,
-      't': refreshTime
+      'nextDay': nextDay
     }
 
-    path = os.path.join(os.path.dirname(__file__), 'html/boxscore.html')
-    self.response.out.write(template.render(path, template_values))
-
+    self.generate(template, template_values)
+    
 class PlayByPlayHandler(webapp.RequestHandler):
   def get(self):
     refresh = self.request.get('r')
@@ -467,11 +464,39 @@ class CalHandler(webapp.RequestHandler):
     path = os.path.join(os.path.dirname(__file__), 'html/calendar2009.html')
     self.response.out.write(template.render(path, template_values))
 
+class CalendarHandler(webapp.RequestHandler):
+  def get(self):
+    year = self.request.get('y')
+    
+    if year == "":
+      year = datetime.today().year 
+    
+    today = datetime.today() - timedelta(hours=6)
+    prevDay = today - timedelta(days=1)
+    nextDay = today + timedelta(days=1)
+
+    yearList = ["2009", "2008", "2007"]
+
+    template_values = {
+      'prevDay': prevDay,
+      'selDay': today,
+      'today': today,
+      'nextDay': nextDay,
+      'year' : year,
+      'yearList' : yearList
+    }
+
+    path = os.path.join(os.path.dirname(__file__), 'html/calendar.html')
+    self.response.out.write(template.render(path, template_values))
+
+
 def main():
-  application = webapp.WSGIApplication([('/', ScoreboardPage),
+  application = webapp.WSGIApplication([('/', LiveScoreboardPage),
+                                        ('/scoreboard', PastScoreboardHandler),
+                                        ('/preferences', PreferencesPage),
+                                        ('/savePreferences', SavePreferences),
                                         ('/calendar', CalendarHandler),
                                         ('/cal', CalHandler),
-                                        ('/scoreboard', MasterScoreboardHandler),
                                         ('/boxscore', BoxscoreHandler),
                                         ('/playbyplay', PlayByPlayHandler),
                                         ('/pitchbypitch', PitchByPitchHandler),

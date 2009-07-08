@@ -37,8 +37,8 @@
 			    <br />
 				<div class="inning-wrapper">
 				{% for inning in innings %}
+					<div class="{{game.away_code}} half-inning-hdr">{{game.away_team_city}} - Top of {{inning.num}}</div>
 					<div class="half-inning">
-						<div class="{{game.away_code}} half-inning-hdr">{{game.away_team_city}} - Top of {{inning.num}}</div>
 					{% for event in inning.top_atbats %}
 				      	{% if forloop.counter0|divisibleby:"2" %}
 				        	<div class="event-odd">
@@ -53,8 +53,8 @@
 							</div>
 					{% endfor %}
 					</div><!-- end half inning -->
+					<div class="{{game.home_code}} half-inning-hdr">{{game.home_team_city}} - Bottom of {{inning.num}}</div>
 					<div class="half-inning">
-						<div class="{{game.home_code}} half-inning-hdr">{{game.home_team_city}} - Bottom of {{inning.num}}</div>
 					{% for event in inning.bottom_atbats %}
 				      	{% if forloop.counter0|divisibleby:"2" %}
 				        	<div class="event-odd">
@@ -78,6 +78,7 @@
 	{% include "navbar-playbyplay.html" %}
 </div><!-- end page -->
 {% include "footer.html" %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript" src="/js/core.js"></script>
 </body>
 </html>

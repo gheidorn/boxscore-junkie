@@ -57,7 +57,15 @@
     <th>E</th>
   </tr>
   <tr>
-    <td class="team">{{game.away_team_name}}</td>
+    <td class="team
+    
+{% for t in teamsToTrack %}
+	{% ifequal t game.away_code %}
+		tracked
+	{% endifequal %}
+{% endfor %}
+    
+    ">{{game.away_team_name}}</td>
   {% for inning in game.linescore.innings %}
     <td>
     {% ifequal inning.away "" %}
@@ -108,7 +116,15 @@
     <td> {{ game.linescore.e.away }}</td>
   </tr>
   <tr>
-    <td class="team">{{game.home_team_name}}</td>
+    <td class="team
+    
+{% for t in teamsToTrack %}
+	{% ifequal t game.home_code %}
+		tracked
+	{% endifequal %}
+{% endfor %}
+    
+    ">{{game.home_team_name}}</td>
   {% for inning in game.linescore.innings %}
     <td>
     {% ifequal inning.home "" %}
