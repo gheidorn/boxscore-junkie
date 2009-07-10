@@ -6,7 +6,7 @@ There is an assumed format that gets tweaked now and then as new stats are popul
 == What is a Scoreboard? ==
 The scoreboard refers to the game scores across the Major Leagues for a given day.
 
-== How is the Scoreboard laid out? ==
+== Scoreboard XML ==
 Here is a skeleton identifying each of the nodes in this schema.
 {{{
 <games>
@@ -30,6 +30,9 @@ Here is a skeleton identifying each of the nodes in this schema.
 And a sample game fleshed out from June 20th, 2009:
 
 {{{
+
+http://gd2.mlb.com/components/game/mlb/year_2009/month_06/day_20/master_scoreboard.xml
+
 <game id="2009/06/20/clemlb-chnmlb-1" ampm="PM" venue="Wrigley Field" game_pk="245214" time="1:05" time_zone="ET" game_type="R" resume_date="" 
   away_name_abbrev="CLE" home_name_abbrev="CHC" away_code="cle" away_file_code="cle" away_team_id="114" away_team_city="Cleveland" away_team_name="Indians" 
   away_division="C" away_league_id="103" away_sport_code="mlb" home_code="chn" home_file_code="chc" home_team_id="112" home_team_city="Chi Cubs" 
@@ -74,12 +77,220 @@ And a sample game fleshed out from June 20th, 2009:
 </game>
 }}}
 
-=== Sample URL ===
+=== Scoreboard JSON ===
 {{{
-http://gd2.mlb.com/components/game/mlb/year_2009/month_06/day_20/master_scoreboard.xml
-http://gd2.mlb.com/components/game/mlb/year_2009/month_06/day_20/master_scoreboard.json
-}}}
 
+http://gd2.mlb.com/components/game/mlb/year_2009/month_06/day_20/master_scoreboard.json
+
+        {
+            "game_type": "R",
+            "game_media": {"media": {
+                "title": "CLE @ CHC",
+                "media_state": "media_archive",
+                "start": "2009-06-20T13:05:00-0400",
+                "calendar_event_id": "14-245214-2009-06-20",
+                "type": "game"
+            }},
+            "away_games_back_wildcard": "9.0",
+            "linescore": {
+                "e": {
+                    "home": "0",
+                    "away": "2"
+                },
+                "r": {
+                    "home": "6",
+                    "away": "5",
+                    "diff": "1"
+                },
+                "inning": [
+                    {
+                        "home": "0",
+                        "away": "1"
+                    },
+                    {
+                        "home": "0",
+                        "away": "0"
+                    },
+                    {
+                        "home": "0",
+                        "away": "0"
+                    },
+                    {
+                        "home": "0",
+                        "away": "0"
+                    },
+                    {
+                        "home": "2",
+                        "away": "1"
+                    },
+                    {
+                        "home": "2",
+                        "away": "1"
+                    },
+                    {
+                        "home": "0",
+                        "away": "1"
+                    },
+                    {
+                        "home": "0",
+                        "away": "0"
+                    },
+                    {
+                        "home": "0",
+                        "away": "0"
+                    },
+                    {
+                        "home": "0",
+                        "away": "0"
+                    },
+                    {
+                        "home": "0",
+                        "away": "0"
+                    },
+                    {
+                        "home": "0",
+                        "away": "0"
+                    },
+                    {
+                        "home": "2",
+                        "away": "1"
+                    }
+                ],
+                "h": {
+                    "home": "12",
+                    "away": "10"
+                }
+            },
+            "venue_w_chan_loc": "USIL0225",
+            "away_team_name": "Indians",
+            "home_runs": {"player": [
+                {
+                    "std_hr": "3",
+                    "hr": "1",
+                    "id": "425509",
+                    "last": "Peralta",
+                    "team_code": "cle",
+                    "inning": "6",
+                    "runners": "0",
+                    "number": "2",
+                    "first": "Jhonny"
+                },
+                {
+                    "std_hr": "11",
+                    "hr": "1",
+                    "id": "117601",
+                    "last": "Lee",
+                    "team_code": "chn",
+                    "inning": "5",
+                    "runners": "1",
+                    "number": "25",
+                    "first": "Derrek"
+                },
+                {
+                    "std_hr": "4",
+                    "hr": "2",
+                    "id": "472528",
+                    "last": "Valbuena",
+                    "team_code": "cle",
+                    "inning": "13",
+                    "runners": "0",
+                    "number": "1",
+                    "first": "Luis"
+                },
+                {
+                    "std_hr": "5",
+                    "hr": "1",
+                    "id": "451687",
+                    "last": "Hoffpauir",
+                    "team_code": "chn",
+                    "inning": "6",
+                    "runners": "1",
+                    "number": "6",
+                    "first": "Micah"
+                }
+            ]},
+            "home_name_abbrev": "CHC",
+            "id": "2009/06/20/clemlb-chnmlb-1",
+            "time": "1:05",
+            "ampm": "PM",
+            "home_team_name": "Cubs",
+            "home_division": "C",
+            "home_team_city": "Chi Cubs",
+            "gameday_sw": "E",
+            "away_win": "29",
+            "home_games_back_wildcard": "2.5",
+            "save_pitcher": {
+                "id": "",
+                "last": "",
+                "saves": "0",
+                "losses": "0",
+                "era": "0",
+                "number": "",
+                "first": "",
+                "wins": "0"
+            },
+            "away_team_id": "114",
+            "status": {
+                "top_inning": "N",
+                "s": "0",
+                "b": "0",
+                "reason": "",
+                "ind": "F",
+                "status": "Final",
+                "o": "1",
+                "inning": "13"
+            },
+            "home_loss": "31",
+            "home_games_back": "3.5",
+            "home_code": "chn",
+            "home_sport_code": "mlb",
+            "away_sport_code": "mlb",
+            "home_win": "33",
+            "links": {
+                "wrapup": "javascript:void(launchGameday({gid:'2009_06_20_clemlb_chnmlb_1',mode:'wrap',lurl:'/news/wrap.jsp?ymd=20090620&content_id=5433024&vkey=wrapup2005&fext=.jsp&c_id=mlb'}))",
+                "preview": "",
+                "home_preview": "javascript:void(launchGameday({gid:'2009_06_20_clemlb_chnmlb_1',mode:'preview',lurl:'/news/article.jsp?ymd=20090619&content_id=5414850&vkey=news_chc&fext=.jsp&c_id=chc'}))",
+                "away_preview": "javascript:void(launchGameday({gid:'2009_06_20_clemlb_chnmlb_1',mode:'preview',lurl:'/news/article.jsp?ymd=20090619&content_id=5414838&vkey=news_cle&fext=.jsp&c_id=cle'}))",
+                "tv_station": "WGN"
+            },
+            "game_pk": "245214",
+            "away_name_abbrev": "CLE",
+            "league": "AN",
+            "venue": "Wrigley Field",
+            "away_games_back": "10.0",
+            "home_file_code": "chc",
+            "home_league_id": "104",
+            "away_loss": "41",
+            "time_zone": "ET",
+            "away_league_id": "103",
+            "resume_date": "",
+            "away_file_code": "cle",
+            "losing_pitcher": {
+                "id": "134268",
+                "last": "Wood",
+                "losses": "3",
+                "era": "5.47",
+                "number": "34",
+                "first": "Kerry",
+                "wins": "2"
+            },
+            "home_team_id": "112",
+            "day": "SAT",
+            "away_team_city": "Cleveland",
+            "away_code": "cle",
+            "winning_pitcher": {
+                "id": "456029",
+                "last": "Patton",
+                "losses": "1",
+                "era": "5.75",
+                "number": "54",
+                "first": "David",
+                "wins": "3"
+            },
+            "gameday": "2009_06_20_clemlb_chnmlb_1",
+            "away_division": "C"
+        }
+}}}
 
 == Copyright Information ==
 The accounts, descriptions, data and presentation in the referring page (the "Materials") are proprietary content of MLB Advanced Media, L.P ("MLBAM").
