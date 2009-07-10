@@ -67,7 +67,7 @@ And a sample game fleshed out from June 20th, 2009:
   <links wrapup="javascript:void(launchGameday({gid:'2009_06_20_clemlb_chnmlb_1',mode:'wrap',lurl:'/news/wrap.jsp?ymd=20090620&content_id=5433024&vkey=wrapup2005&fext=.jsp&c_id=mlb'}))" 
     home_preview="javascript:void(launchGameday({gid:'2009_06_20_clemlb_chnmlb_1',mode:'preview',lurl:'/news/article.jsp?ymd=20090619&content_id=5414850&vkey=news_chc&fext=.jsp&c_id=chc'}))" 
     away_preview="javascript:void(launchGameday({gid:'2009_06_20_clemlb_chnmlb_1',mode:'preview',lurl:'/news/article.jsp?ymd=20090619&content_id=5414838&vkey=news_cle&fext=.jsp&c_id=cle'}))" 
-  preview="" tv_station="WGN"/>
+    preview="" tv_station="WGN"/>
   <game_media>
     <media type="game" calendar_event_id="14-245214-2009-06-20" start="2009-06-20T13:05:00-0400" title="CLE @ CHC" media_state="media_archive"/>
   </game_media>
