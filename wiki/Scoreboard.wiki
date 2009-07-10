@@ -1,4 +1,3 @@
-=The Master Scoreboard=
 #summary Interpretation of the RESTful XML behind the Scoreboard
 
 == Introduction ==
