@@ -1,9 +1,8 @@
 #summary Interpretation of the RESTful XML behind the Scoreboard
 
-= Introduction =
+= Scoreboard =
 
-As it stands, MLB Advanced Media
-
+The scoreboard refers to the game scores across the Major Leagues for a given day.  There is an assumed format that gets tweaked now and then as new stats are popularized, such as On-Base Percentage (OBP) and On-Base Plus Slugging (OPS) in recent years.  This page describes that general "human-readable" format and then the XML/JSON formats provided by MLBAM.
 
 = Details =
 
@@ -11,6 +10,7 @@ As it stands, MLB Advanced Media
 === Sample URL ===
 {{{
 http://gd2.mlb.com/components/game/mlb/year_2009/month_06/day_20/master_scoreboard.xml
+http://gd2.mlb.com/components/game/mlb/year_2009/month_06/day_20/master_scoreboard.json
 }}}
 
 
