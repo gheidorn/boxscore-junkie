@@ -27,7 +27,7 @@ Here is a skeleton identifying each of the nodes in this schema.
       <media>
 }}}
 
-And a sample game fleshed out from June 20th, 2009:
+And a sample game fleshed out from June 20th, 2009.
 
 {{{
 
@@ -78,6 +78,7 @@ http://gd2.mlb.com/components/game/mlb/year_2009/month_06/day_20/master_scoreboa
 }}}
 
 === Scoreboard JSON ===
+Here is the same game represented in JSON.
 {{{
 
 http://gd2.mlb.com/components/game/mlb/year_2009/month_06/day_20/master_scoreboard.json
