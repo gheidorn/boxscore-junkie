@@ -9,10 +9,7 @@ The boxscore refers to the statistics recorded for a particular game.  Usually t
 == Boxscore XML ==
 If you are better versed in reading XSDs, here is the [http://boxscore-junkie.googlecode.com/files/boxscore.xsd Boxscore XSD] I reverse-engineered using Castor.
 
-=== Boxscore JSON ===
-Here is the same game represented in JSON.
-{{{
-}}}
+XML sample TBD.
 
 == Copyright Information ==
 The accounts, descriptions, data and presentation in the referring page (the "Materials") are proprietary content of MLB Advanced Media, L.P ("MLBAM").
