@@ -1,11 +1,31 @@
 #summary Interpretation of the RESTful XML behind the Scoreboard
 
-= Scoreboard =
+== Introduction ==
+There is an assumed format that gets tweaked now and then as new stats are popularized, such as On-Base Percentage (OBP) and On-Base Plus Slugging (OPS) in recent years.  This page describes that general "human-readable" format and then the XML/JSON formats provided by MLBAM for the Scoreboard.
 
-The scoreboard refers to the game scores across the Major Leagues for a given day.  There is an assumed format that gets tweaked now and then as new stats are popularized, such as On-Base Percentage (OBP) and On-Base Plus Slugging (OPS) in recent years.  This page describes that general "human-readable" format and then the XML/JSON formats provided by MLBAM.
+== What is a Scoreboard? ==
+The scoreboard refers to the game scores across the Major Leagues for a given day.
 
-= Details =
-
+== How is the Scoreboard laid out? ==
+Here is a skeleton identifying each of the nodes in this schema.
+{{{
+<games>
+  <game>
+    <status>
+    <linescore>
+      <inning>
+      <r>
+      <h>
+      <e>
+    <homeruns>
+      <player>
+    <winning_pitcher>
+    <losing_pitcher>
+    <save_pitcher>
+    <links>
+    <game_media>
+      <media>
+}}}
 
 === Sample URL ===
 {{{
