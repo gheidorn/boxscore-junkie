@@ -7,6 +7,8 @@ There is an assumed format that gets tweaked now and then as new stats are popul
 The scoreboard refers to the game scores across the Major Leagues for a given day.
 
 == Scoreboard XML ==
+If you are better versed in reading XSDs, here is the [http://boxscore-junkie.googlecode.com/files/scoreboard.xsd Master Scoreboard XSD] I reverse-engineered using Castor.
+
 Here is a skeleton identifying each of the nodes in this schema.
 {{{
 <games>
