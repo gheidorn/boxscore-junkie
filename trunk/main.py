@@ -130,21 +130,25 @@ class LiveScoreboardPage(BaseRequestHandler):
     if masterScoreboardDOM is None:
       template = "no-games-today.html"
     else:
-      template = "scoreboard.html"
       gamesNode = masterScoreboardDOM.getElementsByTagName("games")[0]
 
-      # build the day's GameDay object
-      gameday = xml_helper.buildGameDay(gamesNode)
-      gameday.yesterday_date = date(int(gameday.year), int(gameday.month), int(gameday.day)) - timedelta(days=1)
+      if gamesNode.childNodes.length == 0:
+        template = "no-games-today.html"
+      else:
+        template = "scoreboard.html"
 
-      # build an array of the day's games
-      games = []
-      for node in gamesNode.childNodes:
-        if node.nodeType == node.ELEMENT_NODE:
-          games.append(xml_helper.buildGame(node))
+        # build the day's GameDay object
+        gameday = xml_helper.buildGameDay(gamesNode)
+        gameday.yesterday_date = date(int(gameday.year), int(gameday.month), int(gameday.day)) - timedelta(days=1)
 
-      template_values['gameday'] = gameday
-      template_values['games'] = games
+        # build an array of the day's games
+        games = []
+        for node in gamesNode.childNodes:
+          if node.nodeType == node.ELEMENT_NODE:
+            games.append(xml_helper.buildGame(node))
+
+        template_values['gameday'] = gameday
+        template_values['games'] = games
 
     self.generate(template, template_values)
 
@@ -176,21 +180,25 @@ class PastScoreboardHandler(BaseRequestHandler):
     if masterScoreboardDOM is None:
       template = "no-games-today.html"
     else:
-      template = "scoreboard.html"
       gamesNode = masterScoreboardDOM.getElementsByTagName("games")[0]
 
-      # build the day's GameDay object
-      gameday = xml_helper.buildGameDay(gamesNode)
-      gameday.yesterday_date = date(int(gameday.year), int(gameday.month), int(gameday.day)) - timedelta(days=1)
+      if gamesNode.childNodes.length == 0:
+        template = "no-games-today.html"
+      else:
+        template = "scoreboard.html"
 
-      # build an array of the day's games
-      games = []
-      for node in gamesNode.childNodes:
-        if node.nodeType == node.ELEMENT_NODE:
-          games.append(xml_helper.buildGame(node))
+        # build the day's GameDay object
+        gameday = xml_helper.buildGameDay(gamesNode)
+        gameday.yesterday_date = date(int(gameday.year), int(gameday.month), int(gameday.day)) - timedelta(days=1)
 
-      template_values['gameday'] = gameday
-      template_values['games'] = games
+        # build an array of the day's games
+        games = []
+        for node in gamesNode.childNodes:
+          if node.nodeType == node.ELEMENT_NODE:
+            games.append(xml_helper.buildGame(node))
+
+        template_values['gameday'] = gameday
+        template_values['games'] = games
 
     self.generate(template, template_values)
 
