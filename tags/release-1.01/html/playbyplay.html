@@ -1,0 +1,84 @@
+<!-- playbyplay.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Boxscore Junkie : Play-By-Play</title>
+  {% ifequal r "on" %}
+    <meta http-equiv="refresh" content="{{t}}" />
+  {% endifequal %}
+  <link rel="stylesheet" type="text/css" href="/css/core.css" />
+</head>
+<body onload="initPage({{selDay.year}},{{selDay.month}},{{selDay.day}})">
+<div id="page">
+	{% include "header.html" %}
+	{% include "navbar-playbyplay.html" %}
+	<div id="content">
+		<div id="game-menu">
+	    	{% include "game-menu.html" %}
+	  	</div>
+	    <!-- tabs -->
+		<div class="tabs">
+			<a class="tab" href="boxscore?gid={{game.gameday}}"><span>Boxscore</span></a>
+			<a class="tab selected" href="/playbyplay?gid={{game.gameday}}"><span>Play-by-Play</span></a>
+			<a class="tab" href="/pitchbypitch?gid={{game.gameday}}"><span>Pitch-by-Pitch</span></a> 
+			<a class="tab" href="/highlights?gid={{game.gameday}}"><span>Highlights</span></a>
+		</div>
+	  	<div id="game-detail">
+			<div id="playbyplay" class="tab-content">
+			    {% ifequal game.game_status.ind "O" %}
+			      {% include "boxscore-linescore-final.html" %}
+			    {% endifequal %}
+			    {% ifequal game.game_status.ind "F" %}
+			      {% include "boxscore-linescore-final.html" %}
+			    {% endifequal %}
+			    {% ifequal game.game_status.ind "I" %}
+			      {% include "boxscore-linescore-inprogress.html" %}
+			    {% endifequal %}
+			    <br />
+				<div class="inning-wrapper">
+				{% for inning in innings %}
+					<div class="{{game.away_code}} half-inning-hdr">{{game.away_team_city}} - Top of {{inning.num}}</div>
+					<div class="half-inning">
+					{% for event in inning.top_atbats %}
+				      	{% if forloop.counter0|divisibleby:"2" %}
+				        	<div class="event-odd">
+				      	{% else %}
+				        	<div class="event-even">
+				      	{% endif %}
+					      	{% if event.score %}
+					        	<span style="color: green;font-weight:bold;">{{event.des}}</span>
+					      	{% else %}
+					        	{{event.des}}
+					      	{% endif %}
+							</div>
+					{% endfor %}
+					</div><!-- end half inning -->
+					<div class="{{game.home_code}} half-inning-hdr">{{game.home_team_city}} - Bottom of {{inning.num}}</div>
+					<div class="half-inning">
+					{% for event in inning.bottom_atbats %}
+				      	{% if forloop.counter0|divisibleby:"2" %}
+				        	<div class="event-odd">
+				      	{% else %}
+				        	<div class="event-even">
+				      	{% endif %}
+							{% if event.score %}
+				          		<span style="color: green;font-weight:bold;">{{event.des}}</span>
+				        	{% else %}
+				          		{{event.des}}
+				        	{% endif %}
+							</div>
+					{% endfor %}
+					</div><!-- end half inning -->
+				{% endfor %}
+				</div>
+			</div><!-- end tab-content -->
+		</div><!-- end game-detail -->
+		<div class="fix"></div>
+	</div><!-- end content -->
+	{% include "navbar-playbyplay.html" %}
+</div><!-- end page -->
+{% include "footer.html" %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/js/core.js"></script>
+</body>
+</html>

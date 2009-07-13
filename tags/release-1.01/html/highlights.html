@@ -1,0 +1,77 @@
+<!-- highlights.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Boxscore Junkie : Highlights</title>
+  {% ifequal r "on" %}
+    <meta http-equiv="refresh" content="{{t}}" />
+  {% endifequal %}
+  <link rel="stylesheet" type="text/css" href="/css/core.css" />
+</head>
+<body onload="initPage({{selDay.year}},{{selDay.month}},{{selDay.day}})">
+<div id="page">
+	{% include "header.html" %}
+	{% include "navbar-highlights.html" %}
+	<div id="content">
+  		<div id="game-menu">
+    		{% include "game-menu.html" %}
+  		</div>
+	    <!-- tabs -->
+		<div class="tabs">
+			<a class="tab" href="/boxscore?gid={{game.gameday}}"><span>Boxscore</span></a>
+			<a class="tab" href="/playbyplay?gid={{game.gameday}}"><span>Play-by-Play</span></a>
+			<a class="tab" href="/pitchbypitch?gid={{game.gameday}}"><span>Pitch-by-Pitch</span></a> 
+			<a class="tab selected" href="/highlights?gid={{game.gameday}}"><span>Highlights</span></a>
+		</div>
+		<div id="game-detail">
+			<div id="highlights" class="tab-content">
+			    {% ifequal game.game_status.ind "O" %}
+			      {% include "boxscore-linescore-final.html" %}
+			    {% endifequal %}
+			    {% ifequal game.game_status.ind "F" %}
+			      {% include "boxscore-linescore-final.html" %}
+			    {% endifequal %}
+			    {% ifequal game.game_status.ind "FT" %}
+			      {% include "boxscore-linescore-final.html" %}<!-- final-tied -->
+			    {% endifequal %}
+			    {% ifequal game.game_status.ind "I" %}
+			      {% include "boxscore-linescore-inprogress.html" %}
+			    {% endifequal %}
+    
+    			<div id="multimedia">
+    				<select id="highlightSelect" onchange="showHighlight()">
+    				{% for media in highlights.medias %}
+        				<option value="highlight{{forloop.counter}}">{{media.headline}}</option>
+    				{% endfor %}
+  					</select>
+    
+				    <div id="highlightContainer">
+				      {% for media in highlights.medias %}
+				      <div id="highlight{{forloop.counter}}" class="highlight" {% if forloop.first %}style="display: visible;"{% else %}style="display: none;"{% endif %}>
+				          {% for mediaUrl in media.urls %}
+				            {% ifequal mediaUrl.playback_scenario "MLB_FLASH_400K_PROGDNLD" %}
+				            	<embed 
+				            		src="/flash/player.swf" 
+				            		width="580" 
+				            		height="400"
+				            		allowscriptaccess="always" 
+				            		allowfullscreen="true" 
+				            		flashvars="width=580&amp;height=400&amp;file={{mediaUrl.url}}"
+				            	/>
+
+				              {% endifequal %}
+				            {% endfor %}
+				      </div>
+				      {% endfor %}
+				    </div>
+    			</div> <!-- end multimedia -->
+			</div><!-- highlights -->
+    	</div><!-- end game detail -->
+    	<div class="fix"></div>
+    </div><!-- end content -->
+	{% include "navbar-highlights.html" %}
+</div><!-- end page -->
+{% include "footer.html" %}
+<script type="text/javascript" src="/js/core.js"></script>
+</body>
+</html>

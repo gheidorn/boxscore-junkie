@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Boxscore Junkie : Scoreboard for {{selDay.month}}/{{selDay.day}}/{{selDay.year}}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" type="text/css" href="/css/core.css" />
+</head>
+<body>
+<div id="page">
+	{% include "header.html" %}
+	{% include "navbar-scoreboard.html" %}
+	<div id="content">
+		<div style="padding: 20px;">
+	    <h1>No Games Today</h1>
+		<p>Check the calendar to find the games your are looking for.</p>
+		</div>
+  	</div>
+	{% include "navbar-scoreboard.html" %}
+</div><!-- end page -->
+{% include "footer.html" %}
+</body>
+</html>

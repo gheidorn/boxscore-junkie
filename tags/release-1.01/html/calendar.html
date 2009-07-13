@@ -1,0 +1,49 @@
+<!-- calendar.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title>Boxscore Junkie : {{today.year}} MLB Calendar</title>
+  <link rel="stylesheet" type="text/css" href="/css/core.css" />
+  <script type="text/javascript">
+  var CALENDAR_YEAR = {{year}};
+  </script>
+</head>
+<body onload="initPage({{selDay.year}},{{selDay.month}},{{selDay.day}})">
+<div id="page">
+	{% include "header.html" %}
+	{% include "navbar-scoreboard.html" %}
+	<div id="content">
+		<form action="calendar" method="get">
+			<label>MLB Calendar:</label>
+			<select id="mlbCalendarYear" name="y" onchange="javascript: form.submit();">
+		    {%  for x in yearList %}
+		        {% ifequal x year %}
+		        <option value="{{x}}" selected>{{x}}</option>
+		        {% else %}
+		        <option value="{{x}}">{{x}}</option>
+		        {% endifequal %}
+		    {%  endfor %}
+			</select>
+		</form>
+    	<table class="calendar-holder">
+    		<tr>
+    			<td><div id="month3"></div></td>
+    			<td><div id="month4"></div></td>
+    			<td><div id="month5"></div></td>
+    			<td><div id="month6"></div></td>
+    		</tr>
+    		<tr>
+			    <td><div id="month7"></div></td>
+			    <td><div id="month8"></div></td>
+			    <td><div id="month9"></div></td>
+			    <td><div id="month10"></div></td>
+    		</tr>
+    	</table>
+	</div>
+</div>
+{% include "navbar-scoreboard.html" %}
+{% include "footer.html" %}
+<script type="text/javascript" src="/js/core.js"></script>
+<script type="text/javascript" src="/js/calendar.js"></script>
+</body>
+</html>

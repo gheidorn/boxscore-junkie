@@ -1,0 +1,43 @@
+application: boxscore-junkie
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /favicon.ico
+  static_files: img/favicon.ico
+  upload: img/favicon.ico
+
+- url: /css
+  static_dir: css
+
+- url: /flash
+  static_dir: flash
+
+- url: /js
+  static_dir: js
+
+- url: /img
+  static_dir: img
+
+- url: /faq.html
+  static_files: html/faq.html
+  upload: html/faq.html
+
+- url: (/|/calendar|/cal|/scoreboard|/boxscore|/playbyplay|/pitchbypitch|/pitcherpbp|/batterpbp|/highlights|/login|/preferences|/savePreferences)
+  script: main.py
+
+- url: /fetch/.*
+  script: fetch.py
+
+- url: /data/team/.*
+  script: db_admin.py
+
+- url: /data/player/.*
+  script: db_player.py
+
+- url: /load
+  script: day_loader.py
+  
+- url: /*
+  script: not_found.py

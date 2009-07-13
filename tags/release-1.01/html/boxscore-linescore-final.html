@@ -1,0 +1,42 @@
+<!-- boxscore-linescore-final.html -->
+<div class="linescore">
+	<table cellspacing="0">
+  		<tr>
+    		<th class="final">{{ game.game_status.status}}</th>
+		  {% for inning in game.linescore.innings %}
+		    <th>{{forloop.counter}}</th>
+		  {% endfor %}
+		    <th>R</th>
+		    <th>H</th>
+		    <th>E</th>
+		</tr>
+		<tr>
+			<th class="team">{{game.away_team_name}} ({{game.away_win}}-{{game.away_loss}})</th>
+  		{% for inning in game.linescore.innings %}
+    		<td>{{inning.away}}</td>
+  		{% endfor %}
+    		<td class="rhe"> {{ game.linescore.r.away }}</td>
+			<td> {{ game.linescore.h.away }}</td>
+			<td> {{ game.linescore.e.away }}</td>
+  		</tr>
+  		<tr>
+    		<th class="team">{{game.home_team_name}} ({{game.home_win}}-{{game.home_loss}})</th>
+  		{% for inning in game.linescore.innings %}
+			{% if inning.home %}
+      			<td>{{inning.home}}</td>
+    		{% else %}
+      			<td>x</td>
+    		{% endif %}
+  		{% endfor %}
+		    <td class="rhe">{{ game.linescore.r.home }}</td>
+		    <td>{{ game.linescore.h.home }}</td>
+		    <td>{{ game.linescore.e.home }}</td>
+  		</tr>
+	</table>
+</div>
+<div class="decisions">
+	<strong>W:</strong> {{game.winning_pitcher.last}} ({{game.winning_pitcher.wins}}-{{game.winning_pitcher.losses}}) <strong>L:</strong> {{game.losing_pitcher.last}} ({{game.losing_pitcher.wins}}-{{game.losing_pitcher.losses}})
+   {% ifnotequal game.save_pitcher.saves "0" %}
+       <strong>S:</strong> {{game.save_pitcher.last}} ({{game.save_pitcher.saves}})
+   {% endifnotequal %}
+</div>

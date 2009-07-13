@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Boxscore Junkie : F.A.Q.</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" type="text/css" href="/css/core.css" />
+</head>
+<body>
+<div id="page">
+	<div id="header">
+	  <div class="left">
+	    <h1><a href="/">Boxscore Junkie</a></h1>
+	  </div>
+	  <div class="right">
+	    <h2>an MLB fan site with real-time scores &amp; stats</h2>
+	  </div>
+	  <div class="fix"></div>
+	</div>
+	<div class="navbar">
+		<div class="inner">
+	    	<div class="left"><a href="/">< Back to the scoreboard...</a></div>
+			<div class="right">&nbsp;</div>
+			<div class="fix"></div>
+	 	</div>
+	</div>
+	<div id="content">
+  		<div class="text-content">
+		    <h1>Frequently Asked Questions</h1>
+		    <!-- 
+		    <ul>
+			    <li><a href="#q1">What is the point of Boxscore Junkie?</a></li>
+			    <li><a href="#q2">Where did you get the idea for the site?</a></li>
+			    <li><a href="#q3">How does the site work?</a></li>
+			    <li><a href="#q4">What technologies were used to build the application?</a></li>
+		    </ul>
+		    -->
+		    <!-- <a name="q1" /> -->
+		    <h5>What is the point of Boxscore Junkie?</h5>
+		    <p>The point is to have a quick and clean look at live MLB action.  I don't know the inner workings of ESPN.com or CBSSportsline.com, but it just feels like their live boxscores are just a touch slow.  They have to pad their pages with ads and they present lots of other data to cross market the rest of the sports world, not to mention their own website.  They've tried to implement AJAX to allow refreshes to occur as frequently as possible, but it still felt slow.  After discovering the real-time data source, I had to try my hand at creating a live game site to see if I can make it faster.</p>
+		    <p>My next task is to record all of this data for my own analysis and to create tools for people to use to make their own judgements about players.  This is really for hardcore fans that like looking at stats to determine trends, understand strengths and weaknesses of players, and go a bit deeper than what a traditional boxscore will provide.</p>
+		    <!-- <a name="q2" /> -->
+		    <h5>Where did you get the idea for the site?</h5>
+		    <p>I was inspired by the use of Sportvision's Pitch f/x system, which has been implemented in MLB to track pitch data regarding location and movement.  As a monster baseball fan and a web developer, I was drawn to the possibilities of creating a site to utilize this information.  As I was discovering how the Pitch f/x data was recorded and what it meant through blogs and baseball sites, <!--(see <a href="/credits.html">credits</a>)--> Google released their App Engine product where anyone could create an application and host it using their service.  I always look for new things to learn, so I decided to teach myself Python and create a basic site leveraging this real-time data being generated about my favorite sport.</p>
+		    <!-- <a name="q3" /> -->
+		    <h5>How does the site work?</h5>
+		    <p>This site retrieves XML data from a <a href="http://gd2.mlb.com/components/game/mlb/">MLB domain</a> which is basically acting as a simple web service.  The application marshalls and unmarshalls the XML into objects and formats the object data into HTML templates.  The key here is that the data is updated very frequently, so the application allows you to set various refresh rates so you can watch all the MLB games at once, or follow a particular game.</p>
+		    <!-- <a name="q4" /> -->
+		    <h5>What technologies run Boxscore Junkie?</h5>
+  			<p>Boxscore Junkie is hosted through the <a href="http://code.google.com/appengine/docs/whatisgoogleappengine.html" target="_top">Google App Engine (GAE)</a> and uses Python libraries, some Google APIs, and Django Templates.</p>
+  		</div>
+  	</div>
+	<div class="navbar">
+		<div class="inner">
+	    	<div class="left"><a href="/">< Back to the scoreboard...</a></div>
+			<div class="right">&nbsp;</div>
+			<div class="fix"></div>
+	 	</div>
+	</div>
+</div><!-- end page -->
+<div id="footer">
+  <div class="inner">
+  		<div class="left">
+      		<p>
+        		MLB data scraped from <a href="http://en.wikipedia.org/wiki/MLBAM">MLB Advanced Media</a>.<br />
+        		MLB teams and players are &copy; and owned by MLB and the MLBPA.<br />
+        		All other work on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.<br />
+        		Source code hosted Google Code in the <a href="http://code.google.com/p/boxscore-junkie/">Boxscore-Junkie project</a>.  <a href="/faq.html">Questions?  Here's an FAQ.</a>
+      		</p>
+     	</div>
+     	<div class="right">
+			<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="/img/somerights20.png" /></a>
+		</div>
+		<div class="fix"></div>
+	</div>
+</div>
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+	var pageTracker = _gat._getTracker("UA-3089274-8");
+	pageTracker._initData();
+	pageTracker._trackPageview();
+</script>
+</body>
+</html>
