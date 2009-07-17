@@ -1,0 +1,39 @@
+<!-- standings.html -->
+<div id="standings">
+	<table cellspacing="0" class="al">
+		<tr><th>East</th><th>W</th><th>L</th><th>GB</th></tr>
+	{% for team in standings.al.e.teams %}
+		<tr><td class="name">{{ team.code }}</td><td>{{ team.wins }}</td><td>{{ team.losses }}</td><td>{{ team.gb }}</td></tr>
+	{% endfor %}
+	</table>
+	<table cellspacing="0" class="al">
+		<tr><th>Central</th><th>W</th><th>L</th><th>GB</th></tr>
+	{% for team in standings.al.c.teams %}
+		<tr><td class="name">{{ team.code }}</td><td>{{ team.wins }}</td><td>{{ team.losses }}</td><td>{{ team.gb }}</td></tr>
+	{% endfor %}
+	</table>
+	<table cellspacing="0" class="al">
+		<tr><th>West</th><th>W</th><th>L</th><th>GB</th></tr>
+	{% for team in standings.al.w.teams %}
+		<tr><td class="name">{{ team.code }}</td><td>{{ team.wins }}</td><td>{{ team.losses }}</td><td>{{ team.gb }}</td></tr>
+	{% endfor %}
+	</table>
+	<table cellspacing="0" class="nl">
+		<tr><th>East</th><th>W</th><th>L</th><th>GB</th></tr>
+	{% for team in standings.nl.e.teams %}
+		<tr><td class="name">{{ team.code }}</td><td>{{ team.wins }}</td><td>{{ team.losses }}</td><td>{{ team.gb }}</td></tr>
+	{% endfor %}
+	</table>
+	<table cellspacing="0" class="nl">
+		<tr><th>Central</th><th>W</th><th>L</th><th>GB</th></tr>
+	{% for team in standings.nl.c.teams %}
+		<tr><td class="name">{{ team.code }}</td><td>{{ team.wins }}</td><td>{{ team.losses }}</td><td>{{ team.gb }}</td></tr>
+	{% endfor %}
+	</table>
+	<table cellspacing="0" class="nl">
+		<tr><th>West</th><th>W</th><th>L</th><th>GB</th></tr>
+	{% for team in standings.nl.w.teams %}
+		<tr><td class="name">{{ team.code }}</td><td>{{ team.wins }}</td><td>{{ team.losses }}</td><td>{{ team.gb }}</td></tr>
+	{% endfor %}
+	</table>
+</div>
