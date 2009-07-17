@@ -11,6 +11,7 @@ import os
 import wsgiref.handlers
 import xml.dom.minidom
 
+import standings_helper
 import xml_helper
 import xml_helper_highlights
 
@@ -82,6 +83,12 @@ class BaseRequestHandler(webapp.RequestHandler):
     path = os.path.join(directory, os.path.join('html', template_name))
     self.response.out.write(template.render(path, values, debug=_DEBUG))
 
+class StandingsPage(BaseRequestHandler):
+  def get(self):
+    template = "standings.html"
+    template_values = {  }
+    self.generate(template, template_values)
+
 class PreferencesPage(BaseRequestHandler):
   def get(self):
     template = "preferences.html"
@@ -119,13 +126,17 @@ class LiveScoreboardPage(BaseRequestHandler):
     teamsToTrack = []
     for p in results:
       teamsToTrack = p.teamsToTrack
+
+    # get standings
+    standings = standings_helper.getStandings(today.year, today.month, today.day)
     
     # retrieve xml for the day's scoreboard
     masterScoreboardDOM = xml_helper.fetchMasterScoreboard(str(today.year), month, day)
 
     template_values = { 'selDay': today, 
                         'selDayStr': today.strftime("%B %d, %Y"),
-                        'teamsToTrack': teamsToTrack }
+                        'teamsToTrack': teamsToTrack,
+                        'standings': standings }
     
     if masterScoreboardDOM is None:
       template = "no-games-today.html"
@@ -168,11 +179,15 @@ class PastScoreboardHandler(BaseRequestHandler):
     prevDay = selDay - timedelta(days=1)
     nextDay = selDay + timedelta(days=1)    
 
+    # get standings
+    standings = standings_helper.getStandings(selDay.year, selDay.month, selDay.day)
+
     template_values = {
       'prevDay': prevDay,
       'selDay': selDay,
       'nextDay': nextDay,
-      'selDayStr': selDay.strftime("%B %d, %Y")
+      'selDayStr': selDay.strftime("%B %d, %Y"),
+      'standings': standings
     }
 
     # retrieve xml for the day's scoreboard

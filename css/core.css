@@ -15,10 +15,10 @@ table { border: 0px; }
 #header a:active { text-decoration: none; color: #3F4C6B; }
 #header a:link { text-decoration: none; color: #3F4C6B; }
 #header a:visited { text-decoration: none; color: #3F4C6B; }
-#header div.left { float: left; width: 35%; font-weight: bold; padding: 10px; text-align: left; }
+#header div.left { float: left; font-weight: bold; padding: 10px; text-align: left; }
 #header div.left h1 { color: #36393D; font-size: 12px; text-transform: uppercase; }
 #header div.left h2 { font-size: 100%; text-transform: lowercase; color: #3F4C6B; }
-#header div.right { text-align:right; float: right;width: 60%; padding: 10px; }
+#header div.right { text-align:right; float: right;width: 45%; padding: 10px; }
 
 div.navbar { background-color: #004D99; color: #eaeaea; margin: 0px auto; width: 900px; }
 div.navbar div.inner { padding: 0px 10px 0px 10px; width: 880px; }
@@ -195,6 +195,7 @@ select#highlightSelect { margin: 20px auto; }
 .sln {background-color:red;color: #fff;}
 .was {background-color:red;color: #cacaca;}
 
+/* preferences */
 #preferences { padding: 0px; text-align:left; }
 #preferences h1 { padding: 5px 15px; }
 #preferences p { padding: 5px 15px; }
@@ -207,3 +208,14 @@ select#highlightSelect { margin: 20px auto; }
 
 .msg { background-color: #008C00; color: #fff; display: inline; padding: 5px;}
 .tracked { background: url(/img/Favorites_16x16.png) #FFFF88 center right no-repeat; height: 16px; }
+
+/* standings */
+#standings { display: none; border-bottom:1px solid #CCCCCC; padding: 5px 0px; }
+#standings table { display: inline; padding: 14px;  }
+#standings table th { border-bottom:1px solid #eee; font-size: 10px; padding: 3px; }
+#standings table.al th { color: #cc0000; }
+#standings table.nl th { color: #004D99; }
+#standings table td { border-bottom:1px solid #eee; font-size: 10px; padding: 3px; } 
+#standings table td.name { text-align: left; text-transform: uppercase; }
+
+#standingsTab { background-color: #4096EE; color: #fff; cursor: pointer; margin-left: 20px; padding: 15px 5px 5px; -moz-border-radius: 3px;  }

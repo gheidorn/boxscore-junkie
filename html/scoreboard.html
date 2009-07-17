@@ -14,6 +14,7 @@
 	{% include "header.html" %}
 	{% include "navbar-scoreboard.html" %}
 	<div id="content">
+		{% include "standings.html" %}
 		<div id="scoreboard">
 			{% for game in games %}
 			  {% ifnotequal forloop.counter0 0 %}
@@ -67,5 +68,7 @@
 	{% include "navbar-scoreboard.html" %}
 </div><!-- end page -->
 {% include "footer.html" %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/js/core.js"></script>
 </body>
 </html>
